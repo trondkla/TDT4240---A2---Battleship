@@ -1,97 +1,93 @@
 \chapter{Architectural Patterns}
+The following chapter is concerned with the patterns used in realizing LaHAW.
 
-%--------------------------------------------------------------------------------------------
-%               MVC
-%--------------------------------------------------------------------------------------------
+%-------------
+%   MVC
+%-------------
 
     \section{Model-View-Controller Pattern}
     \emph{Large and Heavily Armored Warships} shall implement the \emph{Model-View-Controller} (MVC) pattern, an \emph{architectural} pattern, where the program code is divided into three separate compartments, the \emph{Model}, the \emph{View} and the \emph{Controller}. The \emph{Model} will contain the code that keeps track of data relevant to the \emph{View}, data which is manipulated by the \emph{controller}.
     
+        \subsection{Implementation}
+        Each of the game world's objects and game data\footnote{Including the players, their scores, ships and oceans.} constitutes the \emph{Models} in this architecture. These models keeps track of the present status of each of these elements. Updates to these elements is handled by the controller.
     
+        The \emph{View} contains the code that draws the game world as it is dictated by the \emph{Models}.
     
-    \subsection{Implementation}
-    Each of the game world's objects and game data\footnote{Including the players, their scores, ships and oceans.} constitutes the \emph{Models} in this architecture. These models keeps track of the present status of each of these elements. Updates to these elements is handled by the controller.
+        The \emph{Controller} handles the calculation of the game data. This includes the handling of events (including timers and player input), keeping track of turns and modifying the game's objects.
+        Whenever an event occurs, the controller shall interpret this event and do the neccesary calculations and manipulate the game's models, and then notify the view that the game world has changed and needs to be redrawn.
+        An alternative implementation of \emph{MVC} could use separate controllers for each of the game's models, but seeing as the game is rather small and that the controller will mostly be controlling the states of the classes, this shall not be done in this implementation.
     
-    The \emph{View} contains the code that draws the game world as it is dictated by the \emph{Models}.
-    
-    The \emph{Controller} handles the calculation of the game data. This includes the handling of events (including timers and player input), keeping track of turns and modifying the game's objects.
-    Whenever an event occurs, the controller shall interpret this event and do the neccesary calculations and manipulate the game's models, and then notify the view that the game world has changed and needs to be redrawn.
-    An alternative implementation of \emph{MVC} could use separate controllers for each of the game's models, but seeing as the game is rather small and that the controller will mostly be controlling the states of the classes, this shall not be done in this implementation.
-    .
-    
-    \subsection{Rationale}
-    The reasons behind using the \emph{MVC} architectural pattern for the implementation of the game, is to increase modifiability through the separation of the SOMETHING, the visual representation of the game and the code logic. Additionally, use of the \emph{MVC} pattern will also ...
+        \subsection{Rationale}
+        The reasons behind using the \emph{MVC} architectural pattern for the implementation of the game, is to increase modifiability through the separation of the visual representation of the game, the game objects and the code logic that manipulates said objects. Additionally, use of the \emph{MVC} pattern will also aid in increasing the testability of the game.
 
-%--------------------------------------------------------------------------------------------
-%               SINGLETON
-%--------------------------------------------------------------------------------------------
+%-------------
+%   SINGLETON
+%-------------
 
     \section{Singleton Pattern}
-    \emph{Large and Heavily Armored Warships} shall implement the \emph{Singleton} Pattern, a design pattern used to implement the mathematical concept of a singleton, by restricting the instantiation of a class to one object\cite{singleton}.
+    \emph{Large and Heavily Armored Warships} shall implement the \emph{Singleton} Pattern, a design pattern used to restrict the instantiation of a class to one object\cite{singleton}.
     Use of the Singleton pattern assures that such classes can only have \emph{one} instance which is globally available to those in need of it and its methods.
     
-    \subsection{Implementation}
-    The pattern will be implemented in LaHAW wherever only a single instance of a class is needed, and this class is needed globally at some point in time. Use of singletons in the LaHAW code base will however be limited as much as possible, due to it making unit testing more difficult\cite{singleton_unit_testing}.
+        \subsection{Implementation}
+        The pattern will be implemented in LaHAW wherever only a single instance of a class is needed, and this class is needed globally at some point in time. Use of singletons in the LaHAW code base will however be limited as much as possible, due to it making unit testing more difficult\cite{singleton_unit_testing}.
     
-    \begin{itemize}
-        \item The game itself shall be implemented as a singleton.
-        \item The game scoreboard shall be implemented as a singleton.
-        \item The \emph{states} of the objects, as discussed below, are to be implemented as singletons.
+        \begin{itemize}
+            \item The game itself shall be implemented as a singleton.
+            \item The game scoreboard shall be implemented as a singleton.
+            \item The \emph{states} of the objects, as discussed below, are to be implemented as singletons.
+        \end{itemize}
     
-    \end{itemize}
-    
-    \subsection{Rationale}
-    By using the Singleton pattern, we can be sure that wherever exactly \emph{one} instance of an object should exist in the game, nothing else is allowed.
+        \subsection{Rationale}
+        By using the Singleton pattern, we can be sure that wherever exactly \emph{one} instance of an object should exist in the game, nothing else is allowed.
     
 
-%--------------------------------------------------------------------------------------------
-%               STATE PATTERN
-%--------------------------------------------------------------------------------------------
+%--------------------
+%    STATE PATTERN
+%--------------------
+
     \section{State Pattern}
-    State Pattern is a behavioural \emph{design pattern}
+%    State Pattern is a behavioural \emph{design pattern}
     
 %    "Allow an object to alter its behaviour when its internal state changes. The object will appear to change its class."  
-    With the use of the State Pattern, the objects that constitutes the game can exist in exactly \emph{one} out of a number of internal states, whose change alter the behaviour of the objects.\cite{online:statepattern}
+    With the use of the State design pattern, the objects that constitutes the game can exist in exactly \emph{one} out of a number of internal states, whose change alter the behaviour of the objects.\cite{online:statepattern}
     
     
-    \subsection{Implementation}
-    The way the state pattern will be implemented in LaHAW is described below.
+        \subsection{Implementation}
+        The way the state pattern will be implemented in LaHAW is described below.
     
-    \begin{itemize}
+        \begin{itemize}
+            \item The game itself exists in one of the following states: \emph{preparation}, where the players are placing their ships on their playing field; \emph{playing}, where the players takes turn in guessing where the opposing player has placed their ships; \emph{paused}, where the game is paused; \emph{game over}, where the game has ended and a winner has been chosen; and \emph{intro}, which consists of the period between the game application has been started and the game is to be started\footnote{Here the number of players, game difficulty settings, etc. is chosen.}.
+
+            \item When the game is in the \emph{playing} state the players will swap between two states depending on : \emph{fire}; and \emph{observe}.
     
-        \item The players of the game will have a set number of ships, each of which is occupying a set number of the ocean's tiles depending on the ship's size. Each of the tiles can thus be in one of two states: \emph{occupied} or \emph{vacant}.
+            \item The players of the game will have a set number of ships, each of which is occupying a set number of the ocean's tiles depending on the ship's size. Each of the tiles can thus be in one of two states: \emph{occupied} or \emph{vacant}.
     
-        \item The ships are consisting of tiles. The amount of tiles a ship consists of is dependent on the ship's type (which dictated the ship's size). Each of these tiles can be in one of two states: \emph{healthy} or \emph{destroyed}.
+            \item The ships are consisting of tiles. The amount of tiles a ship consists of is dependent on the ship's type (which in turn dictates the ship's size). Each of these tiles can be in one of two states: \emph{healthy} or \emph{destroyed}.
     
-        \item The ships themselves can exist in one of two states: \emph{floating} or \emph{sunk}.
+            \item The ships themselves can exist in one of two states: \emph{floating} or \emph{sunk}.            
     
-        \item The players themselves can be in one of the following three states: \emph{won}, \emph{lost} or \emph{play}.
+        \end{itemize}
     
-        \item During \emph{play} state the players will swap between two states: \emph{fire} or \emph{observe}
+        The states themselves shall be implemented as \emph{Singletons}, as discussed above.
     
-    \end{itemize}
+        \subsection{Rationale}
+        The State Pattern is implemented due to most of the game's objects existing in different states as the game proceeds. Rather than implementing these states as separate classes, we can modify the behaviour appropriately with inclusion of state modifiers. An example of this is that we need not implement two types of ocean tile objects (e.g. \texttt{OceanTileVacant} and \texttt{OceanTileOccupied}), but are able to have a single \texttt{OceanTile} object which can exist in different states, depending on how the game plays. This limits the amount of redundancy in the code, and aids in making the code base more readable and modifiable.
     
-    The states themselves shall be implemented as \emph{Singletons}, as discussed above.
-    
-    \subsection{Rationale}
-    The State Pattern is implemented due to most of the game's objects existing in different states as the game proceeds. Rather than implementing these states as separate classes, we can modify the behaviour appropriately with inclusion of state modifiers. An example of this is that we need not implement two types of ocean tile objects (e.g. \texttt{OceanTileVacant} and \texttt{OceanTileOccupied}), but are able to have a single \texttt{OceanTile} object which can exist in different states, depending on how the game plays. This limits the amount of redundancy in the code, and aids in making the code base more readable and modifiable.
-    
-%--------------------------------------------------------------------------------------------
-%               OBSERVER PATTERN
-%--------------------------------------------------------------------------------------------
+%----------------------
+%   OBSERVER PATTERN
+%----------------------
     
     \section{Observer Pattern}
     The final pattern LaHAW shall adopt is the Observer design pattern wherever one-to-many messages are to be sent between the classes and methods of the game. Whenever a state observed by a number of classes, state changes are to be broadcasted to these listeners so that each of these are kept up to date on this change
     
-    \subsection{Implementation}    
-    Below is a description on how the Observer pattern will be implemented in LaHAW.
+        \subsection{Implementation}    
+        Below is a description on how the Observer pattern will be implemented in LaHAW.
     
-    \begin{itemize}
-        \item When the game controller gets an update that tells it that ship X has been hit, this message is then broadcasted to all of the listeners. This includes the players and the methods that draws the ships.
-    \end{itemize}
+        \begin{itemize}
+            \item When the game controller gets an update that tells it that ship X has been hit, this message is then broadcasted to all of the listeners. This includes the players and the methods that draws the ships.
+        \end{itemize}
     
     
-    
-    \subsection{Rationale}
-    The reasoning of implementing the Observer pattern for the game is to be able to easily send one-to-many messages. The game will consist of several classes that need to broadcast their status updates to several parties. The Observer pattern will aid in this task. The implementation of the Observer pattern will also help in making the code base be more maintainable and modifiable. This is because further evolution of the game's classes and methods might need to access state data, and should this be able to access this data through adding themselves to existing code as listeners. Furthermore, the use of the \emph{State} design pattern and the \emph{MVC} architectural pattern, the use of the \emph{Observer} pattern comes rather natural.
+        \subsection{Rationale}
+        The reasoning of implementing the Observer pattern for the game is to be able to easily send one-to-many messages. The game will consist of several classes that need to broadcast their status updates to several parties. The Observer pattern will aid in this task. The implementation of the Observer pattern will also help in making the code base be more maintainable and modifiable. This is because further evolution of the game's classes and methods might need to access state data, and should this be able to access this data through adding themselves to existing code as listeners. Furthermore, the use of the \emph{State} design pattern and the \emph{MVC} architectural pattern, the use of the \emph{Observer} pattern comes rather natural.
     
