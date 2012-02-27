@@ -14,6 +14,8 @@ main.pdf: $(TEXFILES) $(BIBFILES)
 	bibtex main
 	$(PDFLATEX) main
 	while grep "Rerun to get cross" main.log; do pdflatex main; done
+	$(PDFLATEX) main
+	while grep "Rerun to get cross" main.log; do pdflatex main; done
 
 .PHONY: clean
 
