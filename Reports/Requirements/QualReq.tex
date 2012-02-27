@@ -1,0 +1,147 @@
+\chapter{Quality Requirements}
+\section{Modifiability}
+    \begin{itemize}
+        \item[\textbf{M1}] Change difficulty \\
+        \textit{\small{The user is able to choose between three difficulty levels: easy; medium; and hard. Ocean space is determined by these, where easy                                                                             gives the largest ocean space, and hard gives the smallest ocean space. If the ocean space is small, the probability to get hit increases and vice versa.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source &  Developer \\
+            Stimulus & Add difficulty opportunity \\
+            Artifact & A change on target system \\
+            Environment & Design time \\
+            Response & Opportunity to change ocean space  \\
+            Response measure & 10 hours to modify  \\
+            \hline
+        \end{tabular}
+        
+        \item[\textbf{M2}] Set player color \\
+        \textit{\small{The user should be able to change the color of their ships, i.e. their player color.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & Developer \\
+            Stimulus & Add opportunity to change your player color \\
+            Artifact & A change on target system \\
+            Environment & Design time \\
+            Response & Opportunity to change ship colors  \\
+            Response measure & 10 hours to modify \\
+            \hline
+        \end{tabular}
+    
+        \item[\textbf{M3}] Set player name \\
+        \textit{\small{The user should be able to set their player name before they start to play.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & Developer \\
+            Stimulus & Add opportunity to set your player name \\
+            Artifact & A change on target system \\
+            Environment & Design time \\
+            Response & Opportunity to set player name  \\
+            Response measure & 5 hours to modify \\
+            \hline
+        \end{tabular}
+    \end{itemize}
+
+\section{Usability}
+According to Bass, Clements and Kazman \cite{pensum}, \emph{usability} is ...
+    \begin{itemize}
+        \item[\textbf{U1}] Placing the Large and Heavily Armored Warships \\
+        \textit{\small{The user should be able to see each of the Large and Heavily Armored Warships being placed on the ocean.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & End User \\
+            Stimulus & Change position of the ships \\
+            Artifact & System \\
+            Environment & Game play \\
+            Response & Move ships  \\
+            Response measure & The user is able to move each ship one time \\
+            \hline
+        \end{tabular}
+
+        \item[\textbf{U2}] Player name and color saved \\
+        \textit{\small{The player name and color will be saved at start for later use in the game.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & End User \\
+            Stimulus & Store player name and color \\
+            Artifact & System \\
+            Environment & At configure time \\
+            Response & The player name will appear at the game play screen, \\
+             & and the ships will be painted in the predefined player color  \\
+            Response measure & Name and color updates when the player starts the game \\
+            \hline
+        \end{tabular}
+
+        \item[\textbf{U3}] Dialog boxes confirming the users actions \\
+        \textit{\small{The user should be promted to confirm their actions for severe\footnote{A decision with great potential consequence} decisions.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & End User \\
+            Stimulus & User regret their decision \\
+            Artifact & System \\
+            Environment & Run-time \\
+            Response & Dialog box with confirmation button(s) (i.e. "OK") \\
+            Response measure & Goes to either the next step in the process, or the previous step \\
+            \hline
+        \end{tabular}
+        
+        \newpage
+        
+        \item[\textbf{U4}] Actions should be no more than three clicks away \\
+        \textit{\small{To increase efficiency}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & End User \\
+            Stimulus & User wants to use the system efficiently \\
+            Artifact & System \\
+            Environment & Run-time \\
+            Response & Support efficient use \\
+            Response measure & Reduce task time \\
+            \hline
+        \end{tabular}
+        
+        \item[\textbf{U5}] The game should show game tips where appropriate \\
+        \textit{\small{The user gets well-founded recommendations or tips during game play, in order to increase confidence}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & End User \\
+            Stimulus & User is uncertain on how the game is played, \\
+             & or what their next move should be \\
+            Artifact & System \\
+            Environment & Run-time \\
+            Response & A message box with tips \\
+            Response measure & User gets more confidence in their next move \\
+            \hline
+        \end{tabular}
+    \end{itemize}
