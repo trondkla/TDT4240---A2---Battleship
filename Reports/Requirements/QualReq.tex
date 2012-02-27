@@ -1,8 +1,14 @@
 \chapter{Quality Requirements}
+
+%---------------
+% Modifiability
+%---------------
 \section{Modifiability}
+Modifiability in an architectural sense is conserned about the cost of change \cite{pensum}. Our main approach is mainly concerned with changes made in \emph{design time}.
+
     \begin{itemize}
         \item[\textbf{M1}] Change difficulty \\
-        \textit{\small{The user is able to choose between three difficulty levels: easy; medium; and hard. Ocean space is determined by these, where easy                                                                             gives the largest ocean space, and hard gives the smallest ocean space. If the ocean space is small, the probability to get hit increases and vice versa.}}
+        \textit{\small{The user is able to choose between three difficulty levels: easy; medium; and hard. Ocean space is determined by these, where easy gives the largest ocean space, and hard gives the smallest ocean space. If the ocean space is small, the probability to get hit increases and vice versa. The difficulty settings are asymmetrical for the players, such that a player playing with the difficulty setting \emph{easy}, can play against a player with the difficulty setting \emph{hard}. In effect this will let a player play against an opponent with a smaller ocean space than itself, and thus have an easier game than its opponent.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -19,7 +25,7 @@
         \end{tabular}
         
         \item[\textbf{M2}] Set player color \\
-        \textit{\small{The user should be able to change the color of their ships, i.e. their player color.}}
+        \textit{\small{The user should be able to change the color of their player color, i.e. the colors of their ships and other UI elements.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -53,11 +59,17 @@
         \end{tabular}
     \end{itemize}
 
+
+
+%---------------
+% Usability
+%---------------
 \section{Usability}
-According to Bass, Clements and Kazman \cite{pensum}, \emph{usability} is ...
+According to Bass, Clements and Kazman, \emph{usability} is concerned about making the the tasks involved in the system as easy to accomplish as possible \cite{pensum}.
+
     \begin{itemize}
-        \item[\textbf{U1}] Placing the Large and Heavily Armored Warships \\
-        \textit{\small{The user should be able to see each of the Large and Heavily Armored Warships being placed on the ocean.}}
+        \item[\textbf{U1}] Placing the ships \\
+        \textit{\small{The user should be able to see each of their ships being placed on the ocean.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -92,7 +104,7 @@ According to Bass, Clements and Kazman \cite{pensum}, \emph{usability} is ...
         \end{tabular}
 
         \item[\textbf{U3}] Dialog boxes confirming the users actions \\
-        \textit{\small{The user should be promted to confirm their actions for severe\footnote{A decision with great potential consequence} decisions.}}
+        \textit{\small{The user should be promted to confirm their actions for severe decisions.}}
         
         \begin{tabular}{| l | l |}
             \hline
