@@ -1,5 +1,10 @@
 *.aux
+Makefile
+*.toc
 *.log
 *.out
 *.bbl
 *.blg
+make_reports
+make_report
+*.pdf

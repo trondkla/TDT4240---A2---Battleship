@@ -1,4 +1,26 @@
 \chapter{Views}
-%Dette er vel strengt tatt ikke relevant for vår implementasjon, med mindre vi osgå går for den 4+1-greia de andre gjorde.
-% Denne kan vi si SNAKKAS til, tipper den er dekket av pisset oppi her
-% Kan evt. legge inn det som skal her under architectural viewpoint ja men oppdelinga av rapporten er etter den IEEE 1471 greia, som sier at det skal se sånn ut :P
+\section{Logical View}
+
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{LogicalView.png}
+	\caption{Logical View}
+	\label{fig:LogicalView}
+\end{figure}
+
+The diagram shows a simplified overview of the different classes, usages and inheritation. Notation is based on the Logical View notation by Kructhen.\cite{kruchten} 
+\\
+\texttt{GameOverState}, \texttt{PrepState}, \texttt{GameState} and \texttt{IntroState} all extend a common \texttt{PlayState} class. The main \texttt{Game} class functions as a controller, and controls the state stack. \texttt{Ship} object is used by the main \texttt{Game} class, which instantiates the different ship types with a given set of attributes.
+\\
+Several more states and objects are discussed earlier in this report, and are not represented in this diagram. The main reason for this descision is to keep the diagram simple and easy to read, the ignored features are either redundant or too specific. 
+
+\section{Development View}
+\begin{figure}[h]
+	\includegraphics[width=\textwidth]{DevelopmentView.png}
+	\caption{Development View}
+	\label{fig:DevelopmentView}
+\end{figure}
+
+write something smart here
+
+\section{Process View}
+something something
