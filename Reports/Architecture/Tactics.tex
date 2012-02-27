@@ -1,7 +1,7 @@
 \chapter{Architectural tactics}
 
     \section{Modifiability}
-    The code is divided up into several different objects and classes in order to separate code changes so that it only affects the object/class being changed. This is done to avoid a ripple effect i.e. the need to change other related components or modules in the architecture when one part of the game is changed. Internal variables should generally be held private, and access to different objects and classes are made through public methods. Objects for boats are made as general as possible to prevent major code changes when initializing a new boat. By just changing some attributes to the common object, one can make a new boat with a given size and color. 
+    The code is divided up into several different objects and classes in order to separate code changes so that it only affects the object/class being changed. This is done to avoid a ripple effect i.e. the need to change other related components or modules in the architecture when one part of the game is changed\cite[p.~107]{pensum}. Internal variables should generally be held private, and access to different objects and classes are made through public methods. Objects for boats are made as general as possible to prevent major code changes when initializing a new boat. By just changing some attributes to the common object, one can make a new boat with a given size and color. 
     
     \section{Availability}
     \label{avail}
@@ -17,9 +17,9 @@
     Our use of singletons are a detriment to testability, but the use of such classes are to be held at a minimum.
     
     \section{Usability}
-    Usability is achieved by dividing the user interface and the rest of the application, as mentioned in chapter \ref{test}. MVC is the chosen method here to support modification to the user interface without affecting other parts of the system. During configure-time, the user gives the system a model of their experience level by selecting a difficulty level.
+    Usability is achieved by dividing the user interface and the rest of the application, as mentioned above. MVC is chosen as the main architectural pattern to support modification to the user interface without affecting other parts of the system. During configure-time, the user gives the system a model of their experience level by selecting a difficulty level.
     
     The game will implement a hint system where, during run-time, the game will present hints that shall help the user in understanding the game rules and how to interact with our implementation of the game. This to support usability by giving the user more confidence in their choices.  These hints are related to the difficulty level chosen by the user at configure-time.
     
     \section{Security}
-    LaHAW does not authorize or authenticate users as it require no personal information or other personal details to play. The game is not seen as susceptible to attacks from external sources, and does not send out any information from the device. Therefore, the architecture will not focus much on security in regards of encryption and access limitiation. As mentioned in chapter \ref{avail}, there is a limited time frame from now to the project deadline, and other tactics have a greater priority.
+    LaHAW will not authorize or authenticate users as it require no personal information or other personal details to play. The game is not seen as susceptible to attacks from external sources, and does not send out any information from the device. Therefore, the architecture will not focus much on security in regards of encryption and access limitiation. As mentioned above, there is a limited time frame from now to the project deadline, and other tactics have a greater priority.
