@@ -1,0 +1,25 @@
+\chapter{Architectural tactics}
+
+    \section{Modifiability}
+    The code is divided up into several different objects and classes in order to separate code changes so that it only affects the object/class being changed. This is done to avoid a ripple effect i.e. the need to change other related components or modules in the architecture when one part of the game is changed. Internal variables should generally be held private, and access to different objects and classes are made through public methods. Objects for boats are made as general as possible to prevent major code changes when initializing a new boat. By just changing some attributes to the common object, one can make a new boat with a given size and color. 
+    
+    \section{Availability}
+    \label{avail}
+    In order to maintain a degree of availability, LaHAW will implement and handle common exceptions where necessary. This tactic is fast and simple to implement, ensuring a comprehensive architectural design. The project has a limited time frame, and the architecture will reflect that.
+    
+    \section{Performance}
+    Performance is not the main focus area of LaHAW, but response time during the game should be as short as possible to give a smooth user interaction. Java does most of the garbage collection, so the goal is to limit the amount of allocated objects at once. In addition, one can increase computational efficiency by making efficient algorithms in critical areas. 
+    
+    \section{Testability}
+    \label{test}
+    As per the MVC pattern, the user interface and game logic is held separated, which in turn increases testability. In addition to this, the modifiability tactics require further separation of different sections, with control over input/output. A built-in monitor of CPU usage and memory load will ensure that the program runs smoothly while avoiding memory leaks.
+    
+    Our use of singletons are a detriment to testability, but the use of such classes are to be held at a minimum.
+    
+    \section{Usability}
+    Usability is achieved by dividing the user interface and the rest of the application, as mentioned in chapter \ref{test}. MVC is the chosen method here to support modification to the user interface without affecting other parts of the system. During configure-time, the user gives the system a model of their experience level by selecting a difficulty level.
+    
+    The game will implement a hint system where, during run-time, the game will present hints that shall help the user in understanding the game rules and how to interact with our implementation of the game. This to support usability by giving the user more confidence in their choices.  These hints are related to the difficulty level chosen by the user at configure-time.
+    
+    \section{Security}
+    LaHAW does not authorize or authenticate users as it require no personal information or other personal details to play. The game is not seen as susceptible to attacks from external sources, and does not send out any information from the device. Therefore, the architecture will not focus much on security in regards of encryption and access limitiation. As mentioned in chapter \ref{avail}, there is a limited time frame from now to the project deadline, and other tactics have a greater priority.
