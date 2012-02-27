@@ -1,0 +1,7 @@
+#!/bin/bash/
+
+pdflatex main.tex
+
+rm *.aux
+rm *.out
+rm *.log
