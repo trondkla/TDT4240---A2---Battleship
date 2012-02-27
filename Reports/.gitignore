@@ -3,3 +3,6 @@
 *.out
 *.bbl
 *.blg
+make_reports
+make_report
+*.pdf

@@ -17,7 +17,7 @@
     The \emph{Controller} handles the calculation of the game data. This includes the handling of events (including timers and player input), keeping track of turns and modifying the game's objects.
     Whenever an event occurs, the controller shall interpret this event and do the neccesary calculations and manipulate the game's models, and then notify the view that the game world has changed and needs to be redrawn.
     An alternative implementation of \emph{MVC} could use separate controllers for each of the game's models, but seeing as the game is rather small and that the controller will mostly be controlling the states of the classes, this shall not be done in this implementation.
-    .
+    
     
     \subsection{Rationale}
     The reasons behind using the \emph{MVC} architectural pattern for the implementation of the game, is to increase modifiability through the separation of the SOMETHING, the visual representation of the game and the code logic. Additionally, use of the \emph{MVC} pattern will also ...
