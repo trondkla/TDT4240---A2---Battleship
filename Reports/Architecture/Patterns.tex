@@ -40,6 +40,19 @@ The following chapter is concerned with the patterns used in realizing LaHAW.
         \subsection{Rationale}
         By using the Singleton pattern, we can be sure that wherever exactly \emph{one} instance of an object should exist in the game, nothing else is allowed.
     
+%--------------------
+%    ABSTRACT FACTORY
+%--------------------
+
+\section{Abstract Factory Pattern}
+\emph{Large and Heavily Armored Warships} shall implement the \emph{Abstract Factory} Pattern, a design pattern that provides an interface for creating families of related objects without specifying their concrete classes\cite{abstractfactory}. This pattern is useful for creating similar objects which will be in frequent use.
+
+
+    \subsection{Implementation}
+    The pattern will be implemented in LaHAW with the different ships. The ships could be similar but possess different properties. We implement an abstract factory which creates concrete classes, and let the client code be unaware of how the implementation is done. All we need is an object implementing that abstract factory. This allows objects to implement different types of that factory, in our case this will be different types of ships that share properties, but also is different from the other shiptypes.
+
+    \subsection{Rationale}
+    Rather than creating several different methods for creating new ships, we can implement one factory object that takes care of production of the different types of ships. The ships are all similar objects that will be in frequent use, and it makes sense that each type of ship has its own factory.
 
 %--------------------
 %    STATE PATTERN
