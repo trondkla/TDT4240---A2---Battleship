@@ -1,9 +1,9 @@
 \chapter{Introduction}
-This document will provide a documentation of the architecture for \textsc{Large and Heavily Armored Warships} (LaHAW), a game developed for Android. The game is developed as a part of the TDT4240 course.
-LaHAW is a remake of the classical 'Battleship' game\cite{battleship}. Battleship is a guessing game situated on an ocean space grid. Players place their boats on selected tiles and should then try to guess where the opponent
-have placed his boats. A correct guess is effectively noted as a 'hit'. The game ends when a player has hit all opposing ships.
+This document will provide a documentation of the architecture for \textsc{Large and Heavily Armored Warships} (LaHAW), a game developed for Android. The game is developed as a part of the TDT4240 course at NTNU.
 
-This document will focus on architectural design choices and how we satisfy the quality requirements set.
-Using the IEEE 1471 standard for architectural descriptions of software-intensive systems\cite{IEEE1471} we describe architectural tactics and patterns based on the defined architectural drivers and stakeholders. A description of the 4+1 architectural viewpoint\cite{4+1} and a rationale for our chosen solution is also provided, and how quality and functional requirements influence the choice of architecture.
+This document will focus on architectural design choices and how we satisfy the quality requirements set. Using the IEEE 1471 standard for architectural descriptions of software-intensive systems\cite{IEEE1471} we describe architectural tactics and patterns based on the defined architectural drivers and stakeholders. A description of the 4+1 architectural viewpoint\cite{4+1} and a rationale for our chosen solution is also provided, and how quality and functional requirements influence the choice of architecture.
 
 Patterns used for the realization of LaHAW is Model-View-Controller as an architectural pattern; and Singleton, Observer and State as design patterns. This document will detail the reasoning behind these choises.
+
+	\section{The game}
+	LaHAW is a remake of the classical "Battleship" game\cite{battleship}. Battleship is a turn based guessing game situated on an grid based ocean space. The game is separated into two parts: an introductory preparation state, where both of the players places their ships on their own ocean grid; and the guessing state, where the players takes turn in guessing where the opposing player has placed his or her ships. A correct guess is effectively noted as a 'hit'. Depending on the size of the ship, several hits might be neccessary to sink the ship. The game ends after a player has hit and sunk all of the opposing player's ships.
