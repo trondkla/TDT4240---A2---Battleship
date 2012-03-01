@@ -7,8 +7,8 @@
 Modifiability in an architectural sense is concerned about the cost of change \cite{pensum}. Our main approach is mainly concerned with changes made in \emph{design time}.
 
     \begin{itemize}
-        \item[\textbf{M1}] Change difficulty \\
-        \textit{\small{The user is able to choose between three difficulty levels: easy; medium; and hard. Ocean space is determined by these, where easy gives the largest ocean space, and hard gives the smallest ocean space. If the ocean space is small, the probability to get hit increases and vice versa. The difficulty settings are asymmetrical for the players, such that a player playing with the difficulty setting \emph{easy}, can play against a player with the difficulty setting \emph{hard}. In effect this will let a player play against an opponent with a smaller ocean space than itself, and thus have an easier game than its opponent.}}
+        \item[\textbf{M1}] Change difficulty. \\
+        \textit{\small{The user is able to choose between three difficulty levels: easy; medium; and hard. Ocean space is determined by these, where the easy setting gives the largest ocean space, and hard setting gives the smallest ocean space. If the ocean space is small, the probability to get hit increases and vice versa. The opposing players' difficulty settings are asymmetrical, such that a player playing with the difficulty setting \emph{easy}, can play against a player with the difficulty setting \emph{hard}.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -24,7 +24,7 @@ Modifiability in an architectural sense is concerned about the cost of change \
             \hline
         \end{tabular}
         
-        \item[\textbf{M2}] Set player color \\
+        \item[\textbf{M2}] Set player color. \\
         \textit{\small{The user should be able to change the color of their player color, i.e. the colors of their ships and other UI elements.}}
         
         \begin{tabular}{| l | l |}
@@ -41,8 +41,8 @@ Modifiability in an architectural sense is concerned about the cost of change \
             \hline
         \end{tabular}
     
-        \item[\textbf{M3}] Set player name \\
-        \textit{\small{The user should be able to set their player name before they start to play.}}
+        \item[\textbf{M3}] Set player name. \\
+        \textit{\small{The user should be able to set their player name before they start the game.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -65,10 +65,10 @@ Modifiability in an architectural sense is concerned about the cost of change \
 % Usability
 %---------------
 \section{Usability}
-According to Bass, Clements and Kazman, \emph{usability} is concerned about making the the tasks involved in the system as easy to accomplish as possible \cite[p.~90]{pensum}.
+According to Bass, Clements and Kazman, \emph{usability} is concerned about making the the tasks involved in the system as easy to accomplish as possible \cite[p.~90]{pensum}. Below we have identified the following use cases for assuring the usability of LaHAW.
 
     \begin{itemize}
-        \item[\textbf{U1}] Placing the ships \\
+        \item[\textbf{U1}] Placing the ships. \\
         \textit{\small{The user should be able to see each of their ships being placed on the ocean.}}
         
         \begin{tabular}{| l | l |}
@@ -81,11 +81,11 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & Game play \\
             Response & Move ships  \\
-            Response measure & The user is able to move each ship one time \\
+            Response measure & After positioning the ships, the user is able to change these positions, one at a time. \\
             \hline
         \end{tabular}
 
-        \item[\textbf{U2}] Player name and color saved \\
+        \item[\textbf{U2}] Player name and color saved. \\
         \textit{\small{The player name and color will be saved at start for later use in the game.}}
         
         \begin{tabular}{| l | l |}
@@ -103,7 +103,7 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             \hline
         \end{tabular}
 
-        \item[\textbf{U3}] Dialog boxes confirming the users actions \\
+        \item[\textbf{U3}] Dialog boxes confirming the users actions. \\
         \textit{\small{The user should be promted to confirm their actions for severe decisions.}}
         
         \begin{tabular}{| l | l |}
@@ -122,8 +122,8 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
         
         \newpage
         
-        \item[\textbf{U4}] Actions should be no more than three clicks away \\
-        \textit{\small{To increase efficiency}}
+        \item[\textbf{U4}] No action should be more than three clicks away. \\
+        \textit{\small{To increase efficiency.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -139,8 +139,8 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             \hline
         \end{tabular}
         
-        \item[\textbf{U5}] The game should show game tips where appropriate \\
-        \textit{\small{The user gets well-founded recommendations or tips during game play, in order to increase confidence}}
+        \item[\textbf{U5}] The game should show game hints whereever appropriate. \\
+        \textit{\small{The user gets well-founded recommendations or tips during game play, in order to increase confidence.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -153,7 +153,7 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & Run-time \\
             Response & A message box with tips \\
-            Response measure & User gets more confidence in their next move \\
+            Response measure & User gets more confidence in how they play the game \\
             \hline
         \end{tabular}
     \end{itemize}
