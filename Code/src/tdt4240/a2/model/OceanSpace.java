@@ -8,4 +8,12 @@ package tdt4240.a2.model;
  * To change this template use File | Settings | File Templates.
  */
 public class OceanSpace {
+
+    private OceanSpaceSize oceanSpaceSize;
+    //private [][];
+
+    public OceanSpace(OceanSpaceSize oceanSpaceSize){
+        this.oceanSpaceSize = oceanSpaceSize;
+        //.. = new [oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
+    }
 }
