@@ -10,10 +10,10 @@ import android.graphics.Canvas;
  * To change this template use File | Settings | File Templates.
  */
 public class Warship {
+    private tdt4240.a2.model.Warship model;
 
-
-    public Warship(){
-
+    public Warship(tdt4240.a2.model.Warship model){
+        this.model = model;
     }
 
     /**

@@ -1,5 +1,6 @@
 package tdt4240.a2.controller;
 
+
 /**
  * Created by IntelliJ IDEA.
  * User: tk
@@ -8,10 +9,9 @@ package tdt4240.a2.controller;
  * To change this template use File | Settings | File Templates.
  */
 public class Warship {
-    private WarshipType warshipType;
     private int size;
 
-    public Warship(WarshipType warshipType){
+    public Warship(){
 
     }
 }

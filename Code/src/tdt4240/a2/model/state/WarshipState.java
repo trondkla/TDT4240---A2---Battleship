@@ -1,4 +1,4 @@
-package tdt4240.a2.model;
+package tdt4240.a2.model.state;
 
 /**
  * Created by IntelliJ IDEA.
@@ -7,5 +7,7 @@ package tdt4240.a2.model;
  * Time: 13:54
  * To change this template use File | Settings | File Templates.
  */
-public class WarshipState {
+public enum WarshipState {
+    FLOATING,
+    SUNK;
 }
