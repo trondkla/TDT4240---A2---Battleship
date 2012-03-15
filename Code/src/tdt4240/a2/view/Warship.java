@@ -9,4 +9,23 @@ package tdt4240.a2.view;
  */
 public class Warship {
 
+
+    public Warship(){
+
+    }
+
+    /**
+     *
+     */
+    public void draw(){
+
+    }
+
+    /**
+     *
+     * @param timeElapsed
+     */
+    public void update(long timeElapsed){
+        //
+    }
 }

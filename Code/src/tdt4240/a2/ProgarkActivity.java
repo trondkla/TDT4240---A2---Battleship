@@ -9,6 +9,6 @@ public class ProgarkActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        Console.out.println("Hello World!");
+        System.out.println("Hello World!");
     }
 }
