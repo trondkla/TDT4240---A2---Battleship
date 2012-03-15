@@ -8,4 +8,23 @@ package tdt4240.a2.view;
  * To change this template use File | Settings | File Templates.
  */
 public class OceanSpace {
+
+    public OceanSpace(){
+
+    }
+
+    /**
+     *
+     */
+    public void draw(){
+
+    }
+
+    /**
+     *
+     * @param timeElapsed
+     */
+    public void update(long timeElapsed){
+
+    }
 }
