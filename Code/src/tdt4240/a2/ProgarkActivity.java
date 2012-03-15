@@ -8,7 +8,9 @@ public class ProgarkActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        System.out.println("Hello World!");
+        
+        StateMachine stateMachine = new StateMachine(this);
+        
+        setContentView(stateMachine.getContentView());
     }
-}
+} 
