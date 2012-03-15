@@ -1,5 +1,7 @@
 package tdt4240.a2.view;
 
+import android.graphics.Canvas;
+
 /**
  * Created by IntelliJ IDEA.
  * User: tk
@@ -17,7 +19,7 @@ public class Warship {
     /**
      *
      */
-    public void draw(){
+    public void draw(Canvas canvas){
 
     }
 
