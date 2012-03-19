@@ -9,13 +9,21 @@ package tdt4240.a2.controller;
  * To change this template use File | Settings | File Templates.
  */
 public class Warship {
-    private int size;
+
+    private tdt4240.a2.model.Warship model;
 
     public Warship(){
 
     }
 
+    /**
+     *
+     * @param xCoordinate Raw coordinate? or tilecoordinate?
+     * @param yCoordinate Raw coordinate? or tilecoordinate?
+     * @return
+     */
     public boolean checkHit(int xCoordinate, int yCoordinate){
+        // use getRect from the model and check if the coordinate is in the rectangle
         return false;
     }
 }

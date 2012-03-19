@@ -1,15 +1,16 @@
 package tdt4240.a2.model;
 
 import android.graphics.Rect;
+import tdt4240.a2.variables.StaticVariables;
 
 /**
  */
-public class Warship {
+public class Warship extends AbstractModel {
     private WarshipType warshipType;
     private WarshipState[] isFloating;
     private boolean horizontal; // for drawing
-    private int xPosition; //
-    private int yPosition; //
+    private int xPosition; // x - position in oceanspace(tile)
+    private int yPosition; // y - position in oceanspace(tile)
 
     public Warship(WarshipType warshipType){
         this.warshipType = warshipType;
@@ -37,6 +38,10 @@ public class Warship {
     }
 
     public Rect getRect(){
-        return new Rect();
+        int pixelPerTile = StaticVariables.getInstance().getPixelPerTile();
+        if(horizontal)
+            return new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile, warshipType.getSize()*pixelPerTile, pixelPerTile);
+        else
+            return new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile, pixelPerTile, warshipType.getSize()*pixelPerTile);
     }
 }
