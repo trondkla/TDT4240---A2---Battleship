@@ -1,19 +1,23 @@
 package tdt4240.a2.model;
 
-import tdt4240.a2.model.WarshipType;
+import android.graphics.Rect;
 
 /**
  */
 public class Warship {
     private WarshipType warshipType;
-    private boolean[] isFloating;
+    private WarshipState[] isFloating;
     private boolean horizontal; // for drawing
     private int xPosition; //
     private int yPosition; //
 
     public Warship(WarshipType warshipType){
         this.warshipType = warshipType;
-        isFloating = new boolean[warshipType.getSize()];
+        isFloating = new WarshipState[warshipType.getSize()];
+        // INIT isFloating
+        for(WarshipState state : isFloating){
+            state = WarshipState.FLOATING; // Setting all to floating as initial value
+        }
     }
 
     public void placeShip(int xPosition, int yPosition, boolean horizontal){
@@ -32,7 +36,7 @@ public class Warship {
         return yPosition;
     }
 
-    public boolean[] getFloating() {
-        return isFloating;
+    public Rect getRect(){
+        return new Rect();
     }
 }

@@ -20,7 +20,7 @@ public class Warship {
      *
      */
     public void draw(Canvas canvas){
-
+        // Generate Rect to draw (Controll?)
     }
 
     /**

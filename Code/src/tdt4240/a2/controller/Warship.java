@@ -14,4 +14,8 @@ public class Warship {
     public Warship(){
 
     }
+
+    public boolean checkHit(int xCoordinate, int yCoordinate){
+        return false;
+    }
 }

@@ -1,4 +1,4 @@
-package tdt4240.a2.model.state;
+package tdt4240.a2.model;
 
 /**
  * Created by IntelliJ IDEA.
