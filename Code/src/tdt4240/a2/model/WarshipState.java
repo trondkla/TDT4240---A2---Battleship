@@ -1,11 +1,13 @@
-package tdt4240.a2.controller;
+package tdt4240.a2.model;
 
 /**
  * Created by IntelliJ IDEA.
- * User: tk
+ * User: Perry
  * Date: 15.03.12
- * Time: 11.27
+ * Time: 13:54
  * To change this template use File | Settings | File Templates.
  */
-public class OceanSpace {
+public enum WarshipState {
+    FLOATING,
+    SUNK;
 }

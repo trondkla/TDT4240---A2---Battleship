@@ -1,5 +1,9 @@
 package tdt4240.a2.view;
 
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+
 /**
  * Created by IntelliJ IDEA.
  * User: tk
@@ -9,15 +13,29 @@ package tdt4240.a2.view;
  */
 public class OceanSpace {
 
-    public OceanSpace(){
 
+    private Warship[] warshipList;
+    private tdt4240.a2.model.OceanSpace model;
+    private boolean dirty;
+
+    public OceanSpace(tdt4240.a2.model.OceanSpace oceanSpaceModel){
+        this.model = oceanSpaceModel;
+        this.dirty = true;
     }
 
     /**
      *
      */
-    public void draw(){
-
+    public void draw(Canvas canvas){
+        if(dirty){
+            Paint paint = new Paint();
+            paint.setColor(Color.rgb(35, 107, 142));
+            canvas.drawRect(model.getRect(), paint);
+            for(Warship w : warshipList){
+                w.draw(canvas);
+            }
+        }
+        dirty = false;
     }
 
     /**
@@ -27,4 +45,9 @@ public class OceanSpace {
     public void update(long timeElapsed){
 
     }
+
+    public void setDirty(){
+        this.dirty = true;
+    }
+
 }
