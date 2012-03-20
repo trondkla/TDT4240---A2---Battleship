@@ -24,6 +24,8 @@ public class Warship extends AbstractController {
      * @return
      */
     public boolean checkHit(int xCoordinate, int yCoordinate){
+        // if raw(screen coordinates) do nothing
+        // if tile calculate raw
         // use getRect from the model and check if the coordinate is in the rectangle
         for(AbstractModel model : this.getRegisteredModels()){
             Rect boundingBox = ((tdt4240.a2.model.Warship)model).getRect();
