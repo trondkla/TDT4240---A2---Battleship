@@ -14,8 +14,8 @@ public class StaticVariables {
     public static final StaticVariables INSTANCE = new StaticVariables();
     
     private int pixelPerTile;
-    private int pixelWidth;
-    private int pixelHeight;
+    private int canvasPixelWidth;
+    private int canvasPixelHeight;
 
     private StaticVariables(){
 
@@ -31,5 +31,21 @@ public class StaticVariables {
     
     public int getPixelPerTile(){
         return this.pixelPerTile;
+    }
+
+    public int getCanvasPixelHeight() {
+        return canvasPixelHeight;
+    }
+
+    public void setCanvasPixelHeight(int canvasPixelHeight) {
+        this.canvasPixelHeight = canvasPixelHeight;
+    }
+
+    public int getCanvasPixelWidth() {
+        return canvasPixelWidth;
+    }
+
+    public void setCanvasPixelWidth(int canvasPixelWidth) {
+        this.canvasPixelWidth = canvasPixelWidth;
     }
 }
