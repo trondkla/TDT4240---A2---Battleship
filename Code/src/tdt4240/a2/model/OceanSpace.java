@@ -1,5 +1,7 @@
 package tdt4240.a2.model;
 
+import android.graphics.Rect;
+
 /**
  */
 public class OceanSpace {
@@ -18,5 +20,9 @@ public class OceanSpace {
     
     public OceanTile[][] getOceanSpace(){
         return oceanSpace;
+    }
+    
+    public Rect getRect(){
+        return new Rect(0,0,10,10); //TODO
     }
 }
