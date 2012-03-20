@@ -65,4 +65,5 @@ public class Warship extends AbstractModel {
         else
             return new Rect(xPosition, yPosition, xPosition + 1, yPosition + warshipType.getSize());
     }
+
 }
