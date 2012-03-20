@@ -26,9 +26,12 @@ public class OceanSpace {
         if((x < oceanSpaceSize.getSize() && y < oceanSpaceSize.getSize()) && (x >= 0 && y >= 0)){
             return oceanSpace[x][y];
         }else{
-            IndexOutOfBoundsException exception = new IndexOutOfBoundsException();
-            throw exception;
+            throw new IndexOutOfBoundsException();
         }
+    }
+
+    public void setOceanTile(OceanTile oceanTile, int x, int y){
+        oceanSpace[x][y] = oceanTile;
     }
 
     public Rect getRect(){
