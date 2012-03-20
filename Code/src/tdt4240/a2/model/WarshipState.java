@@ -8,6 +8,6 @@ package tdt4240.a2.model;
  * To change this template use File | Settings | File Templates.
  */
 public enum WarshipState {
-    FLOATING,
-    SUNK;
+    NOT_HIT,
+    HIT;
 }
