@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 /**
  */
-public class Player {
+public class Player extends AbstractModel{
     
     private String name;
     private Color color;

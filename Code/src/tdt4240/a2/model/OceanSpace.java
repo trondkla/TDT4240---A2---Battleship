@@ -2,7 +2,7 @@ package tdt4240.a2.model;
 
 /**
  */
-public class OceanSpace {
+public class OceanSpace extends AbstractModel{
 
     private OceanSpaceSize oceanSpaceSize;
     private OceanTile oceanSpace[][];
@@ -13,10 +13,18 @@ public class OceanSpace {
         this.oceanSpaceSize = oceanSpaceSize;
         this.player = player;
         oceanSpace = new OceanTile[oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
-
     }
     
     public OceanTile[][] getOceanSpace(){
         return oceanSpace;
+    }
+
+    public OceanTile getOceanTile(int x, int y){
+        if((x < oceanSpaceSize.getSize() && y < oceanSpaceSize.getSize()) && (x >= 0 && y >= 0)){
+            return oceanSpace[x][y];
+        }else{
+            IndexOutOfBoundsException exception = new IndexOutOfBoundsException();
+            throw exception;
+        }
     }
 }
