@@ -28,7 +28,7 @@ public class Warship extends AbstractController {
         // if tile calculate raw
         // use getRect from the model and check if the coordinate is in the rectangle
         for(AbstractModel model : this.getRegisteredModels()){
-            Rect boundingBox = ((tdt4240.a2.model.Warship)model).getRect();
+            Rect boundingBox = ((tdt4240.a2.model.Warship)model).getTileRect();
             if(boundingBox.contains(xCoordinate, yCoordinate))
                 return true;
         }
