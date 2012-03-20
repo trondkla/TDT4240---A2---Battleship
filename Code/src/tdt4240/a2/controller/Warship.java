@@ -1,6 +1,9 @@
 package tdt4240.a2.controller;
 
 
+import android.graphics.Rect;
+import tdt4240.a2.model.AbstractModel;
+
 /**
  * Created by IntelliJ IDEA.
  * User: tk
@@ -8,12 +11,10 @@ package tdt4240.a2.controller;
  * Time: 11.21
  * To change this template use File | Settings | File Templates.
  */
-public class Warship {
-
-    private tdt4240.a2.model.Warship model;
+public class Warship extends AbstractController {
 
     public Warship(){
-
+        super();
     }
 
     /**
@@ -24,6 +25,11 @@ public class Warship {
      */
     public boolean checkHit(int xCoordinate, int yCoordinate){
         // use getRect from the model and check if the coordinate is in the rectangle
+        for(AbstractModel model : this.getRegisteredModels()){
+            Rect boundingBox = ((tdt4240.a2.model.Warship)model).getRect();
+            if(boundingBox.contains(xCoordinate, yCoordinate))
+                return true;
+        }
         return false;
     }
 }

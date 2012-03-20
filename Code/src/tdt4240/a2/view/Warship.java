@@ -9,7 +9,7 @@ import android.graphics.Canvas;
  * Time: 11.19
  * To change this template use File | Settings | File Templates.
  */
-public class Warship {
+public class Warship extends AbstractView {
     private tdt4240.a2.model.Warship model;
 
     public Warship(tdt4240.a2.model.Warship model){
