@@ -1,8 +1,10 @@
 package tdt4240.a2.model;
 
+import android.graphics.Rect;
+
 /**
  */
-public class OceanSpace extends AbstractModel{
+public class OceanSpace {
 
     private OceanSpaceSize oceanSpaceSize;
     private OceanTile oceanSpace[][];
@@ -13,6 +15,7 @@ public class OceanSpace extends AbstractModel{
         this.oceanSpaceSize = oceanSpaceSize;
         this.player = player;
         oceanSpace = new OceanTile[oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
+
     }
     
     public OceanTile[][] getOceanSpace(){
@@ -26,5 +29,9 @@ public class OceanSpace extends AbstractModel{
             IndexOutOfBoundsException exception = new IndexOutOfBoundsException();
             throw exception;
         }
+    }
+
+    public Rect getRect(){
+        return new Rect(0,0,10,10); //TODO
     }
 }
