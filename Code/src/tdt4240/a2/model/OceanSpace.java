@@ -2,14 +2,16 @@ package tdt4240.a2.model;
 
 import android.graphics.Rect;
 
+import java.beans.PropertyChangeSupport;
+
 /**
  */
-public class OceanSpace {
+public class OceanSpace extends AbstractModel{
 
     private OceanSpaceSize oceanSpaceSize;
     private OceanTile oceanSpace[][];
     private Player player;
-
+    private String propertyName = "OceanSpace";
 
     public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player){
         this.oceanSpaceSize = oceanSpaceSize;
@@ -31,7 +33,9 @@ public class OceanSpace {
     }
 
     public void setOceanTile(OceanTile oceanTile, int x, int y){
+        OceanTile oldValue = oceanSpace[x][y];
         oceanSpace[x][y] = oceanTile;
+        firePropertyChangeEvent(oceanTile.getPropertyName(), oldValue, oceanTile);
     }
 
     public Rect getRect(){
