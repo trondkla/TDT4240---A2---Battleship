@@ -23,8 +23,6 @@ public class OceanSpace extends AbstractController{
     public void bombOceanTile(int x, int y){
         if(model.getOceanTile(x, y) == OceanTile.EMPTY){
             model.setOceanTile(OceanTile.EMPTY_BOMBED, x, y);
-
-
         }else if(model.getOceanTile(x, y) == OceanTile.OCCUPIED){
 
         }else if(model.getOceanTile(x, y) == OceanTile.EMPTY_BOMBED){

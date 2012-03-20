@@ -3,6 +3,8 @@ package tdt4240.a2.model;
 import android.graphics.Rect;
 
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  */
@@ -12,12 +14,13 @@ public class OceanSpace extends AbstractModel{
     private OceanTile oceanSpace[][];
     private Player player;
     private String propertyName = "OceanSpace";
+    private Warship[] warships;
 
-    public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player){
+    public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player, Warship[] warships){
         this.oceanSpaceSize = oceanSpaceSize;
         this.player = player;
+        this.warships = warships;
         oceanSpace = new OceanTile[oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
-
     }
     
     public OceanTile[][] getOceanSpace(){
