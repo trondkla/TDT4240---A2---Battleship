@@ -13,7 +13,10 @@ public abstract class State {
 		this.stateMachine = StateMachine.getInstance(activity);
 	}
 
-	public abstract View getView();
+    protected State() {
+    }
+
+    public abstract View getView();
 	
 	public void pop(){
 		stateMachine.pop();
