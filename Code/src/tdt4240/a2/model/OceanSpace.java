@@ -2,20 +2,25 @@ package tdt4240.a2.model;
 
 import android.graphics.Rect;
 
+import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  */
-public class OceanSpace {
+public class OceanSpace extends AbstractModel{
 
     private OceanSpaceSize oceanSpaceSize;
     private OceanTile oceanSpace[][];
     private Player player;
+    private String propertyName = "OceanSpace";
+    private Warship[] warships;
 
-
-    public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player){
+    public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player, Warship[] warships){
         this.oceanSpaceSize = oceanSpaceSize;
         this.player = player;
+        this.warships = warships;
         oceanSpace = new OceanTile[oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
-
     }
     
     public OceanTile[][] getOceanSpace(){
@@ -26,9 +31,14 @@ public class OceanSpace {
         if((x < oceanSpaceSize.getSize() && y < oceanSpaceSize.getSize()) && (x >= 0 && y >= 0)){
             return oceanSpace[x][y];
         }else{
-            IndexOutOfBoundsException exception = new IndexOutOfBoundsException();
-            throw exception;
+            throw new IndexOutOfBoundsException();
         }
+    }
+
+    public void setOceanTile(OceanTile oceanTile, int x, int y){
+        OceanTile oldValue = oceanSpace[x][y];
+        oceanSpace[x][y] = oceanTile;
+        firePropertyChangeEvent(oceanTile.getPropertyName(), oldValue, oceanTile);
     }
 
     public Rect getRect(){
