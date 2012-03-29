@@ -3,6 +3,7 @@ package tdt4240.a2.model;
 import android.graphics.Rect;
 
 import java.beans.PropertyChangeSupport;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +44,13 @@ public class OceanSpace extends AbstractModel{
 
     public Rect getRect(){
         return new Rect(0,0,10,10); //TODO
+    }
+
+    /**
+     * Returns an enum with size fields
+     * @return OceanSpaceSize enum
+     */
+    public OceanSpaceSize getOceanSpaceSize(){
+        return oceanSpaceSize;
     }
 }

@@ -19,8 +19,8 @@ public class OceanSpace {
         this.model = oceanSpaceModel;
         this.dirty = true;
 
-        noOfTilesVertical = 10;
-        noOfTilesHorizontal = 10;
+        noOfTilesVertical = this.model.getOceanSpaceSize().getSize();
+        noOfTilesHorizontal = this.model.getOceanSpaceSize().getSize();
         tileSize = 10;
     }
 
