@@ -14,16 +14,14 @@ import android.graphics.Paint;
 public class Warship extends AbstractView {
 
     private tdt4240.a2.model.Warship model;
-    private tdt4240.a2.controller.Warship controller;
     private boolean dirty;
     private Paint paint = new Paint();
 
-    public Warship(tdt4240.a2.model.Warship model, Paint paint){
-        controller.addView(this);
-        controller.addModel(model);
+    public Warship(tdt4240.a2.model.Warship model){
         this.model = model;
         dirty = true;
-        this.paint = paint;
+        this.paint = new Paint();
+        paint.setColor(Color.RED);
     }
 
     /**
@@ -31,10 +29,8 @@ public class Warship extends AbstractView {
      */
     public void draw(Canvas canvas){
         // Generate Rect to draw (Controll?)
-        if(dirty){
-            canvas.drawRect(model.getRect(), paint);
-            dirty = false;
-        }
+        canvas.drawRect(model.getRect(), paint);
+        dirty = false;
     }
 
     /**

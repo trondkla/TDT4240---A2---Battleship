@@ -1,5 +1,7 @@
 package tdt4240.a2.model;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.Log;
 import tdt4240.a2.variables.StaticVariables;
@@ -51,13 +53,16 @@ public class Warship extends AbstractModel {
      * @return
      */
     public Rect getRect(){
-        int pixelPerTile = StaticVariables.getInstance().getPixelPerTile();
+        StaticVariables variables = StaticVariables.getInstance();
+        int pixelPerTile = variables.getPixelPerTile();
         if(horizontal)
-            return new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile, xPosition*pixelPerTile + warshipType
-                    .getSize()*pixelPerTile, yPosition*pixelPerTile +  pixelPerTile);
+            return new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile + variables.getGridOffset(),
+                    xPosition*pixelPerTile + warshipType
+                    .getSize()*pixelPerTile, yPosition*pixelPerTile +  pixelPerTile + variables.getGridOffset());
         else
-            return new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile, xPosition*pixelPerTile + pixelPerTile,
-                    yPosition*pixelPerTile + warshipType.getSize()*pixelPerTile);
+            return new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile + variables.getGridOffset(),
+                    xPosition*pixelPerTile + pixelPerTile,
+                    yPosition*pixelPerTile + warshipType.getSize()*pixelPerTile + variables.getGridOffset());
     }
     
     public Rect getTileRect(){

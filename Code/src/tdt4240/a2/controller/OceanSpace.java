@@ -1,8 +1,13 @@
 package tdt4240.a2.controller;
 
 
-import tdt4240.a2.model.OceanTile;
-import tdt4240.a2.model.Player;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
+import tdt4240.a2.model.*;
+import tdt4240.a2.model.Warship;
+import tdt4240.a2.view.AbstractView;
 
 import java.beans.PropertyChangeSupport;
 
@@ -10,19 +15,21 @@ import java.beans.PropertyChangeSupport;
  */
 public class OceanSpace extends AbstractController{
 
-    private tdt4240.a2.model.OceanSpace model;
-    private tdt4240.a2.view.OceanSpace view;
-    private tdt4240.a2.model.Warship[] warships;
+    private tdt4240.a2.model.Warship[] warshipModels;
+    private tdt4240.a2.controller.Warship[] warshipControllers;
 
-
-    public OceanSpace(tdt4240.a2.model.OceanSpaceSize oceanSpaceSize, Player player, tdt4240.a2.model.Warship[] warships){
+    public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player,
+                       tdt4240.a2.controller.Warship[] warshipControllers){
         super();
-        this.warships = warships;
-        this.model = new tdt4240.a2.model.OceanSpace(oceanSpaceSize, player, warships);
-        this.view = new tdt4240.a2.view.OceanSpace(this.model);
+        this.warshipModels = warshipModels;
+        this.warshipControllers = warshipControllers;
+        this.addModel(new tdt4240.a2.model.OceanSpace(oceanSpaceSize, player, warshipModels));
+        this.addView(new tdt4240.a2.view.OceanSpace((tdt4240.a2.model.OceanSpace)this.getRegisteredModel()));
     }
 
+    /*
     public void bombOceanTile(int x, int y){
+        tdt4240.a2.model.OceanSpace model = (tdt4240.a2.model.OceanSpace)this.getRegisteredModel();
         if(model.getOceanTile(x, y) == OceanTile.EMPTY){
             model.setOceanTile(OceanTile.EMPTY_BOMBED, x, y);
         }else if(model.getOceanTile(x, y) == OceanTile.OCCUPIED){
@@ -34,9 +41,15 @@ public class OceanSpace extends AbstractController{
         }else if(model.getOceanTile(x, y) == OceanTile.EMPTY_BOMBED){
 
         }
-
     }
+    */
 
-
+    public void update(Canvas canvas){
+        Log.d("LaHAWDEBUG","Controller?");
+        getRegisteredView().draw(canvas);
+        for(tdt4240.a2.controller.Warship warship : warshipControllers){
+            warship.update(canvas);
+        }
+    }
 
 }

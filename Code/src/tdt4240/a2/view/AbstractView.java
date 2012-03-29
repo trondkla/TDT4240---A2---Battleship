@@ -1,5 +1,7 @@
 package tdt4240.a2.view;
 
+import android.graphics.Canvas;
+
 import java.beans.PropertyChangeEvent;
 
 /**
@@ -17,5 +19,8 @@ public abstract class AbstractView {
 
     public void modelPropertyChange(PropertyChangeEvent event){
 
+    }
+    
+    public void draw(Canvas canvas){
     }
 }

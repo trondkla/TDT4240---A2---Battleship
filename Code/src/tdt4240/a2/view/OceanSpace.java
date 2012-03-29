@@ -2,9 +2,12 @@ package tdt4240.a2.view;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.util.Log;
+import tdt4240.a2.variables.StaticVariables;
 
-public class OceanSpace {
+public class OceanSpace extends AbstractView{
 
 
     private Warship[] warshipList;
@@ -13,7 +16,7 @@ public class OceanSpace {
 
     private int noOfTilesVertical;
     private int noOfTilesHorizontal;
-    private int tileSize;
+    private StaticVariables variables;
 
     public OceanSpace(tdt4240.a2.model.OceanSpace oceanSpaceModel){
         this.model = oceanSpaceModel;
@@ -21,23 +24,21 @@ public class OceanSpace {
 
         noOfTilesVertical = this.model.getOceanSpaceSize().getSize();
         noOfTilesHorizontal = this.model.getOceanSpaceSize().getSize();
-        tileSize = 10;
+        variables = StaticVariables.getInstance();
     }
 
     /**
-     * @param canvas
+     *
      */
     public void draw(Canvas canvas){
-        if(dirty){
-            Paint paint = new Paint();
-            paint.setColor(Color.rgb(35, 107, 142));
-            canvas.drawRect(model.getRect(), paint);
-            //drawGrid();
-            for(Warship w : warshipList){
-                w.draw(canvas);
-            }
-        }
-        dirty = false;
+        Paint paint = new Paint();
+        paint.setColor(Color.rgb(35, 107, 142));
+        //paint.setStrokeWidth(10);
+        canvas.drawRect(this.model.getRect(), paint);
+        drawGrid(canvas);
+//            for(Warship w : warshipList){
+//              w.draw(canvas);
+//        }
     }
 
     /**
@@ -55,11 +56,17 @@ public class OceanSpace {
     private void drawGrid(Canvas canvas){
         Paint paint = new Paint();
         paint.setColor(Color.GRAY);
-        for(int i=0; i<noOfTilesVertical; i++){
-            canvas.drawLine(0, i*tileSize, canvas.getHeight(), i*tileSize, paint);
+
+        int startPixel = variables.getGridOffset();
+        int endPixel = startPixel + (noOfTilesVertical*variables.getPixelPerTile());
+
+        for(int i=0; i<noOfTilesVertical+1; i++){
+            canvas.drawLine(0, i*variables.getPixelPerTile() + startPixel, endPixel,
+                    i*variables.getPixelPerTile() + startPixel, paint);
         }
-        for(int i=0; i<noOfTilesHorizontal; i++){
-            canvas.drawLine(i*tileSize, 0, i*tileSize, canvas.getHeight(), paint);
+        for(int i=0; i<noOfTilesHorizontal+1; i++){
+            canvas.drawLine(i*variables.getPixelPerTile(), startPixel, i*variables.getPixelPerTile(),
+                    endPixel, paint);
         }
     }
 

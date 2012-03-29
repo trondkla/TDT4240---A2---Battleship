@@ -1,6 +1,7 @@
 package tdt4240.a2.model;
 
 import android.graphics.Rect;
+import tdt4240.a2.variables.StaticVariables;
 
 import java.beans.PropertyChangeSupport;
 import java.lang.reflect.Array;
@@ -43,7 +44,9 @@ public class OceanSpace extends AbstractModel{
     }
 
     public Rect getRect(){
-        return new Rect(0,0,10,10); //TODO
+        StaticVariables variables = StaticVariables.getInstance();
+        variables.setPixelPerTile(variables.getCanvasPixelWidth()/oceanSpaceSize.getSize());
+        return new Rect(0,0,variables.getCanvasPixelWidth(),variables.getCanvasPixelHeight()); //TODO
     }
 
     /**

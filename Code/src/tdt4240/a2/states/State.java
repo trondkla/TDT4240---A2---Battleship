@@ -5,16 +5,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 
-public abstract class State {
+public abstract class State extends View{
 
 	private StateMachine stateMachine;
 
-	public State(Activity activity) {
+	public State(Context context,Activity activity) {
+        super(context);
 		this.stateMachine = StateMachine.getInstance(activity);
 	}
-
-    protected State() {
-    }
 
     public abstract View getView();
 	

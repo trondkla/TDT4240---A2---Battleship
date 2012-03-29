@@ -17,35 +17,38 @@ import java.util.ArrayList;
  */
 public abstract class AbstractController implements PropertyChangeListener {
 
-    private ArrayList<AbstractView> registeredViews;
-    private ArrayList<AbstractModel> registeredModels;
+    private AbstractView registeredView;
+    private AbstractModel registeredModel;
 
     public AbstractController() {
-        registeredViews = new ArrayList<AbstractView>();
-        registeredModels = new ArrayList<AbstractModel>();
+
     }
 
 
     public void addModel(AbstractModel model) {
-        registeredModels.add(model);
+        registeredModel = model;
         model.addPropertyChangeListener(this);
     }
 
     public void removeModel(AbstractModel model) {
-        registeredModels.remove(model);
+        registeredModel = null;
         model.removePropertyChangeListener(this);
     }
 
     public void addView(AbstractView view) {
-        registeredViews.add(view);
+        registeredView = view;
     }
 
     public void removeView(AbstractView view) {
-        registeredViews.remove(view);
+        registeredView = null;
     }
 
-    public ArrayList<AbstractModel> getRegisteredModels(){
-        return registeredModels;
+    public AbstractModel getRegisteredModel(){
+        return registeredModel;
+    }
+
+    public AbstractView getRegisteredView(){
+        return registeredView;
     }
 
 
@@ -54,10 +57,7 @@ public abstract class AbstractController implements PropertyChangeListener {
 
 
     public void propertyChange(PropertyChangeEvent evt) {
-
-        for (AbstractView view: registeredViews) {
-            view.modelPropertyChange(evt);
-        }
+        registeredView.modelPropertyChange(evt);
     }
 
 
@@ -75,7 +75,7 @@ public abstract class AbstractController implements PropertyChangeListener {
      */
     protected void setModelProperty(String propertyName, Object newValue) {
 
-        for (AbstractModel model: registeredModels) {
+        AbstractModel model = registeredModel;
             try {
 
                 Method method = model.getClass().
@@ -87,7 +87,6 @@ public abstract class AbstractController implements PropertyChangeListener {
             } catch (Exception ex) {
                 //  Handle exception.
             }
-        }
     }
 
 

@@ -17,6 +17,8 @@ public class StaticVariables {
     private int canvasPixelWidth;
     private int canvasPixelHeight;
 
+    private int gridOffset;
+    
     private StaticVariables(){
 
     }
@@ -39,6 +41,11 @@ public class StaticVariables {
 
     public void setCanvasPixelHeight(int canvasPixelHeight) {
         this.canvasPixelHeight = canvasPixelHeight;
+    }
+    
+    public int getGridOffset(){
+        this.gridOffset = (getCanvasPixelHeight() - (getCanvasPixelWidth()))/3;
+        return gridOffset;
     }
 
     public int getCanvasPixelWidth() {

@@ -1,5 +1,6 @@
 package tdt4240.a2.states;
 
+import android.content.Context;
 import tdt4240.a2.R;
 import android.app.Activity;
 import android.view.View;
@@ -13,8 +14,8 @@ public class GameMenu extends State {
 	private Button closeButton;
 	private Activity activity;
 
-	public GameMenu(Activity activity) {
-		super(activity);
+	public GameMenu(Context context,Activity activity) {
+		super(context,activity);
 		this.activity = activity;
 	}
 
@@ -23,8 +24,8 @@ public class GameMenu extends State {
 		//GridView
 		View v = null;
 		try{
-            v = (View) View.inflate(activity, R.layout.game_menu, null);
-            closeButton = (Button)v.findViewById(R.id.btn1);
+            //v = (View) View.inflate(activity, R.layout.game_menu, null);
+            //closeButton = (Button)v.findViewById(R.id.btn1);
             closeButton.setOnClickListener(new OnClickListener() {
               @Override
               public void onClick(View v) {

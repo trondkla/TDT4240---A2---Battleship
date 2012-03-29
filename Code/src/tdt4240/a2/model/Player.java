@@ -7,16 +7,16 @@ import android.graphics.Color;
 public class Player extends AbstractModel{
     
     private String name;
-    private Color color;
+    private int color;
     private PlayerState playerState;
     
-    public Player(String name, Color color){
+    public Player(String name, int color){
         this.name = name;
         this.color = color;
         this.playerState = PlayerState.OBSERVE;
     }
     
-    public Color getColor(){
+    public int getColor(){
         return this.color;
     }
     
