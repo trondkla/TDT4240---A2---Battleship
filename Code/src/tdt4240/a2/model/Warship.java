@@ -1,6 +1,7 @@
 package tdt4240.a2.model;
 
 import android.graphics.Rect;
+import android.util.Log;
 import tdt4240.a2.variables.StaticVariables;
 
 /**
@@ -46,7 +47,7 @@ public class Warship extends AbstractModel {
     }
 
     /**
-     *
+     * Rectangle anchored to pixel correct coordinates on the screen.
      * @return
      */
     public Rect getRect(){
@@ -65,12 +66,22 @@ public class Warship extends AbstractModel {
         else
             return new Rect(xPosition, yPosition, xPosition + 1, yPosition + warshipType.getSize());
     }
-    
+
+    /**
+     * Takes in parameters where the shot is fired on the grid and registers the hit
+     * @param x
+     * @param y
+     */
     public void bombTile(int x, int y){
-        if(isHorizontal()){
-            warshipTiles[x-xPosition] = WarshipState.HIT;
-        }else{
-            warshipTiles[y-yPosition] = WarshipState.HIT;
+        try{
+            if(isHorizontal()){
+                warshipTiles[x - xPosition] = WarshipState.HIT;
+            }else{
+                warshipTiles[y - yPosition] = WarshipState.HIT;
+            }
+        } catch (IndexOutOfBoundsException e){
+            Log.d("LaHAW ERROR","Warship("+yPosition+","+xPosition+","+isHorizontal()+").bombTile("+x+"," +
+                    ""+y+") - Index out of bounds.");
         }
     }
 
