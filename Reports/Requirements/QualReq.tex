@@ -1,10 +1,14 @@
 \chapter{Quality Requirements}
+Below we will detail the two main quality attributes for the application: \emph{modifiability} that was mandatory for the application; and \emph{usability} that we chose for ourselves. 
+
 
 %---------------
 % Modifiability
 %---------------
 \section{Modifiability}
-Modifiability in an architectural sense is concerned about the cost of change \cite{pensum}. Our main approach is mainly concerned with changes made in \emph{design time}.
+Modifiability in an architectural sense is concerned about the cost of change \cite{pensum}. Our main approach is mainly concerned with changes made in \emph{design time}\footnote{Design time is conserned with measures and initiatives that is being implemented as the application is being designed. Even though everythign leading up the moment of delivery is in a broad sense design time, most of the initiatives should be implemented in the desing phase of the project. This is opposed to \emph{run time}, which is conserned with what occurs after the application has been deployed and is being used by an actual end user.}.
+
+% TODO: KILDE!
 
     \begin{itemize}
         \item[\textbf{M1}] Change difficulty. \\
@@ -85,6 +89,23 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             \hline
         \end{tabular}
 
+        \item[\textbf{U1}] Communicating legal actions \\
+        \textit{\small{The user should be able to see each of their ships being placed on the ocean.}}
+        
+        \begin{tabular}{| l | l |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Portion of scenario} & \textbf{Values} \\
+            \hline
+            Source & End User \\
+            Stimulus & Change position of the ships \\
+            Artifact & System \\
+            Environment & Game play \\
+            Response & Move ships  \\
+            Response measure & The system shall prevent the user from trying to place a ship in an illegal position. \\
+            \hline
+        \end{tabular}
+
         \item[\textbf{U2}] Player name and color saved. \\
         \textit{\small{The player name and color will be saved at start for later use in the game.}}
         
@@ -153,7 +174,7 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & Run-time \\
             Response & A message box with tips \\
-            Response measure & User gets more confidence in how they play the game \\
+            Response measure & User can play the game without problem regarding to game control in \emhp{1 hour}\\
             \hline
         \end{tabular}
     \end{itemize}

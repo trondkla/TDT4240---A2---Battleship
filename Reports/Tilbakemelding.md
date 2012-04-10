@@ -8,6 +8,8 @@ Front Page should include group number, cots, group members, project name and qu
 ## Introduction
 Introduction should cover a brief description of the project (goals, the course, and etc.) and the topic of each chapter, please improve the introduction with adding missing points.
 
+*60%*
+
 ## Functional Requirements
 Better to have an overall description of the functional requirements.
 Define a priority for each item.
@@ -28,6 +30,8 @@ When describing a COTS, please brief the services it provides and the constraint
 Some COTS are described too rough, please elaborate the COTS used.
 
 Android software system needs to be described.
+
+*70%*
 
 ## References
 Ok.
