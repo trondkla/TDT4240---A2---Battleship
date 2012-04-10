@@ -1,25 +1,26 @@
 package tdt4240.a2.view;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.Paint;
-import android.util.Log;
+import android.content.res.Resources;
+import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import tdt4240.a2.R;
+import tdt4240.a2.model.OceanSpaceModel;
 import tdt4240.a2.variables.StaticVariables;
 
-public class OceanSpace extends AbstractView{
+public class OceanSpaceView extends AbstractView{
 
 
-    private Warship[] warshipList;
-    private tdt4240.a2.model.OceanSpace model;
+    private WarshipView[] warshipViewList;
+    private OceanSpaceModel model;
     private boolean dirty;
 
     private int noOfTilesVertical;
     private int noOfTilesHorizontal;
     private StaticVariables variables;
 
-    public OceanSpace(tdt4240.a2.model.OceanSpace oceanSpaceModel){
-        this.model = oceanSpaceModel;
+    public OceanSpaceView(OceanSpaceModel oceanSpaceModelModel){
+        this.model = oceanSpaceModelModel;
         this.dirty = true;
 
         noOfTilesVertical = this.model.getOceanSpaceSize().getSize();
@@ -36,9 +37,18 @@ public class OceanSpace extends AbstractView{
         //paint.setStrokeWidth(10);
         canvas.drawRect(this.model.getRect(), paint);
         drawGrid(canvas);
-//            for(Warship w : warshipList){
+//            for(WarshipModel w : warshipViewList){
 //              w.draw(canvas);
 //        }
+
+
+        Drawable d = variables.getResources().getDrawable(R.drawable.bombed_water);
+        Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
+
+        Rect[] bombedTiles = this.model.getBombedTiles();
+        for(Rect rects : bombedTiles){
+            canvas.drawBitmap(bitmap, null, new Rect(rects.left,rects.top,rects.right,rects.bottom),new Paint());
+        }
     }
 
     /**

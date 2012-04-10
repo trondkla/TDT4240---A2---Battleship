@@ -2,6 +2,7 @@ package tdt4240.a2;
 
 import android.content.Context;
 import android.view.Display;
+import android.view.Window;
 import android.view.WindowManager;
 import tdt4240.a2.states.GameMenu;
 import android.app.Activity;
@@ -16,6 +17,12 @@ public class ProgarkActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Remove title bar
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        //Remove notification bar
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         // Henter ut skjermstørrelse osv
         Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
 
@@ -23,6 +30,8 @@ public class ProgarkActivity extends Activity {
         StaticVariables variables = StaticVariables.getInstance();
         variables.setCanvasPixelHeight(display.getHeight());
         variables.setCanvasPixelWidth(display.getWidth());
+
+        variables.setResources(getResources());
 
         StateMachine stateMachine = StateMachine.getInstance(this);
         
