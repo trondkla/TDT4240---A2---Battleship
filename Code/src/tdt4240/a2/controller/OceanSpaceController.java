@@ -40,7 +40,6 @@ public class OceanSpaceController extends AbstractController{
     */
 
     public void update(Canvas canvas){
-        Log.d("LaHAWDEBUG","Controller?");
         getRegisteredView().draw(canvas);
         for(WarshipController warshipController : warshipControllerControllers){
             warshipController.update(canvas);

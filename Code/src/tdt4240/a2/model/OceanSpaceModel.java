@@ -1,7 +1,10 @@
 package tdt4240.a2.model;
 
 import android.graphics.Rect;
+import android.util.Log;
 import tdt4240.a2.variables.StaticVariables;
+
+import java.util.ArrayList;
 
 /**
  */
@@ -18,6 +21,15 @@ public class OceanSpaceModel extends AbstractModel{
         this.player = player;
         this.warshipModels = warshipModels;
         oceanSpace = new OceanTile[oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
+        for(int i=0; i < oceanSpace.length; i++){
+            for(int j=0; j < oceanSpace.length; j++){
+                oceanSpace[i][j] = OceanTile.EMPTY;
+            }
+        }
+        oceanSpace[9][9] = OceanTile.EMPTY_BOMBED;
+        oceanSpace[8][8] = OceanTile.EMPTY_BOMBED;
+        oceanSpace[8][9] = OceanTile.EMPTY_BOMBED;
+        oceanSpace[9][8] = OceanTile.EMPTY_BOMBED;
     }
     
     public OceanTile[][] getOceanSpace(){
@@ -42,6 +54,28 @@ public class OceanSpaceModel extends AbstractModel{
         StaticVariables variables = StaticVariables.getInstance();
         variables.setPixelPerTile(variables.getCanvasPixelWidth()/oceanSpaceSize.getSize());
         return new Rect(0,0,variables.getCanvasPixelWidth(),variables.getCanvasPixelHeight()); //TODO
+    }
+
+    public Rect[] getBombedTiles(){
+
+        ArrayList<Rect> rectList = new ArrayList<Rect>();
+        StaticVariables variables = StaticVariables.getInstance();
+        
+        for(int i=0; i < oceanSpace.length; i++){
+            for(int j=0; j < oceanSpace.length; j++){
+                if(oceanSpace[i][j] == OceanTile.EMPTY_BOMBED)
+                    rectList.add(new Rect(i*variables.getPixelPerTile(),
+                            j*variables.getPixelPerTile() + variables.getGridOffset(),
+                            i*variables.getPixelPerTile() + variables.getPixelPerTile(),
+                            j*variables.getPixelPerTile() + variables.getPixelPerTile() + variables.getGridOffset()));
+            }
+        }
+
+        Rect[] rects = new Rect[rectList.size()];
+        for(int i=0; i < rectList.size(); i++)
+            rects[i] = rectList.get(i);
+
+        return rects;
     }
 
     /**

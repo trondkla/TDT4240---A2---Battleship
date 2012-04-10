@@ -1,8 +1,10 @@
 package tdt4240.a2.view;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
+import android.content.res.Resources;
+import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import tdt4240.a2.R;
 import tdt4240.a2.model.OceanSpaceModel;
 import tdt4240.a2.variables.StaticVariables;
 
@@ -38,6 +40,15 @@ public class OceanSpaceView extends AbstractView{
 //            for(WarshipModel w : warshipViewList){
 //              w.draw(canvas);
 //        }
+
+
+        Drawable d = variables.getResources().getDrawable(R.drawable.bombed_water);
+        Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
+
+        Rect[] bombedTiles = this.model.getBombedTiles();
+        for(Rect rects : bombedTiles){
+            canvas.drawBitmap(bitmap, null, new Rect(rects.left,rects.top,rects.right,rects.bottom),new Paint());
+        }
     }
 
     /**

@@ -1,5 +1,7 @@
 package tdt4240.a2.variables;
 
+import android.content.res.Resources;
+
 import java.util.concurrent.Executors;
 
 /**
@@ -16,6 +18,7 @@ public class StaticVariables {
     private int pixelPerTile;
     private int canvasPixelWidth;
     private int canvasPixelHeight;
+    private Resources resources;
 
     private int gridOffset;
     
@@ -54,5 +57,14 @@ public class StaticVariables {
 
     public void setCanvasPixelWidth(int canvasPixelWidth) {
         this.canvasPixelWidth = canvasPixelWidth;
+    }
+
+
+    public Resources getResources() {
+        return resources;
+    }
+
+    public void setResources(Resources resources) {
+        this.resources = resources;
     }
 }

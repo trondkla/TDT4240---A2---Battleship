@@ -61,7 +61,6 @@ public class GameState extends State{
             while(running)
             {
                 try {
-                    Log.d("LaHAWDEBUG","SOVER OG TEGNER");
                     TimeUnit.MILLISECONDS.sleep(1);
                     postInvalidate();
                     pause();

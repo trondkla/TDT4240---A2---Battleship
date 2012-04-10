@@ -3,6 +3,7 @@ package tdt4240.a2.view;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import tdt4240.a2.model.WarshipModel;
 
 /**
@@ -29,8 +30,21 @@ public class WarshipView extends AbstractView {
      *
      */
     public void draw(Canvas canvas){
-        // Generate Rect to draw (Controll?)
+        // Draw the vessel.
         canvas.drawRect(model.getRect(), paint);
+
+        // DEBUG COLOR
+        Paint bombedPaint = new Paint();
+        bombedPaint.setColor(Color.BLUE);
+
+        // Retrieve tiles that needs to be repainted
+        Rect[] bombedTiles = model.getBombedTiles();
+
+        // Draw all the bombed tiles one by one.
+        for(Rect rect : bombedTiles){
+            if(rect != null)
+                canvas.drawRect(rect, bombedPaint);
+        }
         dirty = false;
     }
 
