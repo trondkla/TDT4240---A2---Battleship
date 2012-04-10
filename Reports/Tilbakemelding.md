@@ -20,6 +20,7 @@ M1-M3 response time is way too long. Are you sure you need 10 hours to change sh
  
 M2 says set player color is a modifiability senario, but U2 says player can set color and player name. Is it an implemented feature or modifiability senario?
  
+
 U1 is just a mandatory functional requirement, not "usability" requirement which means how easy is it to use your system.
 
 U5 response measure should be for example "User can play the game without problem regarding to game control in 1 hour".
@@ -41,6 +42,8 @@ Missing!
 
 ## Changes
 Missing!
+
+*Lagt inn tabell*
 
 ## Summary
 Quality Requirements should be improved much. COTS chapter is too rough.
