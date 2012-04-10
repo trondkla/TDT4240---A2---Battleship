@@ -8,14 +8,14 @@ import tdt4240.a2.variables.StaticVariables;
 
 /**
  */
-public class Warship extends AbstractModel {
+public class WarshipModel extends AbstractModel {
     private WarshipType warshipType;
     private WarshipState[] warshipTiles;
     private boolean horizontal; // for drawing
     private int xPosition; // x - position in oceanspace(tile)
     private int yPosition; // y - position in oceanspace(tile)
 
-    public Warship(WarshipType warshipType){
+    public WarshipModel(WarshipType warshipType){
         this.warshipType = warshipType;
         warshipTiles = new WarshipState[warshipType.getSize()];
         // INIT isFloating
@@ -85,7 +85,7 @@ public class Warship extends AbstractModel {
                 warshipTiles[y - yPosition] = WarshipState.HIT;
             }
         } catch (IndexOutOfBoundsException e){
-            Log.d("LaHAW ERROR","Warship("+yPosition+","+xPosition+","+isHorizontal()+").bombTile("+x+"," +
+            Log.d("LaHAW ERROR","WarshipModel("+yPosition+","+xPosition+","+isHorizontal()+").bombTile("+x+"," +
                     ""+y+") - Index out of bounds.");
         }
     }

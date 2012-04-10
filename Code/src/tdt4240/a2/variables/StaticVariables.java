@@ -44,7 +44,7 @@ public class StaticVariables {
     }
     
     public int getGridOffset(){
-        this.gridOffset = (getCanvasPixelHeight() - (getCanvasPixelWidth()))/3;
+        this.gridOffset = (getCanvasPixelHeight() - (getCanvasPixelWidth()))/2;
         return gridOffset;
     }
 

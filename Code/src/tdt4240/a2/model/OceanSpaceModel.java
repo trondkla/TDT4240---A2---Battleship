@@ -3,25 +3,20 @@ package tdt4240.a2.model;
 import android.graphics.Rect;
 import tdt4240.a2.variables.StaticVariables;
 
-import java.beans.PropertyChangeSupport;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  */
-public class OceanSpace extends AbstractModel{
+public class OceanSpaceModel extends AbstractModel{
 
     private OceanSpaceSize oceanSpaceSize;
     private OceanTile oceanSpace[][];
     private Player player;
-    private String propertyName = "OceanSpace";
-    private Warship[] warships;
+    private String propertyName = "OceanSpaceModel";
+    private WarshipModel[] warshipModels;
 
-    public OceanSpace(OceanSpaceSize oceanSpaceSize, Player player, Warship[] warships){
+    public OceanSpaceModel(OceanSpaceSize oceanSpaceSize, Player player, WarshipModel[] warshipModels){
         this.oceanSpaceSize = oceanSpaceSize;
         this.player = player;
-        this.warships = warships;
+        this.warshipModels = warshipModels;
         oceanSpace = new OceanTile[oceanSpaceSize.getSize()][oceanSpaceSize.getSize()];
     }
     

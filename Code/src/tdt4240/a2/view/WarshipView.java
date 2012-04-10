@@ -3,6 +3,7 @@ package tdt4240.a2.view;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import tdt4240.a2.model.WarshipModel;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,13 +12,13 @@ import android.graphics.Paint;
  * Time: 11.19
  * To change this template use File | Settings | File Templates.
  */
-public class Warship extends AbstractView {
+public class WarshipView extends AbstractView {
 
-    private tdt4240.a2.model.Warship model;
+    private WarshipModel model;
     private boolean dirty;
     private Paint paint = new Paint();
 
-    public Warship(tdt4240.a2.model.Warship model){
+    public WarshipView(WarshipModel model){
         this.model = model;
         dirty = true;
         this.paint = new Paint();

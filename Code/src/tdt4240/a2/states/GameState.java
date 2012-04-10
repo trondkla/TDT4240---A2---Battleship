@@ -6,12 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import tdt4240.a2.R;
-import tdt4240.a2.controller.OceanSpace;
-import tdt4240.a2.controller.Warship;
+import tdt4240.a2.controller.OceanSpaceController;
+import tdt4240.a2.controller.WarshipController;
 import tdt4240.a2.model.OceanSpaceSize;
 import tdt4240.a2.model.Player;
+import tdt4240.a2.model.WarshipModel;
 import tdt4240.a2.model.WarshipType;
 
 import java.util.concurrent.TimeUnit;
@@ -20,7 +19,7 @@ public class GameState extends State{
 
     private boolean running;
 
-    private OceanSpace oceanSpace;
+    private OceanSpaceController oceanSpaceController;
     private Player player;
     private Activity activity;
 
@@ -31,15 +30,15 @@ public class GameState extends State{
         super(context,activity);
         this.activity = activity;
 
-        Warship[] warships = new Warship[3];
-        warships[0] = new Warship(WarshipType.AIRCRAFT_CARRIER);
-        ((tdt4240.a2.model.Warship)warships[0].getRegisteredModel()).placeShip(1,1,false);
-        warships[1] = new Warship(WarshipType.BATTLESHIP);
-        ((tdt4240.a2.model.Warship)warships[1].getRegisteredModel()).placeShip(3,8,true);
-        warships[2] = new Warship(WarshipType.SUBMARINE);
-        ((tdt4240.a2.model.Warship)warships[2].getRegisteredModel()).placeShip(5,3,true);
+        WarshipController[] warshipControllers = new WarshipController[3];
+        warshipControllers[0] = new WarshipController(WarshipType.AIRCRAFT_CARRIER);
+        ((WarshipModel) warshipControllers[0].getRegisteredModel()).placeShip(1,1,false);
+        warshipControllers[1] = new WarshipController(WarshipType.BATTLESHIP);
+        ((WarshipModel) warshipControllers[1].getRegisteredModel()).placeShip(3,8,true);
+        warshipControllers[2] = new WarshipController(WarshipType.SUBMARINE);
+        ((WarshipModel) warshipControllers[2].getRegisteredModel()).placeShip(5,3,true);
 
-        oceanSpace = new OceanSpace(OceanSpaceSize.LARGE, new Player("HORE", Color.RED),warships);
+        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.LARGE, new Player("HORE", Color.RED), warshipControllers);
         gameLoop = new GameLoop();
     }
 
@@ -49,7 +48,7 @@ public class GameState extends State{
     }
 
     protected void onDraw(Canvas canvas){
-        oceanSpace.update(canvas);
+        oceanSpaceController.update(canvas);
         gameLoop.start();
     }
 

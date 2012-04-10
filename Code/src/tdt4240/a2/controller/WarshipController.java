@@ -4,7 +4,9 @@ package tdt4240.a2.controller;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import tdt4240.a2.model.AbstractModel;
+import tdt4240.a2.model.WarshipModel;
 import tdt4240.a2.model.WarshipType;
+import tdt4240.a2.view.WarshipView;
 
 /**
  * Created by IntelliJ IDEA.
@@ -13,12 +15,12 @@ import tdt4240.a2.model.WarshipType;
  * Time: 11.21
  * To change this template use File | Settings | File Templates.
  */
-public class Warship extends AbstractController {
+public class WarshipController extends AbstractController {
 
-    public Warship(WarshipType warshipType){
+    public WarshipController(WarshipType warshipType){
         super();
-        this.addModel(new tdt4240.a2.model.Warship(warshipType));
-        this.addView(new tdt4240.a2.view.Warship((tdt4240.a2.model.Warship)this.getRegisteredModel()));
+        this.addModel(new WarshipModel(warshipType));
+        this.addView(new WarshipView((WarshipModel)this.getRegisteredModel()));
     }
 
     /**
@@ -32,7 +34,7 @@ public class Warship extends AbstractController {
         // if tile calculate raw
         // use getRect from the model and check if the coordinate is in the rectangle
         AbstractModel model = this.getRegisteredModel();
-        Rect boundingBox = ((tdt4240.a2.model.Warship)model).getTileRect();
+        Rect boundingBox = ((WarshipModel)model).getTileRect();
         if(boundingBox.contains(xCoordinate, yCoordinate))
             return true;
         return false;
