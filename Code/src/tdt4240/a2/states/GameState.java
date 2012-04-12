@@ -22,14 +22,12 @@ public class GameState extends State{
 
     private OceanSpaceController oceanSpaceController;
     private Player player;
-    private Activity activity;
 
     private GameLoop gameLoop;
 
     public GameState(Context context,Activity activity){
         //player.addPropertyChangeListener(); // Listen for change of player state (fire / observe)
         super(context,activity);
-        this.activity = activity;
 
         WarshipController[] warshipControllers = new WarshipController[3];
         warshipControllers[0] = new WarshipController(WarshipType.AIRCRAFT_CARRIER);

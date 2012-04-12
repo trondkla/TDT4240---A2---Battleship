@@ -4,7 +4,9 @@ package tdt4240.a2.controller;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.MotionEvent;
+import tdt4240.a2.StateMachine;
 import tdt4240.a2.model.*;
+import tdt4240.a2.states.GameOver;
 import tdt4240.a2.variables.StaticVariables;
 import tdt4240.a2.view.OceanSpaceView;
 
@@ -77,5 +79,17 @@ public class OceanSpaceController extends AbstractController{
         for(WarshipController warshipController : warshipControllers){
             warshipController.update(canvas);
         }
+    }
+
+    public boolean isGameOver(){
+        boolean isGameOver = true;
+        for(WarshipController warshipController : warshipControllers){
+            if(((WarshipModel)(warshipController.getRegisteredModel())).isFloating()){
+                isGameOver = false;
+                break;
+            }
+        }
+
+        return isGameOver;
     }
 }
