@@ -26,10 +26,6 @@ public class OceanSpaceModel extends AbstractModel{
                 oceanSpace[i][j] = OceanTile.EMPTY;
             }
         }
-        oceanSpace[9][9] = OceanTile.EMPTY_BOMBED;
-        oceanSpace[8][8] = OceanTile.EMPTY_BOMBED;
-        oceanSpace[8][9] = OceanTile.EMPTY_BOMBED;
-        oceanSpace[9][8] = OceanTile.EMPTY_BOMBED;
     }
     
     public OceanTile[][] getOceanSpace(){

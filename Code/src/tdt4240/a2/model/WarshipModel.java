@@ -22,8 +22,6 @@ public class WarshipModel extends AbstractModel {
         for(int i=0; i < warshipTiles.length; i++){
             warshipTiles[i] = WarshipState.NOT_HIT; // Setting all to floating as initial value
         }
-        warshipTiles[0] = WarshipState.HIT;
-        warshipTiles[2] = WarshipState.HIT;
     }
 
     /**
@@ -118,6 +116,10 @@ public class WarshipModel extends AbstractModel {
             Log.d("LaHAW ERROR","WarshipModel("+yPosition+","+xPosition+","+isHorizontal()+").bombTile("+x+"," +
                     ""+y+") - Index out of bounds.");
         }
+    }
+
+    public WarshipType getWarshipType(){
+        return warshipType;
     }
 
 }
