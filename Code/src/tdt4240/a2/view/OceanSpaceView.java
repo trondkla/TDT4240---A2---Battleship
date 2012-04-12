@@ -4,6 +4,7 @@ import android.content.res.Resources;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.view.MotionEvent;
 import tdt4240.a2.R;
 import tdt4240.a2.model.OceanSpaceModel;
 import tdt4240.a2.variables.StaticVariables;
@@ -79,5 +80,4 @@ public class OceanSpaceView extends AbstractView{
                     endPixel, paint);
         }
     }
-
 }

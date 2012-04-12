@@ -1,5 +1,6 @@
 package tdt4240.a2.states;
 
+import android.view.MotionEvent;
 import tdt4240.a2.StateMachine;
 import android.app.Activity;
 import android.content.Context;
@@ -24,4 +25,7 @@ public abstract class State extends View{
 		stateMachine.push(state);
 	}
 
+    public boolean onTouch(MotionEvent motionEvent){
+        return true; // Placeholder
+    }
 }

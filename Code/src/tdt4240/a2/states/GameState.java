@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
@@ -81,5 +82,9 @@ public class GameState extends State{
             running = true;
             run();
         }
+    }
+
+    public boolean onTouch(MotionEvent motionEvent){
+        return oceanSpaceController.handleTouchEvent(motionEvent);
     }
 }
