@@ -1,6 +1,7 @@
 package tdt4240.a2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.Window;
@@ -14,7 +15,7 @@ import tdt4240.a2.variables.StaticVariables;
 public class ProgarkActivity extends Activity {
 
     private StateMachine stateMachine;
-	
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,11 +38,10 @@ public class ProgarkActivity extends Activity {
         variables.setResources(getResources());
 
         stateMachine = StateMachine.getInstance(this);
-        
         stateMachine.push(new GameState(getApplicationContext(),this));
-        
+
         setContentView(stateMachine.getContentView());
-        
+
     }
 
     public boolean onTouchEvent(MotionEvent motionEvent){

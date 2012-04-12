@@ -33,7 +33,7 @@ public class WarshipView extends AbstractView {
      */
     public void draw(Canvas canvas){
         // Draw the vessel.
-        canvas.drawRect(model.getRect(), paint);
+        canvas.drawRect(this.model.getRect(), paint);
 
         // DEBUG COLOR
         Paint bombedPaint = new Paint();

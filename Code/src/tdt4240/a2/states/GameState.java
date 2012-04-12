@@ -39,7 +39,8 @@ public class GameState extends State{
         warshipControllers[2] = new WarshipController(WarshipType.SUBMARINE);
         ((WarshipModel) warshipControllers[2].getRegisteredModel()).placeShip(5,3,true);
 
-        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.LARGE, new Player("HORE", Color.RED), warshipControllers);
+        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.SMALL, new Player("HORE", Color.RED),
+                warshipControllers);
         gameLoop = new GameLoop();
     }
 

@@ -19,8 +19,8 @@ public class WarshipModel extends AbstractModel {
         this.warshipType = warshipType;
         warshipTiles = new WarshipState[warshipType.getSize()];
         // INIT isFloating
-        for(int i=0; i < warshipTiles.length; i++){
-            warshipTiles[i] = WarshipState.NOT_HIT; // Setting all to floating as initial value
+        for(int i=0; i < this.warshipTiles.length; i++){
+            this.warshipTiles[i] = WarshipState.NOT_HIT; // Setting all to floating as initial value
         }
     }
 
@@ -55,17 +55,24 @@ public class WarshipModel extends AbstractModel {
     public Rect getRect(){
         StaticVariables variables = StaticVariables.getInstance();
         int pixelPerTile = variables.getPixelPerTile();
-        Rect shipRect;
-        if(horizontal)
-            shipRect = new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile + variables.getGridOffset(),
-                    xPosition*pixelPerTile + warshipType
-                    .getSize()*pixelPerTile, yPosition*pixelPerTile +  pixelPerTile + variables.getGridOffset());
-        else
-            shipRect = new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile + variables.getGridOffset(),
-                    xPosition*pixelPerTile + pixelPerTile,
-                    yPosition*pixelPerTile + warshipType.getSize()*pixelPerTile + variables.getGridOffset());
-        // Return the ship for painting.
-        return shipRect;
+        if(isFloating())
+            return new Rect();
+        else {
+            Rect shipRect;
+            if(horizontal)
+                shipRect = new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile + variables.getGridOffset(),
+                        xPosition*pixelPerTile + warshipType
+                        .getSize()*pixelPerTile, yPosition*pixelPerTile +  pixelPerTile + variables.getGridOffset());
+            else
+                shipRect = new Rect(xPosition*pixelPerTile, yPosition*pixelPerTile + variables.getGridOffset(),
+                        xPosition*pixelPerTile + pixelPerTile,
+                        yPosition*pixelPerTile + warshipType.getSize()*pixelPerTile + variables.getGridOffset());
+
+            // Checking if the ship is displayed.
+
+            // Return the ship for painting.
+            return shipRect;
+        }
     }
        
     public Rect getTileRect(){
@@ -122,4 +129,14 @@ public class WarshipModel extends AbstractModel {
         return warshipType;
     }
 
+    public boolean isFloating(){
+        boolean floating = false;
+        for(WarshipState state : warshipTiles){
+            if(state == WarshipState.NOT_HIT){
+                floating = true;
+                break;
+            }
+        }
+        return floating;
+    }
 }
