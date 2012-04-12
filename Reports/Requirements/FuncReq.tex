@@ -1,19 +1,45 @@
 \chapter{Functional Requirements}
+% What is functional requirement?
+Sumtin
+
+% What is priority?
+Each of the requirements are prioritised according to how important they are for the project as a whole with a three step scale.
 
 \begin{itemize}
-    \item[\textbf{FR1 --}] Change difficulty/size of ocean space \\
-    \textit{\small{The user should be able to choose between different difficulty levels. When a level is chosen, the game creates the grid with a given size.}}
-    \item[\textbf{FR2 --}] Set/change player name \\
-    \textit{\small{The player should be able to change their name}}
-    \item[\textbf{FR3 --}] Game over \\
-    \textit{\small{The game ends if a player gets all of their ships destroyed. The winner is the player with any ships left.}}
-    \item[\textbf{FR4 --}] Place ones ships at the start of the game \\
-    \textit{\small{The player should be able to place his/her ships at the start of the game and only then. During gameplay the ships must be stationary. He/she can choose to use any of the ships given at start, as seen in the table in chapter \ref{shiptable}}}
-    \item[\textbf{FR5 --}] Play audio \\
-     % Bakgrunnsmusikk, som bestemt av ShareLateX – http://www.youtube.com/watch?v=bkysjcs5vFU
-    \textit{\small{Play audio when a ship is hit and when the player misses.}}
-    \item[\textbf{FR6 --}] Hit enemy ships \\
-    \textit{\small{A players must be able to fire a shot on his/her turn onto one of the tiles that have not fired upon.}}
-    \item[\textbf{FR7 --}] Register hits on friendly ships \\
-    \textit{\small{A player should be able to observe if the enemy player hits one of his/her ship and thus knowing the "score".}}
+    \item{H}
+    \item{M}
+    \item{L}
 \end{itemize}
+
+For a small project such as this, we feel that the three step scale gives us enough data for decisons without sacrificing too much fidelity. While the gap between M and H is fairly large, we have no need for the ability to differentiate between a 76 and 77 (on a 1-100 scale).
+
+In addition to these, the requirements will also be prioritised according to how hard the requirements are to fulfill. These priorities will use the same L-M-H scale as descibed above.
+
+What you then end up with is a way to perform a \emph{cost/benefit} analysis for each of the requirements. A requirement that is hard to implement properly, but is of little importance to the project as a whole could be dropped in benefit for a more important one (or a less difficult one), if time and/or costs involved are deemed to be to large.
+
+
+% What is love?
+% ♥
+
+\section*{FR1 – Change difficulty/size of ocean space}
+The user should be able to choose between different difficulty levels. When a level is chosen, the game creates the grid with a given size.
+
+\section{FR2 – Set/change player name}
+The player should be able to change their name.
+
+\section{FR3 – Game over}
+The game ends if a player gets all of their ships destroyed. The winner is the player with any ships left.
+
+\section{FR4 – Place ones ships at the start of the game}
+The player should be able to place his/her ships at the start of the game and only then. During gameplay the ships must be stationary. He/she can choose to use any of the ships given at start, as seen in the table in chapter \ref{shiptable}.
+
+\section{FR5 – Play audio}
+Play audio when a ship is hit and when the player misses.
+
+% Bakgrunnsmusikk, som bestemt av ShareLateX – http://www.youtube.com/watch?v=bkysjcs5vFU
+
+\section{FR6 – Hit enemy ships}
+A players must be able to fire a shot on his/her turn onto one of the tiles that have not fired upon.
+
+\section{FR7 – Register hits on friendly ships}
+A player should be able to observe if the enemy player hits one of his/her ship and thus knowing the "score".

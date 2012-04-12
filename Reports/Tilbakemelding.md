@@ -8,6 +8,8 @@ Front Page should include group number, cots, group members, project name and qu
 ## Introduction
 Introduction should cover a brief description of the project (goals, the course, and etc.) and the topic of each chapter, please improve the introduction with adding missing points.
 
+*60%*
+
 ## Functional Requirements
 Better to have an overall description of the functional requirements.
 Define a priority for each item.
@@ -18,6 +20,7 @@ M1-M3 response time is way too long. Are you sure you need 10 hours to change sh
  
 M2 says set player color is a modifiability senario, but U2 says player can set color and player name. Is it an implemented feature or modifiability senario?
  
+
 U1 is just a mandatory functional requirement, not "usability" requirement which means how easy is it to use your system.
 
 U5 response measure should be for example "User can play the game without problem regarding to game control in 1 hour".
@@ -29,6 +32,8 @@ Some COTS are described too rough, please elaborate the COTS used.
 
 Android software system needs to be described.
 
+*70%*
+
 ## References
 Ok.
 
@@ -37,6 +42,8 @@ Missing!
 
 ## Changes
 Missing!
+
+*Lagt inn tabell*
 
 ## Summary
 Quality Requirements should be improved much. COTS chapter is too rough.
