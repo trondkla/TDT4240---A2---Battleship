@@ -10,9 +10,9 @@ public abstract class State extends View{
 
 	private StateMachine stateMachine;
 
-	public State(Context context,Activity activity) {
+	public State(Context context) {
         super(context);
-		this.stateMachine = StateMachine.getInstance(activity);
+		this.stateMachine = StateMachine.getInstance(null);
 	}
 
     public abstract View getView();

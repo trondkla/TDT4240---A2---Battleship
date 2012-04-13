@@ -1,8 +1,7 @@
 package tdt4240.a2.variables;
 
+import android.app.Activity;
 import android.content.res.Resources;
-
-import java.util.concurrent.Executors;
 
 /**
  * Created by IntelliJ IDEA.
@@ -19,6 +18,7 @@ public class StaticVariables {
     private int canvasPixelWidth;
     private int canvasPixelHeight;
     private Resources resources;
+    private Activity activity;
 
     private int gridOffset;
     
@@ -59,12 +59,19 @@ public class StaticVariables {
         this.canvasPixelWidth = canvasPixelWidth;
     }
 
-
     public Resources getResources() {
         return resources;
     }
 
     public void setResources(Resources resources) {
         this.resources = resources;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 }

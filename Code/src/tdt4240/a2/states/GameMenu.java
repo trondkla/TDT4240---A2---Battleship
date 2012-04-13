@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import tdt4240.a2.variables.StaticVariables;
 
 /**
  */
@@ -14,9 +15,9 @@ public class GameMenu extends State {
 	private Button closeButton;
 	private Activity activity;
 
-	public GameMenu(Context context,Activity activity) {
-		super(context,activity);
-		this.activity = activity;
+	public GameMenu(Context context) {
+		super(context);
+		this.activity = StaticVariables.getInstance().getActivity();
 	}
 
 	@Override

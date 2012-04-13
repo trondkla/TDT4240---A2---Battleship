@@ -36,9 +36,10 @@ public class ProgarkActivity extends Activity {
         variables.setCanvasPixelWidth(display.getWidth());
 
         variables.setResources(getResources());
+        variables.setActivity(this); // Activity set
 
-        stateMachine = StateMachine.getInstance(this);
-        stateMachine.push(new GameState(getApplicationContext(),this));
+        stateMachine = StateMachine.getInstance(this); // initialize instance with the activity
+        stateMachine.push(new GameState(getApplicationContext()));
 
         setContentView(stateMachine.getContentView());
 
