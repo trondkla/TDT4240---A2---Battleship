@@ -1,6 +1,7 @@
 package tdt4240.a2;
 
 import tdt4240.a2.states.GameMenu;
+import tdt4240.a2.states.StateMachine;
 import android.app.Activity;
 import android.os.Bundle;
 
