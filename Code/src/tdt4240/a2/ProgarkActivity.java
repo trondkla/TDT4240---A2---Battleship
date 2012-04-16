@@ -6,6 +6,9 @@ import android.view.Display;
 import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
+import tdt4240.a2.controller.WarshipController;
+import tdt4240.a2.model.WarshipModel;
+import tdt4240.a2.model.WarshipType;
 import tdt4240.a2.states.GameMenu;
 import tdt4240.a2.states.StateMachine;
 import android.app.Activity;
@@ -40,7 +43,16 @@ public class ProgarkActivity extends Activity {
         variables.setActivity(this); // Activity set
 
         stateMachine = StateMachine.getInstance(this); // initialize instance with the activity
-        stateMachine.push(new GameState(getApplicationContext()));
+        
+        WarshipController[] warshipControllers = new WarshipController[3];
+        warshipControllers[0] = new WarshipController(WarshipType.AIRCRAFT_CARRIER);
+        ((WarshipModel) warshipControllers[0].getRegisteredModel()).placeShip(1,1,false);
+        warshipControllers[1] = new WarshipController(WarshipType.BATTLESHIP);
+        ((WarshipModel) warshipControllers[1].getRegisteredModel()).placeShip(3,8,true);
+        warshipControllers[2] = new WarshipController(WarshipType.SUBMARINE);
+        ((WarshipModel) warshipControllers[2].getRegisteredModel()).placeShip(5,3,true);
+        
+        stateMachine.push(new GameState(getApplicationContext(), warshipControllers));
 
         setContentView(stateMachine.getContentView());
 

@@ -12,8 +12,6 @@ public class GameOver extends State{
 
     public GameOver(Context context) {
         super(context);
-        TextView text = new TextView(StaticVariables.getInstance().getActivity());
-        text.setText("Game over! Somebody won!");
     }
 
     @Override
