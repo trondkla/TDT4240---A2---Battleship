@@ -35,8 +35,10 @@ public class WarshipController extends AbstractController {
         // use getRect from the model and check if the coordinate is in the rectangle
         AbstractModel model = this.getRegisteredModel();
         Rect boundingBox = ((WarshipModel)model).getTileRect();
-        if(boundingBox.contains(xCoordinate, yCoordinate))
+        if(boundingBox.contains(xCoordinate, yCoordinate)){
+            ((WarshipModel) model).bombTile(xCoordinate,yCoordinate);
             return true;
+        }
         return false;
     }
 

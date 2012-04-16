@@ -1,7 +1,9 @@
 package tdt4240.a2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.Display;
+import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import tdt4240.a2.states.GameMenu;
@@ -11,7 +13,9 @@ import tdt4240.a2.states.GameState;
 import tdt4240.a2.variables.StaticVariables;
 
 public class ProgarkActivity extends Activity {
-	
+
+    private StateMachine stateMachine;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,13 +36,16 @@ public class ProgarkActivity extends Activity {
         variables.setCanvasPixelWidth(display.getWidth());
 
         variables.setResources(getResources());
+        variables.setActivity(this); // Activity set
 
-        StateMachine stateMachine = StateMachine.getInstance(this);
-        
-        stateMachine.push(new GameState(getApplicationContext(),this));
-        
+        stateMachine = StateMachine.getInstance(this); // initialize instance with the activity
+        stateMachine.push(new GameState(getApplicationContext()));
+
         setContentView(stateMachine.getContentView());
-        
+
     }
-    
+
+    public boolean onTouchEvent(MotionEvent motionEvent){
+        return stateMachine.onTouch(motionEvent);
+    }
 } 

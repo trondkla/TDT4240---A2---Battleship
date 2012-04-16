@@ -1,10 +1,11 @@
 package tdt4240.a2.view;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import tdt4240.a2.R;
 import tdt4240.a2.model.WarshipModel;
+import tdt4240.a2.variables.StaticVariables;
 
 /**
  * Created by IntelliJ IDEA.
@@ -18,6 +19,7 @@ public class WarshipView extends AbstractView {
     private WarshipModel model;
     private boolean dirty;
     private Paint paint = new Paint();
+    private StaticVariables variables = StaticVariables.getInstance();
 
     public WarshipView(WarshipModel model){
         this.model = model;
@@ -31,7 +33,7 @@ public class WarshipView extends AbstractView {
      */
     public void draw(Canvas canvas){
         // Draw the vessel.
-        canvas.drawRect(model.getRect(), paint);
+        canvas.drawRect(this.model.getRect(), paint);
 
         // DEBUG COLOR
         Paint bombedPaint = new Paint();
@@ -39,11 +41,13 @@ public class WarshipView extends AbstractView {
 
         // Retrieve tiles that needs to be repainted
         Rect[] bombedTiles = model.getBombedTiles();
+        Drawable d = variables.getResources().getDrawable(R.drawable.boat_explo);
+        Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
 
         // Draw all the bombed tiles one by one.
         for(Rect rect : bombedTiles){
             if(rect != null)
-                canvas.drawRect(rect, bombedPaint);
+                canvas.drawBitmap(bitmap, null, new Rect(rect.left,rect.top,rect.right,rect.bottom),new Paint());
         }
         dirty = false;
     }

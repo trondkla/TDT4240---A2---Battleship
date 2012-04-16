@@ -1,34 +1,32 @@
 package tdt4240.a2.states;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import tdt4240.a2.StateMachine;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
 import tdt4240.a2.model.OceanSpaceSize;
 import tdt4240.a2.model.Player;
 import tdt4240.a2.model.WarshipModel;
 import tdt4240.a2.model.WarshipType;
+import tdt4240.a2.variables.StaticVariables;
 
 import java.util.concurrent.TimeUnit;
 
 public class GameState extends State{
 
-    private boolean running;
-
     private OceanSpaceController oceanSpaceController;
     private Player player;
-    private Activity activity;
+    private StaticVariables variables = StaticVariables.getInstance();
 
     private GameLoop gameLoop;
 
-    public GameState(Context context,Activity activity){
+    public GameState(Context context){
         //player.addPropertyChangeListener(); // Listen for change of player state (fire / observe)
-        super(context,activity);
-        this.activity = activity;
+        super(context);
 
         WarshipController[] warshipControllers = new WarshipController[3];
         warshipControllers[0] = new WarshipController(WarshipType.AIRCRAFT_CARRIER);
@@ -38,7 +36,8 @@ public class GameState extends State{
         warshipControllers[2] = new WarshipController(WarshipType.SUBMARINE);
         ((WarshipModel) warshipControllers[2].getRegisteredModel()).placeShip(5,3,true);
 
-        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.LARGE, new Player("HORE", Color.RED), warshipControllers);
+        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.SMALL, new Player("HORE", Color.RED),
+                warshipControllers);
         gameLoop = new GameLoop();
     }
 
@@ -49,6 +48,10 @@ public class GameState extends State{
 
     protected void onDraw(Canvas canvas){
         oceanSpaceController.update(canvas);
+        if(oceanSpaceController.isGameOver()){
+            pop();
+            push(new GameOver(variables.getActivity().getApplicationContext()));
+        }
         gameLoop.start();
     }
 
@@ -81,5 +84,9 @@ public class GameState extends State{
             running = true;
             run();
         }
+    }
+
+    public boolean onTouch(MotionEvent motionEvent){
+        return oceanSpaceController.handleTouchEvent(motionEvent);
     }
 }
