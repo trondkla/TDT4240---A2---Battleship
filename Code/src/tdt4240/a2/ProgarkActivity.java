@@ -7,6 +7,7 @@ import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
 import tdt4240.a2.states.GameMenu;
+import tdt4240.a2.states.StateMachine;
 import android.app.Activity;
 import android.os.Bundle;
 import tdt4240.a2.states.GameState;

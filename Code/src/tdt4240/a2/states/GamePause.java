@@ -1,41 +1,24 @@
 package tdt4240.a2.states;
 
-import android.content.Context;
+import android.app.Activity;
 import android.view.View;
-import android.widget.Button;
-import tdt4240.a2.R;
-import tdt4240.a2.variables.StaticVariables;
+import android.widget.TextView;
 
 /**
  */
-public class GamePause extends State{
-    private View view;
-    private StaticVariables variables = StaticVariables.getInstance();
+public class GamePause extends State {
 
-    public GamePause(Context context) {
-        super(context);
-        view = inflate(StaticVariables.getInstance().getActivity(), R.layout.gamepaused, null);
+	private Activity activity;
 
-        // Implement onclicklistener for resume_button
-        ((Button)view.findViewById(R.id.resume_button)).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop(); // Pop the paused state
-            }
-        });
+	public GamePause(Activity activity) {
+		super(activity);
+		this.activity = activity;
+	}
 
-        ((Button)view.findViewById(R.id.exit_game_button)).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop(); // pop pausedstate
-                pop(); // pop gamestate
-                push(new GameMenu(variables.getActivity().getApplicationContext()));
-            }
-        });
-    }
-
-    @Override
-    public View getView() {
-        return view; // returns the inflated view
-    }
+	@Override
+	public View getView() {
+		TextView tv = new TextView(activity);
+		tv.setText("PAuse");
+		return tv;
+	}
 }

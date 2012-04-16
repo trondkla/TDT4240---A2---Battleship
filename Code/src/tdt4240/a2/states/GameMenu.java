@@ -31,7 +31,7 @@ public class GameMenu extends State {
               @Override
               public void onClick(View v) {
             	  System.out.println("CLICKED BUTTON");
-                pop();
+            	  push(new GamePause(activity));
               }
             });
         }catch(Exception e){
