@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
-import tdt4240.a2.StateMachine;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
 import tdt4240.a2.model.OceanSpaceSize;

@@ -1,8 +1,7 @@
 package tdt4240.a2.states;
 
 import android.view.MotionEvent;
-import tdt4240.a2.StateMachine;
-import android.app.Activity;
+import android.content.Context;
 import android.view.View;
 
 public abstract class State extends View{

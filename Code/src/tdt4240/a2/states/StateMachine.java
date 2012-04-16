@@ -34,12 +34,8 @@ public class StateMachine extends StateChangeSupport {
 	 */
 	public void push(State state){
 		stateStack.push(state);
-		//updateView();
 		
-        currentView = stateStack.firstElement().getView();
-
-		activity.setContentView(getContentView());
-		fireStateChanged();
+		updateView();
 	}
 	
 	/**
