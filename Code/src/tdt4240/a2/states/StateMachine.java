@@ -3,6 +3,7 @@ package tdt4240.a2.states;
 
 import java.util.Stack;
 
+import android.view.Menu;
 import android.view.MotionEvent;
 import tdt4240.a2.listeners.StateChangeSupport;
 import android.app.Activity;
@@ -66,4 +67,7 @@ public class StateMachine extends StateChangeSupport {
         return stateStack.firstElement().onTouch(event);
     }
 
+    public void onBackPressed(){
+        stateStack.firstElement().onBackPressed();
+    }
 }

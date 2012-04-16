@@ -94,4 +94,9 @@ public class OceanSpaceController extends AbstractController{
 
         return isGameOver;
     }
+
+    public boolean moveShip(WarshipController warshipController){
+        //
+        return false;
+    }
 }

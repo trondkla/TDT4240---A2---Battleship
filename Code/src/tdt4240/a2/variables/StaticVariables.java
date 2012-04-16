@@ -2,6 +2,7 @@ package tdt4240.a2.variables;
 
 import android.app.Activity;
 import android.content.res.Resources;
+import tdt4240.a2.model.OceanSpaceSize;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,6 +22,8 @@ public class StaticVariables {
     private Activity activity;
 
     private int gridOffset;
+
+    private OceanSpaceSize oceanSpaceSize;
     
     private StaticVariables(){
 
@@ -73,5 +76,13 @@ public class StaticVariables {
 
     public void setActivity(Activity activity) {
         this.activity = activity;
+    }
+
+    public OceanSpaceSize getOceanSpaceSize() {
+        return oceanSpaceSize;
+    }
+
+    public void setOceanSpaceSize(OceanSpaceSize oceanSpaceSize) {
+        this.oceanSpaceSize = oceanSpaceSize;
     }
 }

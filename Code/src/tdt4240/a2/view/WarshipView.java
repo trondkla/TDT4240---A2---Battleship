@@ -33,7 +33,26 @@ public class WarshipView extends AbstractView {
      */
     public void draw(Canvas canvas){
         // Draw the vessel.
-        canvas.drawRect(this.model.getRect(), paint);
+        Rect shipRect = this.model.getRect();
+        Drawable d;
+        Bitmap bitmap;
+
+        Paint p = new Paint();
+        if(this.model.isSelected()){
+            p.setColor(Color.GRAY);
+            canvas.drawRect(shipRect, p);
+        } else {
+            if(this.model.isHorizontal()){
+                d = variables.getResources().getDrawable(R.drawable.ship_horizontal);
+                bitmap = ((BitmapDrawable)d).getBitmap();
+                canvas.drawBitmap(bitmap, null, new Rect(shipRect.left,shipRect.top,shipRect.right,shipRect.bottom), p);
+            } else {
+                d = variables.getResources().getDrawable(R.drawable.ship_vertical);
+                bitmap = ((BitmapDrawable)d).getBitmap();
+                canvas.drawBitmap(bitmap, null, new Rect(shipRect.left,shipRect.top,shipRect.right,shipRect.bottom), p);
+            }
+        }
+        //canvas.drawRect(this.model.getRect(), paint);
 
         // DEBUG COLOR
         Paint bombedPaint = new Paint();
@@ -41,8 +60,8 @@ public class WarshipView extends AbstractView {
 
         // Retrieve tiles that needs to be repainted
         Rect[] bombedTiles = model.getBombedTiles();
-        Drawable d = variables.getResources().getDrawable(R.drawable.boat_explo);
-        Bitmap bitmap = ((BitmapDrawable)d).getBitmap();
+        d = variables.getResources().getDrawable(R.drawable.boat_explo);
+        bitmap = ((BitmapDrawable)d).getBitmap();
 
         // Draw all the bombed tiles one by one.
         for(Rect rect : bombedTiles){

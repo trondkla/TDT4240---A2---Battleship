@@ -1,5 +1,6 @@
 package tdt4240.a2.states;
 
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.content.Context;
 import android.view.View;
@@ -25,5 +26,9 @@ public abstract class State extends View{
 
     public boolean onTouch(MotionEvent motionEvent){
         return true; // Placeholder
+    }
+
+    public void onBackPressed() {
+        // Placeholder
     }
 }

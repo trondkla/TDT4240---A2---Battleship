@@ -3,6 +3,7 @@ package tdt4240.a2.states;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import tdt4240.a2.controller.OceanSpaceController;
@@ -78,5 +79,11 @@ public class GameState extends State{
 
     public boolean onTouch(MotionEvent motionEvent){
         return oceanSpaceController.handleTouchEvent(motionEvent);
+    }
+
+    public void onBackPressed() {
+        // Ignore menu item and show game paused state
+        push(new GamePause(variables.getActivity().getApplicationContext()));
+        variables.getActivity().setContentView(StateMachine.getInstance(null).getContentView());
     }
 }

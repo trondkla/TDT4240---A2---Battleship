@@ -14,10 +14,13 @@ public class WarshipModel extends AbstractModel {
     private boolean horizontal; // for drawing
     private int xPosition; // x - position in oceanspace(tile)
     private int yPosition; // y - position in oceanspace(tile)
+    private boolean isPrepairing;
+    private boolean isSelected;
 
     public WarshipModel(WarshipType warshipType){
         this.warshipType = warshipType;
         warshipTiles = new WarshipState[warshipType.getSize()];
+        isSelected = false;
         // INIT isFloating
         for(int i=0; i < this.warshipTiles.length; i++){
             this.warshipTiles[i] = WarshipState.NOT_HIT; // Setting all to floating as initial value
@@ -40,6 +43,10 @@ public class WarshipModel extends AbstractModel {
         return horizontal;
     }
 
+    public void setHorizontal(boolean horizontal) {
+        this.horizontal = horizontal;
+    }
+
     public int getXPosition() {
         return xPosition;
     }
@@ -55,7 +62,7 @@ public class WarshipModel extends AbstractModel {
     public Rect getRect(){
         StaticVariables variables = StaticVariables.getInstance();
         int pixelPerTile = variables.getPixelPerTile();
-        if(isFloating())
+        if(isFloating() && !isPrepairing())
             return new Rect();
         else {
             Rect shipRect;
@@ -138,5 +145,21 @@ public class WarshipModel extends AbstractModel {
             }
         }
         return floating;
+    }
+
+    public boolean isPrepairing() {
+        return isPrepairing;
+    }
+
+    public void setPrepairing(boolean prepairing) {
+        isPrepairing = prepairing;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
     }
 }
