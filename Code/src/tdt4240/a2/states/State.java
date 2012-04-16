@@ -1,17 +1,20 @@
 package tdt4240.a2.states;
 
+import android.view.MotionEvent;
+import tdt4240.a2.StateMachine;
 import android.app.Activity;
 import android.view.View;
 
-public abstract class State {
+public abstract class State extends View{
 
 	private StateMachine stateMachine;
 
-	public State(Activity activity) {
-		this.stateMachine = StateMachine.getInstance(activity);
+	public State(Context context) {
+        super(context);
+		this.stateMachine = StateMachine.getInstance(null);
 	}
 
-	public abstract View getView();
+    public abstract View getView();
 	
 	public void pop(){
 		stateMachine.pop();
@@ -21,4 +24,7 @@ public abstract class State {
 		stateMachine.push(state);
 	}
 
+    public boolean onTouch(MotionEvent motionEvent){
+        return true; // Placeholder
+    }
 }

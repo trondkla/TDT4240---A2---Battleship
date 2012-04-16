@@ -3,6 +3,7 @@ package tdt4240.a2.states;
 
 import java.util.Stack;
 
+import android.view.MotionEvent;
 import tdt4240.a2.listeners.StateChangeSupport;
 import android.app.Activity;
 import android.view.View;
@@ -33,7 +34,12 @@ public class StateMachine extends StateChangeSupport {
 	 */
 	public void push(State state){
 		stateStack.push(state);
-		updateView();
+		//updateView();
+		
+        currentView = stateStack.firstElement().getView();
+
+		activity.setContentView(getContentView());
+		fireStateChanged();
 	}
 	
 	/**
@@ -59,5 +65,9 @@ public class StateMachine extends StateChangeSupport {
 		}
 		return stateStack.lastElement().getView();
 	}
+
+    public boolean onTouch(MotionEvent event){
+        return stateStack.firstElement().onTouch(event);
+    }
 
 }
