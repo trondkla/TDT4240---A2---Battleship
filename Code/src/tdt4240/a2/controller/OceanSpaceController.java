@@ -4,9 +4,11 @@ package tdt4240.a2.controller;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.view.MotionEvent;
-import tdt4240.a2.StateMachine;
-import tdt4240.a2.model.*;
-import tdt4240.a2.states.GameOver;
+import tdt4240.a2.model.OceanSpaceModel;
+import tdt4240.a2.model.OceanSpaceSize;
+import tdt4240.a2.model.OceanTile;
+import tdt4240.a2.model.Player;
+import tdt4240.a2.model.WarshipModel;
 import tdt4240.a2.variables.StaticVariables;
 import tdt4240.a2.view.OceanSpaceView;
 

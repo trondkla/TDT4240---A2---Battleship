@@ -5,7 +5,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
-import tdt4240.a2.StateMachine;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
 import tdt4240.a2.model.OceanSpaceSize;
@@ -24,20 +23,11 @@ public class GameState extends State{
 
     private GameLoop gameLoop;
 
-    public GameState(Context context){
+    public GameState(Context context, WarshipController[] warshipControllers){
         //player.addPropertyChangeListener(); // Listen for change of player state (fire / observe)
         super(context);
 
-        WarshipController[] warshipControllers = new WarshipController[3];
-        warshipControllers[0] = new WarshipController(WarshipType.AIRCRAFT_CARRIER);
-        ((WarshipModel) warshipControllers[0].getRegisteredModel()).placeShip(1,1,false);
-        warshipControllers[1] = new WarshipController(WarshipType.BATTLESHIP);
-        ((WarshipModel) warshipControllers[1].getRegisteredModel()).placeShip(3,8,true);
-        warshipControllers[2] = new WarshipController(WarshipType.SUBMARINE);
-        ((WarshipModel) warshipControllers[2].getRegisteredModel()).placeShip(5,3,true);
-
-        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.SMALL, new Player("HORE", Color.RED),
-                warshipControllers);
+        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.SMALL, new Player("WHORE", Color.RED), warshipControllers);
         gameLoop = new GameLoop();
     }
 

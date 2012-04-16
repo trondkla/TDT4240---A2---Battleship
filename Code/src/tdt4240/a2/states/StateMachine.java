@@ -1,11 +1,10 @@
-package tdt4240.a2;
+package tdt4240.a2.states;
 
 
 import java.util.Stack;
 
 import android.view.MotionEvent;
 import tdt4240.a2.listeners.StateChangeSupport;
-import tdt4240.a2.states.State;
 import android.app.Activity;
 import android.view.View;
 import android.widget.TextView;
@@ -13,7 +12,6 @@ import android.widget.TextView;
 public class StateMachine extends StateChangeSupport {
 	
 	private Stack<State> stateStack;
-	private View currentView;
 	private Activity activity;
 	private static StateMachine __instance = null;
 	
@@ -36,10 +34,8 @@ public class StateMachine extends StateChangeSupport {
 	 */
 	public void push(State state){
 		stateStack.push(state);
-		currentView = stateStack.firstElement().getView();
-
-		activity.setContentView(getContentView());
-		fireStateChanged();
+		
+		updateView();
 	}
 	
 	/**
@@ -49,15 +45,10 @@ public class StateMachine extends StateChangeSupport {
 		if(stateStack.empty() == false){
 			stateStack.pop();
 		}
-
-		if(stateStack.empty()){
-			TextView tv = new TextView(activity);
-			tv.setText("ERROR: No more states to pop");
-			currentView = tv;
-		} else {
-			currentView = stateStack.firstElement().getView();
-		}
-		
+		updateView();
+	}
+	
+	public void updateView(){
 		activity.setContentView(getContentView());
 		fireStateChanged();
 	}
@@ -68,7 +59,7 @@ public class StateMachine extends StateChangeSupport {
 			text.setText("No more states");
 			return text;
 		}
-		return currentView;
+		return stateStack.lastElement().getView();
 	}
 
     public boolean onTouch(MotionEvent event){
