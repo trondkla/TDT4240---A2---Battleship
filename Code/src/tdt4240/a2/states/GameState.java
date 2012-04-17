@@ -28,7 +28,8 @@ public class GameState extends State{
         //player.addPropertyChangeListener(); // Listen for change of player state (fire / observe)
         super(context);
 
-        oceanSpaceController = new OceanSpaceController(OceanSpaceSize.SMALL, new Player("WHORE", Color.RED), warshipControllers);
+        oceanSpaceController = new OceanSpaceController(variables.getOceanSpaceSize(), new Player("WHORE", Color.RED),
+                warshipControllers);
         gameLoop = new GameLoop();
     }
 
