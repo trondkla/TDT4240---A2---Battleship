@@ -34,6 +34,7 @@ public class WarshipModel extends AbstractModel {
      * @param horizontal
      */
     public void placeShip(int xPosition, int yPosition, boolean horizontal){
+
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.horizontal = horizontal;

@@ -1,11 +1,12 @@
 package tdt4240.a2.states;
 
 import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.util.Log;
+import android.graphics.*;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
+import tdt4240.a2.R;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
 import tdt4240.a2.model.Player;
@@ -23,7 +24,7 @@ public class GamePreparation extends State {
     private OceanSpaceController oceanSpaceController;
     private WarshipController[] warshipControllers;
     private GameLoop gameLoop = new GameLoop();
-    private int shipLockedToFinger = -1;
+    private int shipLockedToFingerNr = -1;
 
     public GamePreparation(Context context){
         super(context);
@@ -51,6 +52,7 @@ public class GamePreparation extends State {
 
     @Override
     protected void onDraw(Canvas canvas){
+        // Draw all the ships
         oceanSpaceController.update(canvas);
         gameLoop.start();
     }
@@ -94,30 +96,30 @@ public class GamePreparation extends State {
     public boolean onTouch(MotionEvent motionEvent){
         int gridY = (int)((motionEvent.getY() - variables.getGridOffset())/variables.getPixelPerTile());
         int gridX = (int)(motionEvent.getX()/variables.getPixelPerTile());
+
         if(motionEvent.getAction() == MotionEvent.ACTION_DOWN){
             // is there a ship there lock it to your finger
             for(int i=0; i < warshipControllers.length; i++){
                 if(((WarshipModel)warshipControllers[i].getRegisteredModel()).getTileRect().contains(gridX, gridY)){
-                    shipLockedToFinger = i;
-                    ((WarshipModel)warshipControllers[shipLockedToFinger].getRegisteredModel()).setSelected(true);
+                    shipLockedToFingerNr = i;
+                    ((WarshipModel)warshipControllers[shipLockedToFingerNr].getRegisteredModel()).setSelected(true);
                     break;
                 }
             }
         } else if(motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            if(shipLockedToFinger != -1){
+            if(shipLockedToFingerNr != -1){
                 if(gridX < variables.getOceanSpaceSize().getSize() &&  gridY < variables.getOceanSpaceSize().getSize
                         () && gridX > -1 && gridY > -1){
-                ((WarshipModel)warshipControllers[shipLockedToFinger].getRegisteredModel()).placeShip(gridX,gridY,
-                        ((WarshipModel)warshipControllers[shipLockedToFinger].getRegisteredModel()).isHorizontal());
+                    warshipControllers[shipLockedToFingerNr].placeShip(gridX,gridY,
+                        ((WarshipModel)warshipControllers[shipLockedToFingerNr].getRegisteredModel()).isHorizontal());
+                    ((WarshipModel)warshipControllers[shipLockedToFingerNr].getRegisteredModel()).setSelected(false);
                 }
-                ((WarshipModel)warshipControllers[shipLockedToFinger].getRegisteredModel()).setSelected(false);
-                shipLockedToFinger = -1;
+                    shipLockedToFingerNr = -1;
             }
-        } else {
+        } else if(motionEvent.getAction() == 262) {
             if(motionEvent.getAction() == 262){
-                if(shipLockedToFinger != -1){
-                    ((WarshipModel)warshipControllers[shipLockedToFinger].getRegisteredModel()).setHorizontal(!(
-                            (WarshipModel)warshipControllers[shipLockedToFinger].getRegisteredModel()).isHorizontal());
+                if(shipLockedToFingerNr != -1){
+                    warshipControllers[shipLockedToFingerNr].turnShip();
                 }
             }
         }

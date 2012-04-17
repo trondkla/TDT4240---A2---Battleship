@@ -6,6 +6,7 @@ import android.graphics.Rect;
 import tdt4240.a2.model.AbstractModel;
 import tdt4240.a2.model.WarshipModel;
 import tdt4240.a2.model.WarshipType;
+import tdt4240.a2.variables.StaticVariables;
 import tdt4240.a2.view.WarshipView;
 
 /**
@@ -40,6 +41,32 @@ public class WarshipController extends AbstractController {
             return true;
         }
         return false;
+    }
+
+    public void placeShip(int x, int y, boolean horizontal){
+        StaticVariables settings = StaticVariables.getInstance();
+        // Check if it goes on the outside of the grid
+        WarshipModel model = (WarshipModel)this.getRegisteredModel();
+        if(model.isHorizontal()){
+            if((x+model.getWarshipType().getSize()) > settings.getOceanSpaceSize().getSize()){
+                int offset = (x+model.getWarshipType().getSize()) - settings.getOceanSpaceSize().getSize();
+                model.placeShip(x-offset,y,horizontal);
+            } else {
+                model.placeShip(x,y,horizontal);
+            }
+        } else {
+            if((y+model.getWarshipType().getSize()) > settings.getOceanSpaceSize().getSize()){
+                int offset = (y+model.getWarshipType().getSize()) - settings.getOceanSpaceSize().getSize();
+                model.placeShip(x,y-offset,horizontal);
+            } else {
+                model.placeShip(x,y,horizontal);
+            }
+        }
+    }
+
+    public void turnShip(){
+        WarshipModel model = (WarshipModel)this.getRegisteredModel();
+        model.setHorizontal(!model.isHorizontal());
     }
 
     public void update(Canvas canvas) {
