@@ -34,7 +34,6 @@ public class WarshipModel extends AbstractModel {
      * @param horizontal
      */
     public void placeShip(int xPosition, int yPosition, boolean horizontal){
-
         this.xPosition = xPosition;
         this.yPosition = yPosition;
         this.horizontal = horizontal;
@@ -119,18 +118,28 @@ public class WarshipModel extends AbstractModel {
      * Takes in parameters where the shot is fired on the grid and registers the hit
      * @param x
      * @param y
+     * @return
      */
-    public void bombTile(int x, int y){
+    public boolean bombTile(int x, int y){
         try{
             if(isHorizontal()){
-                warshipTiles[x - xPosition] = WarshipState.HIT;
+                if(warshipTiles[x - xPosition] == WarshipState.NOT_HIT){
+                    warshipTiles[x - xPosition] = WarshipState.HIT;
+                    return true;
+                }
+                return false;
             }else{
-                warshipTiles[y - yPosition] = WarshipState.HIT;
+                if(warshipTiles[y - yPosition] == WarshipState.NOT_HIT){
+                    warshipTiles[y - yPosition] = WarshipState.HIT;
+                    return true;
+                }
+                return false;
             }
         } catch (IndexOutOfBoundsException e){
             Log.d("LaHAW ERROR","WarshipModel("+yPosition+","+xPosition+","+isHorizontal()+").bombTile("+x+"," +
                     ""+y+") - Index out of bounds.");
         }
+        return false;
     }
 
     public WarshipType getWarshipType(){
