@@ -24,11 +24,7 @@ public abstract class State extends View{
 		stateMachine.push(state);
 	}
 
-    public boolean onTouch(MotionEvent motionEvent){
-        return true; // Placeholder
-    }
+    public abstract boolean onTouch(MotionEvent motionEvent);
 
-    public void onBackPressed() {
-        // Placeholder
-    }
+    public abstract void onBackPressed();
 }

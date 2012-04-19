@@ -40,10 +40,9 @@ public class ProgarkActivity extends Activity {
 
         variables.setResources(getResources());
         variables.setActivity(this); // Activity set
-        variables.setOceanSpaceSize(OceanSpaceSize.LARGE);
 
         stateMachine = StateMachine.getInstance(this); // initialize instance with the activity
-        stateMachine.push(new GamePreparation(getApplicationContext()));
+        stateMachine.push(new GameMenu(getApplicationContext()));
 
         setContentView(stateMachine.getContentView());
 
@@ -51,5 +50,9 @@ public class ProgarkActivity extends Activity {
 
     public boolean onTouchEvent(MotionEvent motionEvent){
         return stateMachine.onTouch(motionEvent);
+    }
+
+    public void onBackPressed(){
+        stateMachine.onBackPressed();
     }
 } 

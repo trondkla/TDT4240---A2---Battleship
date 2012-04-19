@@ -60,14 +60,14 @@ public class StateMachine extends StateChangeSupport {
 			text.setText("No more states");
 			return text;
 		}
-		return stateStack.lastElement().getView();
+		return stateStack.peek().getView();
 	}
 
     public boolean onTouch(MotionEvent event){
-        return stateStack.firstElement().onTouch(event);
+        return stateStack.peek().onTouch(event);
     }
 
     public void onBackPressed(){
-        stateStack.firstElement().onBackPressed();
+        stateStack.peek().onBackPressed();
     }
 }
