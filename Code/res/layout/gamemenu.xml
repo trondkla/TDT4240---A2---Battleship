@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical"
+              android:gravity="center">
+    <Button
+        android:id="@+id/new_game_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="New Game" />
+    <Button
+        android:id="@+id/exit_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Exit" />
+
+</LinearLayout>
+    <ImageButton
+            android:id="@+id/help_button"
+            android:layout_width="60"
+            android:layout_height="60"
+            android:scaleType="centerInside"
+            android:background=""
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/helpicon"/>
+</RelativeLayout>
