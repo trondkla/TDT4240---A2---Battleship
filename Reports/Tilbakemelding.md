@@ -73,8 +73,11 @@ Please add the missing point(s).
 ## Stakeholders and Concerns
 Development group should have "Grade" as a major concern.
 
+*80%*
+
 ## Selection of Architectural Viewpoints
 Views should be an individual chapter, do not present them in this chapter.
+*DONE*
  	
 Class diagram does not use correct notation.
 
