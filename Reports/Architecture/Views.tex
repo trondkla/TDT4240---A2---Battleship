@@ -75,10 +75,9 @@ Figure \ref{fig:ActivityDiagram} shows …
 
 When a player wants to start a game, the player will be be presented with the game's main menu. From here, the player will be able to choose \emph{Start game}, where, after placing its boats, the game will enter the main \emph{Game State}.
 
-After both of the players are ready, t
+As soon as both of the players are ready, the game starts. Now the players will take turns in shooting at their opponents ships. This is done by having the first player select one of the opponent's tiles to bomb it. If the tile does not contain a warship, the game registers the miss and calculates data accordingly, and exectures a turn switch activity, and the first player has to wait for the opponent to have a go at guessing his warships' placement.
 
-The player will now have go at hitting the opponent's warships.
+If the tile did contain a warship, the game registers this as a hit and process data accordingly. If the last tile of the last warship was hit the game ends and declares the bombing player as the winner and exits.
 
-
-Note that this diagram is a simplified version, and does not show the user customisation part\footnote{E.g. selection of player colour and setting a player name.} of the application. This would have been available from the \emph{Main Menu} activity.
+Note that the diagram above is a simplified version, and does not show the user customisation part\footnote{E.g. selection of player colour and setting a player name.} of the application. This would have been available from the \emph{Main Menu} activity.
 
