@@ -43,7 +43,7 @@ public class StateMachine extends StateChangeSupport {
 	 * Pops top state (visible state)
 	 */
 	public void pop(){
-		if(stateStack.empty() == false){
+		if(!stateStack.empty()){
 			stateStack.pop();
 		}
 		updateView();

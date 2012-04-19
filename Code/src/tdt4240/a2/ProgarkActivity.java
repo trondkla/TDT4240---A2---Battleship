@@ -48,6 +48,10 @@ public class ProgarkActivity extends Activity {
 
     }
 
+    public void onResume(){
+        super.onResume();
+    }
+
     public boolean onTouchEvent(MotionEvent motionEvent){
         return stateMachine.onTouch(motionEvent);
     }

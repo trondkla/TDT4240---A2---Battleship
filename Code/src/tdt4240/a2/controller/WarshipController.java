@@ -37,8 +37,7 @@ public class WarshipController extends AbstractController {
         AbstractModel model = this.getRegisteredModel();
         Rect boundingBox = ((WarshipModel)model).getTileRect();
         if(boundingBox.contains(xCoordinate, yCoordinate)){
-            ((WarshipModel) model).bombTile(xCoordinate,yCoordinate);
-            return true;
+            return ((WarshipModel) model).bombTile(xCoordinate,yCoordinate);
         }
         return false;
     }
@@ -62,6 +61,22 @@ public class WarshipController extends AbstractController {
                 model.placeShip(x,y,horizontal);
             }
         }
+    }
+
+    public void setVisible(){
+        ((WarshipModel)this.getRegisteredModel()).setPrepairing(true);
+    }
+
+    public boolean isHorizontal(){
+        return ((WarshipModel)this.getRegisteredModel()).isHorizontal();
+    }
+    
+    public int getX(){
+        return ((WarshipModel)this.getRegisteredModel()).getXPosition();
+    }
+
+    public int getY(){
+        return ((WarshipModel)this.getRegisteredModel()).getYPosition();
     }
 
     public void turnShip(){

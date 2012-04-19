@@ -1,6 +1,7 @@
 package tdt4240.a2.model;
 
 import android.graphics.Color;
+import android.graphics.Paint;
 
 /**
  */
@@ -13,11 +14,13 @@ public class Player extends AbstractModel{
     public Player(String name, int color){
         this.name = name;
         this.color = color;
-        this.playerState = PlayerState.OBSERVE;
+        this.playerState = PlayerState.FIRE;
     }
     
-    public int getColor(){
-        return this.color;
+    public Paint getColor(){
+        Paint paint = new Paint();
+        paint.setColor(this.color);
+        return paint;
     }
     
     public String getName(){
