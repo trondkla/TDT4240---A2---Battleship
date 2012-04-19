@@ -83,7 +83,6 @@ public class GameState extends State{
         }
 
         if(playerOneOceanSpaceController.isGameOver() || playerTwoOceanSpaceController.isGameOver()){
-            enemy.stop();
             pop();
             push(new GameOver(variables.getActivity().getApplicationContext()));
         }
