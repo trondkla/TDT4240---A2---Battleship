@@ -8,3 +8,5 @@ Makefile
 make_reports
 make_report
 *.pdf
+*.fdb_latexmk
+*.synctex.gz
