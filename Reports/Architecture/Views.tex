@@ -13,10 +13,7 @@ The views you should document depend on the uses you expect to make of the docum
 % 3. Prioritize
 
 As described in chapter \ref{cha:architectural_viewpoint}, the views deemed the most useful for the development of LaHAW is the \emph{logic}, \emph{development} and \emph{process} views from the 4+1 view model.
- 
-
-
-
+In addition to these views there is the \emph{physical} and the \emph{scenario} view. We have decided to not detail these views.
 
 
 
@@ -55,36 +52,18 @@ Other states and objects are discussed earlier in this report, but are not repre
     \label{fig:DevelopmentView}
 \end{figure}
 
-Figure \ref{fig:DevelopmentView} illustrates 
-
-
-% Foreslår å sløyfe Java.
-At the very bottom you find the Java layer. This is 
-
-
-Below this, the game logic layer. This layer deals with the internal game states and logic that drives the game. This information is derived from the Android SDK layer below, and communicated to the GUI layer above.
-
-
-At the top the graphical user interface and sound assets are contained. As mentioned above, this derives its information from the layer below.
-
-If implemented properly, this will make it possible to completely replace one or more of the layers to port or maintain the code.
+Figure \ref{fig:DevelopmentView} illustrates the different layers that the developers needs to take into account when developing the application. We have identified a simple three layered approach, with the Android SDK and the Java programming language at the very bottom, which is used to execute the game logic in the layer above, which in turn controls the game assets such as the graphical user interface and audio. If implemented properly, this will make it possible to completely rework or replace one or more of the layers to port or maintain the code, without interfering with what is done in other layers.
 
 
 This will aid the maintainability, as separating the different parts of the code base into layers will make it possible to change and maintain and not break code in different layers.
 
-Additionally, this will aid the portability of the game. If the game is to be ported to Apple iOS, we can replace the lowermost layers, keeping the uppermost GUI and sound layer, adapting the game logic code to use the new API.
+% Additionally, this will aid the portability of the game. If the game is to be ported to Apple iOS, we can replace the lowermost layers, keeping the uppermost GUI and sound layer, adapting the game logic code to use the new API.
 
-
-
-
-% Software packaged in small chunks: 
-% – Subsystems can be developed by one or few developers. 
-% – Subsystems are organized in hierarchy of layers. 
-% – Each layer provides well-defined interface to layers above.
+This will help the application by making it possible for the developers to implement the different subsystems in tandem. This requires that each of the layers properly provides a well-defined interface to the layers above it. In this application, the code that directyl interfaces with the Android layer has to provide an API for the graphical layer above it, that it can use even though the internal algorithms behind the APIs are in flux.
 
 
 \section{Process view}
-Non-functional requirements - performance, availability
+% Non-functional requirements - performance, availability
     
 \begin{figure}[ht]
     \includegraphics[angle=90, scale=0.8]{ProcessLayer.png}
@@ -103,12 +82,3 @@ The player will now have go at hitting the opponent's warships.
 
 Note that this diagram is a simplified version, and does not show the user customisation part\footnote{E.g. selection of player colour and setting a player name.} of the application. This would have been available from the \emph{Main Menu} activity.
 
-
-
-
-\section{Scenario view}
-
-
-
-\section{Physical view}
-Reliability, Scalability
