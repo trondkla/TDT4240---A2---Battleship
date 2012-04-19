@@ -54,6 +54,10 @@ public class StateMachine extends StateChangeSupport {
 		fireStateChanged();
 	}
 
+    public boolean isEmpty(){
+        return stateStack.isEmpty();
+    }
+
 	public View getContentView() {
 		if(stateStack.empty()){
 			TextView text = new TextView(activity);

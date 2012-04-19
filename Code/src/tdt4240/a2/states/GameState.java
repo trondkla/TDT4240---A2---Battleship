@@ -54,11 +54,11 @@ public class GameState extends State{
                 Random randy = new Random();
                 while(true){
                     try {
-                        TimeUnit.SECONDS.sleep(2);
+                        TimeUnit.SECONDS.sleep(1);
                         if(playerOne.getPlayerState() == PlayerState.OBSERVE){
                             playerTwoOceanSpaceController.bombOceanTile(randy.nextInt(variables.getOceanSpaceSize().getSize()-1),
                                     randy.nextInt(variables.getOceanSpaceSize().getSize()-1));
-                            TimeUnit.SECONDS.sleep(1);
+                            TimeUnit.SECONDS.sleep(2);
                             playerOne.swapPlayerState();
                         }
                     } catch (InterruptedException e) {
@@ -96,9 +96,11 @@ public class GameState extends State{
         canvas.drawText("Pause game",(float)35,(float)25,p);
         // end draw pause button
 
-        // Draw playernames
-        canvas.drawText(playerOne.getName()+": 8", 130, 25, playerOne.getColor());
-        canvas.drawText(playerTwo.getName()+": 7", 130, 40, playerTwo.getColor());
+        // Draw text.
+        if(playerOne.getPlayerState() == PlayerState.FIRE)
+            canvas.drawText(playerOne.getName()+"'s turn.", 130, 40, playerOne.getColor());
+        else
+            canvas.drawText(playerTwo.getName()+"'s turn.", 130, 40, playerTwo.getColor());
         gameLoop.start();
     }
 
@@ -140,7 +142,6 @@ public class GameState extends State{
         }
         if(playerOne.getPlayerState() == PlayerState.FIRE){
             boolean hitValidSpot = playerOneOceanSpaceController.handleTouchEvent(motionEvent);
-            Log.d("tdt4240", "Validhit: "+hitValidSpot);
             if(hitValidSpot){
                 playerOne.swapPlayerState();
             }
