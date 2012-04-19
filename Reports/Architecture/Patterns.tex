@@ -16,9 +16,6 @@ The following chapter is concerned with the patterns used in realizing LaHAW.
         The \emph{Controller} handles the calculation of the game data. This includes the handling of events (including timers and player input), keeping track of turns and modifying the game's objects.
         Whenever an event occurs, the controller shall interpret this event and do the neccesary calculations and manipulate the game's models, and then notify the view that the game world has changed and needs to be redrawn.
         An alternative implementation of \emph{MVC} could use separate controllers for each of the game's models, but seeing as the game is rather small and that the controller will mostly be controlling the states of the classes, this shall not be done in this implementation.
-    
-        \subsection{Rationale}
-        The reasons behind using the \emph{MVC} architectural pattern for the implementation of the game, is to increase modifiability through the separation of the visual representation of the game, the game objects and the code logic that manipulates said objects. Additionally, use of the \emph{MVC} pattern will also aid in increasing the testability of the game.
 
 %-------------
 %   SINGLETON
@@ -37,8 +34,6 @@ The following chapter is concerned with the patterns used in realizing LaHAW.
             \item The \emph{states} of the objects, as discussed below, are to be implemented as singletons.
         \end{itemize}
     
-        \subsection{Rationale}
-        By using the Singleton pattern, we can be sure that wherever exactly \emph{one} instance of an object should exist in the game, nothing else is allowed.
     
 %--------------------
 %    ABSTRACT FACTORY
@@ -50,9 +45,6 @@ The following chapter is concerned with the patterns used in realizing LaHAW.
 
     \subsection{Implementation}
     The pattern will be implemented in LaHAW with the different ships. The ships could be similar but possess different properties. We implement an abstract factory which creates concrete classes, and let the client code be unaware of how the implementation is done. All we need is an object implementing that abstract factory. This allows objects to implement different types of that factory, in our case this will be different types of ships that share properties, but also is different from the other shiptypes.
-
-    \subsection{Rationale}
-    Rather than creating several different methods for creating new ships, we can implement one factory object that takes care of production of the different types of ships. The ships are all similar objects that will be in frequent use, and it makes sense that each type of ship has its own factory.
 
 %--------------------
 %    STATE PATTERN
@@ -83,8 +75,6 @@ The following chapter is concerned with the patterns used in realizing LaHAW.
     
         The states themselves shall be implemented as \emph{Singletons}, as discussed above.
     
-        \subsection{Rationale}
-        The State Pattern is implemented due to most of the game's objects existing in different states as the game proceeds. Rather than implementing these states as separate classes, we can modify the behaviour appropriately with inclusion of state modifiers. An example of this is that we need not implement two types of ocean tile objects (e.g. \texttt{OceanTileVacant} and \texttt{OceanTileOccupied}), but are able to have a single \texttt{OceanTile} object which can exist in different states, depending on how the game plays. This limits the amount of redundancy in the code, and aids in making the code base more readable and modifiable.
     
 %----------------------
 %   OBSERVER PATTERN
@@ -100,7 +90,5 @@ The following chapter is concerned with the patterns used in realizing LaHAW.
             \item When the game controller gets an update that tells it that ship X has been hit, this message is then broadcasted to all of the listeners. This includes the players and the methods that draws the ships.
         \end{itemize}
     
-    
-        \subsection{Rationale}
-        The reasoning of implementing the Observer pattern for the game is to be able to easily send one-to-many messages. The game will consist of several classes that need to broadcast their status updates to several parties. The Observer pattern will aid in this task. The implementation of the Observer pattern will also help in making the code base be more maintainable and modifiable. This is because further evolution of the game's classes and methods might need to access state data, and should this be able to access this data through adding themselves to existing code as listeners. Furthermore, the use of the \emph{State} design pattern and the \emph{MVC} architectural pattern, the use of the \emph{Observer} pattern comes rather natural.
+
     
