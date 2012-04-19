@@ -51,4 +51,8 @@ public class ProgarkActivity extends Activity {
     public boolean onTouchEvent(MotionEvent motionEvent){
         return stateMachine.onTouch(motionEvent);
     }
+
+    public void onBackPressed(){
+        stateMachine.onBackPressed();
+    }
 } 

@@ -3,7 +3,6 @@ package tdt4240.a2.states;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.widget.ImageButton;
@@ -19,12 +18,10 @@ import tdt4240.a2.variables.StaticVariables;
 public class GameMenu extends State {
 	
 	private Activity activity;
-    private Context context;
     private View view;
 
 	public GameMenu(final Context context) {
 		super(context);
-        this.context = context;
 		this.activity = StaticVariables.getInstance().getActivity();
         view = View.inflate(activity, R.layout.gamemenu, null);
 
@@ -53,7 +50,6 @@ public class GameMenu extends State {
                     @Override
                     public void onClick(View view) {
                         StaticVariables.getInstance().setOceanSpaceSize(OceanSpaceSize.SMALL);
-                        pop();
                         push(new GamePreparation(activity.getApplicationContext()));
                         alertDialog.cancel();
                     }
@@ -64,7 +60,6 @@ public class GameMenu extends State {
                     @Override
                     public void onClick(View view) {
                         StaticVariables.getInstance().setOceanSpaceSize(OceanSpaceSize.MEDIUM);
-                        pop();
                         push(new GamePreparation(activity.getApplicationContext()));
                         alertDialog.cancel();
                     }
@@ -75,7 +70,6 @@ public class GameMenu extends State {
                     @Override
                     public void onClick(View view) {
                         StaticVariables.getInstance().setOceanSpaceSize(OceanSpaceSize.LARGE);
-                        pop();
                         push(new GamePreparation(activity.getApplicationContext()));
                         alertDialog.cancel();
                     }

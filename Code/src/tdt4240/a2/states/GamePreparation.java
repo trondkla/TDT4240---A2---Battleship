@@ -174,5 +174,6 @@ public class GamePreparation extends State {
     @Override
     public void onBackPressed() {
         //To change body of implemented methods use File | Settings | File Templates.
+        pop();
     }
 }
