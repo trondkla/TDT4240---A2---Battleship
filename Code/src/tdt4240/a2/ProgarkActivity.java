@@ -2,10 +2,7 @@ package tdt4240.a2;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.Display;
-import android.view.MotionEvent;
-import android.view.Window;
-import android.view.WindowManager;
+import android.view.*;
 import tdt4240.a2.model.OceanSpaceSize;
 import tdt4240.a2.states.GameMenu;
 import tdt4240.a2.states.GamePreparation;
@@ -42,14 +39,17 @@ public class ProgarkActivity extends Activity {
         variables.setActivity(this); // Activity set
 
         stateMachine = StateMachine.getInstance(this); // initialize instance with the activity
-        stateMachine.push(new GameMenu(getApplicationContext()));
-
-        setContentView(stateMachine.getContentView());
-
+        if(stateMachine.isEmpty()){
+            stateMachine.push(new GameMenu(getApplicationContext()));
+            setContentView(stateMachine.getContentView());
+        }
     }
 
     public void onResume(){
         super.onResume();
+
+        ((ViewGroup)stateMachine.getContentView().getParent()).removeView(stateMachine.getContentView());
+        setContentView(stateMachine.getContentView());
     }
 
     public boolean onTouchEvent(MotionEvent motionEvent){
