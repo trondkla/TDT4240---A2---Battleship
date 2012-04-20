@@ -20,6 +20,7 @@ public class StaticVariables {
     private int canvasPixelHeight;
     private Resources resources;
     private Activity activity;
+    private String gameOverText;
 
     private int gridOffset;
 
@@ -84,5 +85,13 @@ public class StaticVariables {
 
     public void setOceanSpaceSize(OceanSpaceSize oceanSpaceSize) {
         this.oceanSpaceSize = oceanSpaceSize;
+    }
+
+    public String getGameOverText() {
+        return gameOverText;
+    }
+
+    public void setGameOverText(String gameOverText) {
+        this.gameOverText = gameOverText;
     }
 }
