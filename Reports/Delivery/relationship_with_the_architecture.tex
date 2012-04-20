@@ -1,3 +1,67 @@
 \chapter{Relationship with the architecture}
 
-This section should list the inconsistencies between your architecture and the implementation. Give the reasons for these inconsistencies. Discuss whether they could have been discovered at an earlier point, for instance during the ATAM evaluation.
+% This section should list the inconsistencies between your architecture and the implementation. Give the reasons for these inconsistencies. Discuss whether they could have been discovered at an earlier point, for instance during the ATAM evaluation.
+
+
+Our implementation does not follow the MVC convensions as planned, as our implementation was to supplement this 
+
+
+\section{Model-View-Controller}
+
+
+
+We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with.
+
+
+
+\section{Observer pattern}
+
+An implementation that followed the convensions completely
+
+This would mean that the warships' controllers would have received a notification that their state has changed.
+
+Our implementation does not implement such information flow between the objects, but rather checks their status themselves for updates whenever they are being drawn to the screen.
+A proper way would have the warships register as listeners for state changes. When a state change occurs, the 
+
+\texttt{OceanSpaceController} distribute this state change to every observer
+
+We did try to implement the pattern as planned in the beginning, but as the code base grew, this proved difficult to properly realise.
+
+The pattern works best in instances where an object has several observers. This was thus thought to applicable to our 
+, but in the end seemed to involve more overhead than it was worth. We discovered that in most cases, this message would have been broadcasted to only one observer (e.g. only one warship can occupy any ocean tile at any time).
+
+Time constraints was also a factor in our unability to implement it. With more time, a proper way of implementing it could have been discovered and properly realised.
+
+Whether or not this could have been discovered earlier is hard to say. There were some conserns that we had decided upon too many patterns, and that this could potentially introduce unwanted and unnecessary overhead. For such a simple game as LaHAW this could be more trouble than it was worth.
+
+
+
+\section{Abstract factory}
+The abstract factory pattern's purpose in LaHAW is to …
+
+
+Our implementation of the pattern is functional, though somewhat buggy.
+
+
+\section{Singleton}
+Our use of the singleton pattern has been limited, as intended.
+
+...fylle inn mer tekst her med erfaringer...
+
+
+
+
+
+\section{Experience}
+Our main piece of experience from the implementation phase of this project was that we tried to implement too many patterns. While we still feel that every pattern decided upon in some way or another did fit our project, and.... 
+
+, we feel that implementing fewer patterns better would have benefited the project.
+
+We are however content with our implementation of the model view controller pattern.
+
+
+
+
+
+
+
