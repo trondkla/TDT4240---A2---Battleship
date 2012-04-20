@@ -5,10 +5,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.*;
 import tdt4240.a2.R;
 import tdt4240.a2.variables.StaticVariables;
 
@@ -38,6 +35,8 @@ public class Settings extends State{
         spinnerArray.add("Green");
         spinnerArray.add("Black");
         
+        final TextView responseText = ((TextView)view.findViewById(R.id.change_response));
+        
         final EditText playerOneName = ((EditText)view.findViewById(R.id.playerOneEdit));
         final EditText playerTwoName = ((EditText)view.findViewById(R.id.playerTwoEdit));
 
@@ -62,7 +61,8 @@ public class Settings extends State{
                 variables.setPlayerOneName(playerOneName.getText().toString());
                 variables.setPlayerTwoName(playerTwoName.getText().toString());
                 variables.setPlayerOneColor(stringToColor((String)playerOneColor.getSelectedItem()));
-                variables.setPlayerTwoColor(stringToColor((String)playerTwoColor.getSelectedItem()));
+                variables.setPlayerTwoColor(stringToColor((String) playerTwoColor.getSelectedItem()));
+                responseText.setText("Saved changes.");
             }
         });
 
@@ -71,6 +71,10 @@ public class Settings extends State{
             public void onClick(View view) {
                 playerOneName.setText(variables.getPlayerOneName());
                 playerTwoName.setText(variables.getPlayerTwoName());
+                playerOneColor.setSelection(spinnerArray.indexOf(intToString(variables.getPlayerOneColor())));
+                playerTwoColor.setSelection(spinnerArray.indexOf(intToString(variables.getPlayerTwoColor())));
+
+                responseText.setText("Data reset.");
             }
         });
     }
@@ -91,7 +95,6 @@ public class Settings extends State{
             case Color.RED:
                 returnValue = "Red";
                 break;
-            
             case Color.GREEN:
                 returnValue = "Green";
                 break;
