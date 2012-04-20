@@ -31,8 +31,8 @@ public class GameState extends State{
         super(context);
 
         // Create the player objects and give them color
-        playerOne = new Player("Player One", Color.RED);
-        playerTwo = new Player("Player Two", Color.GREEN);
+        playerOne = new Player(variables.getPlayerOneName(), variables.getPlayerOneColor());
+        playerTwo = new Player(variables.getPlayerTwoName(), variables.getPlayerTwoColor());
 
         // Create oceanspace
         playerOneOceanSpaceController = new OceanSpaceController(variables.getOceanSpaceSize(), playerOne,
