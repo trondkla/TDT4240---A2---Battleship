@@ -1,0 +1,40 @@
+\documentclass[a4paper]{report}
+
+\title{Delivery document
+    \begin{center}
+        \textsc{Large and Heavily Armored Warships} \\
+        \textsc{for Android}
+    \end{center}
+    \begin{center}
+        {\normalsize Primary quality attribute: \emph{Modifiability} \\
+        Secondary quality attribute: \emph{Usability}}
+    \end{center}
+}
+
+\author{\bf{Group A2} \\ Trond Kjetil Bremnes, Marius Glittum, Alexander Perry \\ Even Stene, Elisabeth Solheim, Trond Klakken}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage[utf8x]{inputenc}
+
+\begin{document}
+
+\maketitle
+\pagenumbering{roman}
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+
+\input{introduction}
+\input{design_details}
+\input{users_manual}
+\input{test_report}
+\input{relationship_with_the_architecture}
+\input{problems_issues_and_points_learned}
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
