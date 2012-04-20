@@ -32,6 +32,13 @@ public class GameMenu extends State {
             }
         });
 
+        ((Button)view.findViewById(R.id.settings_button)).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                push(new Settings(activity.getApplicationContext()));
+            }
+        });
+
         ((Button)view.findViewById(R.id.new_game_button)).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

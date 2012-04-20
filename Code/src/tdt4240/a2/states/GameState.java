@@ -26,14 +26,15 @@ public class GameState extends State{
     private Player playerTwo;
     private StaticVariables variables = StaticVariables.getInstance();
     private GameLoop gameLoop;
-    private Thread enemy;
 
     public GameState(Context context, WarshipController[] warshipControllers){
         super(context);
 
-        playerOne = new Player("Player One", Color.RED);
-        playerTwo = new Player("Player Two", Color.GREEN);
+        // Create the player objects and give them color
+        playerOne = new Player(variables.getPlayerOneName(), variables.getPlayerOneColor());
+        playerTwo = new Player(variables.getPlayerTwoName(), variables.getPlayerTwoColor());
 
+        // Create oceanspace
         playerOneOceanSpaceController = new OceanSpaceController(variables.getOceanSpaceSize(), playerOne,
                 warshipControllers);
 
@@ -49,24 +50,29 @@ public class GameState extends State{
         playerTwoOceanSpaceController = new OceanSpaceController(variables.getOceanSpaceSize(), playerTwo,
                 enemyWarshipControllers);
         gameLoop = new GameLoop();
-        enemy = new Thread(new Runnable() {
+
+        // Enemy thread where the enemy shoots randomly at the board you have laid out for him.
+        Thread enemy = new Thread(new Runnable() {
             public void run() {
                 Random randy = new Random();
-                while(true){
+                boolean running = true;
+                while (running) {
                     try {
                         TimeUnit.SECONDS.sleep(1);
-                        if(playerOne.getPlayerState() == PlayerState.OBSERVE){
-                            playerTwoOceanSpaceController.bombOceanTile(randy.nextInt(variables.getOceanSpaceSize().getSize()-1),
-                                    randy.nextInt(variables.getOceanSpaceSize().getSize()-1));
+                        if (playerOne.getPlayerState() == PlayerState.OBSERVE) {
+                            playerTwoOceanSpaceController.bombOceanTile(randy.nextInt(variables.getOceanSpaceSize().getSize() - 1),
+                                    randy.nextInt(variables.getOceanSpaceSize().getSize() - 1));
                             TimeUnit.SECONDS.sleep(2);
                             playerOne.swapPlayerState();
                         }
                     } catch (InterruptedException e) {
-                        Log.e("LaHAW","EnemyFireLoop Sleeperror");
+                        running = false;
+                        Log.e("LaHAW", "EnemyFireLoop Sleeperror");
                     }
                 }
             }
         });
+        // Start the thread
         enemy.start();
     }
 
@@ -76,13 +82,19 @@ public class GameState extends State{
     }
 
     protected void onDraw(Canvas canvas){
+        // Evaluate what to paint.
         if(playerOne.getPlayerState() == PlayerState.FIRE)
             playerOneOceanSpaceController.update(canvas);
         else{
             playerTwoOceanSpaceController.update(canvas);
         }
 
+        // Check if the game is over
         if(playerOneOceanSpaceController.isGameOver() || playerTwoOceanSpaceController.isGameOver()){
+            if(playerOneOceanSpaceController.isGameOver())
+                variables.setGameOverText("You won a victory!");
+            else
+                variables.setGameOverText("You lost a victory.");
             pop();
             push(new GameOver(variables.getActivity().getApplicationContext()));
         }
@@ -95,7 +107,7 @@ public class GameState extends State{
         canvas.drawText("Pause game",(float)35,(float)25,p);
         // end draw pause button
 
-        // Draw text.
+        // Draw text
         if(playerOne.getPlayerState() == PlayerState.FIRE)
             canvas.drawText(playerOne.getName()+"'s turn.", 130, 40, playerOne.getColor());
         else
@@ -134,13 +146,21 @@ public class GameState extends State{
         }
     }
 
+    /**
+     * Function called when a motionevent has occured.
+     * @param motionEvent
+     * @return boolean
+     */
     public boolean onTouch(MotionEvent motionEvent){
+        // Check if the pausebutton is pressed
         if(motionEvent.getAction() == MotionEvent.ACTION_DOWN && motionEvent.getY() < 45 && motionEvent.getX() < 120){
             push(new GamePause(variables.getActivity().getApplicationContext()));
             return true;
         }
         if(playerOne.getPlayerState() == PlayerState.FIRE){
+            // Check if the hit is valid
             boolean hitValidSpot = playerOneOceanSpaceController.handleTouchEvent(motionEvent);
+            // if not the player state stays the same
             if(hitValidSpot){
                 playerOne.swapPlayerState();
             }
@@ -149,6 +169,9 @@ public class GameState extends State{
             return true;
     }
 
+    /**
+     * Function called when the back button is pressed.
+     */
     public void onBackPressed() {
         // Ignore menu item and show game paused state
         push(new GamePause(variables.getActivity().getApplicationContext()));

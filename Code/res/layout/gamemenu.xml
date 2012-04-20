@@ -24,6 +24,11 @@
         android:layout_height="wrap_content"
         android:text="New Game" />
     <Button
+            android:id="@+id/settings_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Settings" />
+    <Button
         android:id="@+id/exit_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

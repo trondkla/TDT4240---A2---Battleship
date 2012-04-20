@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
+    <TextView
+            android:id="@+id/title"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="25sp"
+            android:textColor="#CCCCCC"
+            android:text="Settings" />
+    <TextView
+            android:layout_below="@+id/title"
+            android:id="@+id/playerOneName"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Player one name"/>
+    <EditText
+            android:layout_below="@+id/title"
+            android:id="@+id/playerOneEdit"
+            android:layout_toRightOf="@+id/playerOneName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    <TextView
+            android:id="@+id/playerOneColor"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Player one color"
+            android:layout_below="@+id/playerOneName"/>
+    <Spinner
+            android:id="@+id/playerOneColorSpinner"
+            android:layout_toRightOf="@+id/playerOneColor"
+            android:layout_below="@+id/playerOneEdit"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" />
+    <TextView
+            android:id="@+id/playerTwoName"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Player two name"
+            android:layout_below="@+id/playerOneColor"/>
+    <EditText
+            android:id="@+id/playerTwoEdit"
+            android:layout_toRightOf="@+id/playerTwoName"
+            android:layout_below="@+id/playerOneColorSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+    <TextView
+            android:id="@+id/playerTwoColor"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Player one color"
+            android:layout_below="@+id/playerTwoName"/>
+    <Spinner
+            android:id="@+id/playerTwoColorSpinner"
+            android:layout_toRightOf="@+id/playerTwoColor"
+            android:layout_below="@+id/playerTwoEdit"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp" />
+    <TextView
+            android:id="@+id/change_response"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:layout_above="@+id/submit_data_button"/>
+    <Button
+            android:id="@+id/submit_data_button"
+            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_alignParentBottom="true"
+            android:text="Submit"/>
+    <Button
+            android:id="@+id/reset_data_button"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:text="Reset"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/submit_data_button"/>
+
+</RelativeLayout>
