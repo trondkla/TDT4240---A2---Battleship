@@ -29,6 +29,7 @@ public class GameState extends State{
     private Player playerTwo;
     private StaticVariables variables = StaticVariables.getInstance();
     private GameLoop gameLoop;
+    private boolean playerOneHasShot; // so that the users can't shoot while reviewing his/her shot
 
     public GameState(Context context, WarshipController[] warshipControllers){
         super(context);
@@ -63,10 +64,12 @@ public class GameState extends State{
                     try {
                         TimeUnit.SECONDS.sleep(1);
                         if (playerOne.getPlayerState() == PlayerState.OBSERVE) {
+
                             playerTwoOceanSpaceController.bombOceanTile(randy.nextInt(variables.getOceanSpaceSize().getSize() - 1),
                                     randy.nextInt(variables.getOceanSpaceSize().getSize() - 1));
-                            TimeUnit.SECONDS.sleep(2);
+                            TimeUnit.SECONDS.sleep(1);
                             playerOne.swapPlayerState();
+                            playerOneHasShot = false;
                         }
                     } catch (InterruptedException e) {
                         running = false;
@@ -160,11 +163,12 @@ public class GameState extends State{
             push(new GamePause(variables.getActivity().getApplicationContext()));
             return true;
         }
-        if(playerOne.getPlayerState() == PlayerState.FIRE){
+        if(playerOne.getPlayerState() == PlayerState.FIRE && !playerOneHasShot){
             // Check if the hit is valid
             boolean hitValidSpot = playerOneOceanSpaceController.handleTouchEvent(motionEvent);
             // if not the player state stays the same
             if(hitValidSpot){
+                playerOneHasShot = true;
                 OceanTile tile = playerOneOceanSpaceController.getOceanTile((int) (motionEvent.getX() / variables
                         .getPixelPerTile
                         ()),
@@ -184,7 +188,24 @@ public class GameState extends State{
                     }
 
                 });
-                playerOne.swapPlayerState();
+                // adding wait time
+                new Thread(new Runnable() {
+                    public void run() {
+                        boolean running = true;
+                        while (running) {
+                            try {
+                                // sleeping the thread for 1 second
+                                TimeUnit.SECONDS.sleep(1);
+                                // swap player
+                                playerOne.swapPlayerState();
+                                // kills of the thread
+                                running = false;
+                            } catch (InterruptedException e) {
+                                running = false;
+                            }
+                        }
+                    }
+                }).start();
             }
             return true;
         } else
