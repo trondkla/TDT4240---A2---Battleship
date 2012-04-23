@@ -1,3 +1,44 @@
+%!TEX root = main.tex
 \chapter{Problems, Issues and Points Learned}
+\label{cha:problems_issues_and_points_learned}
 
-In addition to listing problems and issues with the document or with the implementation process, this is also a spot to reflect upon the project and discuss what you would have done differently if you were to start again from scratch.
+% In addition to listing problems and issues with the document or with the implementation process, this is also a spot to reflect upon the project and discuss what you would have done differently if you were to start again from scratch.
+
+
+\section{Human resources}
+The main issue 
+
+\subsection{Communication issues}
+While both an IRC channel and an email list was used in the course of this project, the information flow was extremely lacking.
+
+\subsection{Lack of participation}
+Most of the work on this project was done by a small number of people.
+
+
+\section{Time constraints}
+As a result of the human resource problem, we ran into 
+
+
+As a result of this, some game mechanics had to be omitted.
+
+\subsection{Artifical Intelligence}
+Large and Heavily Armoured Warships is a multiplayer game at its core. To limit the scope of the game, we did not intend to implement the possibility to play the game over a network connection, but rather implement a simple artifical intelligence for the player to play against. For a simple game such as LaHAW, this could be limited to a glorified random number generator with some heuristics to better know where the enemy ships are. Unfortunately, the development of these heuristics had to be omitted, and only a simple random number generator remains. This makes the game (statistically) impossible to lose, as the AI will try to bomb a tile that it already has bombed at some point in the game which the human player will not be able to do.
+
+\subsection{Help system}
+To aid the players of LaHAW in learn and understand the game play, a help system was to be implemented. The help system implemented is limited to a help button on the game's main menu, and does not contain any information. A proper help tool would contain actual help.
+
+\subsection{Customisation}
+The player was per the requirement documentation to be able to set a player name as well as the colour of his boats. While the game stores this information to the phone, only the player name is actually used. The colour information does not colour anything in the application.
+
+
+
+\section{Code}
+
+\subsection{Naming conventions}
+At the very beginning of the implementation of LaHAW, the group decided upon a naming convention that later proved to make the code incredib
+
+
+The initial idea was to keep the naming of the differe
+
+
+MVC dicates that every object in the application code should have its own model, its own view and its own controller. We decided to implement this through clever nam

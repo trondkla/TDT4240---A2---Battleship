@@ -1,3 +1,4 @@
+%!TEX root = main.tex
 \chapter{Views}
 
 % What is a view? Referere til kapittel 9
@@ -47,19 +48,18 @@ Other states and objects are discussed earlier in this report, but are not repre
 
 
 \begin{figure}[ht]
-    \includegraphics{DevelopmentView.png}
+    \includegraphics[scale=0.65]{img/PackageDiagram.png}
     \caption{Development View Architecture Layer Diagram}
     \label{fig:DevelopmentView}
 \end{figure}
 
-Figure \ref{fig:DevelopmentView} illustrates the different layers that the developers needs to take into account when developing the application. We have identified a simple three layered approach, with the Android SDK and the Java programming language at the very bottom, which is used to execute the game logic in the layer above, which in turn controls the game assets such as the graphical user interface and audio. If implemented properly, this will make it possible to completely rework or replace one or more of the layers to port or maintain the code, without interfering with what is done in other layers.
-
+Figure \ref{fig:DevelopmentView} illustrates the different layers that the developers needs to take into account when developing the application. We used a three layered approach, the MVC structure. This separate the logic (controller) from the models and the views, making it easier to develop by setting standard locations for different type of code. If implemented properly, this will make it possible to completely rework or replace one or more of the layers to port or maintain the code, without interfering with what is done in other layers.
 
 This will aid the maintainability, as separating the different parts of the code base into layers will make it possible to change and maintain and not break code in different layers.
 
 % Additionally, this will aid the portability of the game. If the game is to be ported to Apple iOS, we can replace the lowermost layers, keeping the uppermost GUI and sound layer, adapting the game logic code to use the new API.
 
-This will help the application by making it possible for the developers to implement the different subsystems in tandem. This requires that each of the layers properly provides a well-defined interface to the layers above it. In this application, the code that directyl interfaces with the Android layer has to provide an API for the graphical layer above it, that it can use even though the internal algorithms behind the APIs are in flux.
+This will help the application by making it possible for the developers to implement the different subsystems in tandem. This requires that each of the layers properly provides a well-defined interface to the layers above it. In this application, the code that directly interfaces with Android has to provide an API for the graphical layer above it, that it can use even though the internal algorithms behind the APIs are in flux.
 
 
 \section{Process view}
