@@ -70,6 +70,10 @@ public class OceanSpaceController extends AbstractController{
         return false;
     }
 
+    public OceanTile getOceanTile(int x, int y){
+        return ((OceanSpaceModel)this.getRegisteredModel()).getOceanTile(x,y);
+    }
+
     public boolean handleTouchEvent(MotionEvent motionEvent){
         if(motionEvent.getAction() == MotionEvent.ACTION_UP){
             // calculate what tile is pushed

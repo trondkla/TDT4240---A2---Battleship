@@ -5,11 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import tdt4240.a2.R;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
+import tdt4240.a2.model.OceanTile;
 import tdt4240.a2.model.Player;
 import tdt4240.a2.model.PlayerState;
 import tdt4240.a2.model.WarshipModel;
@@ -162,6 +165,25 @@ public class GameState extends State{
             boolean hitValidSpot = playerOneOceanSpaceController.handleTouchEvent(motionEvent);
             // if not the player state stays the same
             if(hitValidSpot){
+                OceanTile tile = playerOneOceanSpaceController.getOceanTile((int) (motionEvent.getX() / variables
+                        .getPixelPerTile
+                        ()),
+                        (int) ((motionEvent.getY() - variables.getGridOffset()) / variables.getPixelPerTile()));
+                MediaPlayer mediaPlayer;
+                if(tile == OceanTile.OCCUPIED){
+                    mediaPlayer = MediaPlayer.create(variables.getActivity(), R.raw.bomb);
+                } else {
+                    mediaPlayer = MediaPlayer.create(variables.getActivity(), R.raw.water);
+                }
+                // play sound
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+
+                });
                 playerOne.swapPlayerState();
             }
             return true;
