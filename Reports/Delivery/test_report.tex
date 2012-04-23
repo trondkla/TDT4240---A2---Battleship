@@ -3,15 +3,15 @@
 
 The report should contain test reports for both functional requirements and quality requirements (quality scenarios).
 
-\section{Test execution}
+\section{Functional requirements}
 
 \begin{tabular}{|l|l|}
 	\hline
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR1			& Change difficulty/size of ocean space \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& Possible to change ocean space size, but the AI and the player have the same ocean space size. Therefore, the game becomes equally difficult for the AI and the player.\\
 	\hline
@@ -22,8 +22,8 @@ The report should contain test reports for both functional requirements and qual
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR2			& Set/change player name \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& Changing name before and between game sessions works. \\
 	\hline
@@ -34,8 +34,8 @@ The report should contain test reports for both functional requirements and qual
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR3			& Game over \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& After each game session, the game ends, and a game over state is shown. \\
 	\hline
@@ -46,8 +46,8 @@ The report should contain test reports for both functional requirements and qual
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR4			& Place ones ships at the start of the game \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& By drag'n'drop, it is possible for the player to position their ships. \\
 	\hline
@@ -58,8 +58,8 @@ The report should contain test reports for both functional requirements and qual
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR5			& Play audio \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& Audio is played when player hits the AI player. \\
 	\hline
@@ -70,8 +70,8 @@ The report should contain test reports for both functional requirements and qual
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR6			& Hit enemy ships \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& When a player bomb their opponent's ship, a static explosion is shown at the bombed ocean tile. \\
 	\hline
@@ -82,10 +82,124 @@ The report should contain test reports for both functional requirements and qual
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	FR7			& Register hits on friendly ships \\
-	Tester		& ... \\
-	Executor	& ... \\
+	Tester		& Perry \\
+	Executor	& Bremnes \\
 	Date		& \date{\today} \\
 	Evaluation	& The AI fires randomly at the player's ocean space, and each hit is marked with the same static explosion as mentioned earlier. \\
+	\hline
+\end{tabular}
+\\
+
+\section{Quality requirements}
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	M1			& Change difficulty \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& Add difficulty opportunity \\
+	Expected response & 10 hours to implement and test \\
+	Observed response & \\
+	Evaluation	& \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	M2			& Set player color \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& Add opportunity to change your player colour \\
+	Expected response & 10 hours to implement and test\\
+	Observed response & \\
+	Evaluation	& \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	M3			& Set player name \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& Add opportunity to set your player name \\
+	Expected response & 5 hours to implement and test\\
+	Observed response & \\
+	Evaluation	&  \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	U1			& Placing the ships \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& Change position of the ships \\
+	Expected response & The system shall prevent the user from trying to place a ship in an illegal position.\\
+	Observed response & \\
+	Evaluation	&  \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	U2			& Save player name and colour \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& Store player name and color \\
+	Expected response & The player name will appear at the game play screen, \\
+             & and the ships will be painted in the predefined player color  \\
+	Observed response & \\
+	Evaluation	&  \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	U3			& Dialog boxes confirming the users actions \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& User regret their decision \\
+	Expected response & Dialog box with confirmation button(s) (i.e. "OK")\\
+	Evaluation	&  \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	U4			& No action should be more than three clicks away \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& User wants to use the system efficiently \\
+	Expected response &  \\
+	Evaluation	&  \\
+	\hline
+\end{tabular}
+\\
+\begin{tabular}{|l|l|}
+	\hline
+	\bf{Type}	& \bf{Info} \\
+	\hline
+	U5			& The game should show game hints whereever appropriate \\
+	Executor	&  \\
+	Date		& \date{\today} \\
+	Stimulus	& User is uncertain on how the game is played, \\
+             & or what their next move should be \\
+	Expected response & User can play the game without problem regarding to game control in \emph{1 hour}\\
+	Observed response & \\
+	Evaluation	&  \\
 	\hline
 \end{tabular}
 \\
