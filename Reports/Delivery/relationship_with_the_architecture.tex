@@ -13,7 +13,7 @@ This chapter lists the inconsistencies between our architecture as described in 
 \label{sec:mvc}
 
 We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with.
-Our implementation is functional, but not complete. The possibility to use 'PropertyChangeSupportListeners' have not utilized, even tho support for this has been included in the implementation of Abstract factory pattern (\ref{sec:absfac}).
+Our implementation is functional, but not complete. The possibility to use \texttt{PropertyChangeSupportListeners} have not utilized, even tho support for this has been included in the implementation of Abstract factory pattern (\ref{sec:absfac}).
 
 But other than that the implementation consists of a controller which contains one model and one view, where the view draws the model based on the variables contained in the model-object. Every change done to the model have to come through the controller-object.
 
@@ -42,15 +42,15 @@ Whether or not this could have been discovered earlier is hard to say. There wer
 
 \subsection{Abstract factory}
 \label{sec:absfac}
-The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the 'AbstractController' class contains the methods required by the Model-View-Controller pattern and is this example.
+The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the \texttt{AbstractController} class contains the methods required by the Model-View-Controller pattern and is this example.
 
-All we need to do is to create a class which inherits from the Abstract class and that class would inherit both the implemented methods and variables in 
+All we need to do is to create a class which inherits from the Abstract class, that class would now contain both the implemented methods and variables.
 
 \subsection{Singleton}
 Our use of the singleton pattern has been limited, as intended.
 
 Singleton was initailly implemented to variables required by the game, but was unreachable localy by the game-states.
-For instance the canvas with is not set for the first initial two draws for some weird reason, so these variables where stored in the 'StaticVariables' class which was implemented as a singleton. This would ensure that these variables where not changed durring runtime and we where able to culculate the correct size of the grid-tiles and then draw it correctly.
+For instance the canvas with is not set for the first initial two draws for some weird reason, so these variables where stored in the \texttt{StaticVariables} class which was implemented as a singleton. This would ensure that these variables where not changed durring runtime and we where able to culculate the correct size of the grid-tiles and then draw it correctly.
 
 
 \section{Quality requirements}
@@ -58,27 +58,26 @@ For instance the canvas with is not set for the first initial two draws for some
 \section{Modifiability}
 To furfill this requirement we need to implement someway for the user to change how selected components are displayed.
 
-To ensure that this requirement was met, we implemented so that the user could change both the players name and the color for each player. Inittialy it was planed that the ships color was to be in the same colors as the players color, but when it was discovered how much work required to implement this feature, it was scrapped and redesigned so that only the players name was written in the selected color.
+To ensure that this requirement was met, we implemented so that the user could change both the players name and the color for each player. Inittialy it was planed that the ships color was to be in the same colors as the players color, but when it was discovered the complexety of the task required to implement this feature, it was scrapped and redesigned so that only the players name was written in the selected color.
 
-In addition to this the user has the possibility to select the size of his 'OceanSpace', this will increas or decrease the difficulty of hitting your enemy. An unintentional side-effect of this is that the enemy also find it easier to hit your ships.
+In addition to this the user has the possibility to select the size of his \texttt{OceanSpace}, this will increas or decrease the difficulty of hitting your enemy. An unintentional side-effect of this is that the enemy also find it easier to hit your ships.
 
 
 \section{Usability}
-TODO: Skrive at ikke har tekt vanvittig mye på det, men har lagt opp til å implementere det, etc. Smøre godt på.
+While developing LaHAW we continuously thought about how to design the game so that it would be as simple and easy to use as possible. We made the it impossible for human players to bomb the same tile more than once and sound has been added to indicate to the user if the hit was on a boat or in water, playing a explotion sound for boat and water-splash for hitting water.
 
+Also when a boat is sunk, it will apear completly for your enemy and therefor indicate that it has been sunk. We felt like this was the most natural way we could indicate that the ship has been sunk completely without telling the user where the ship is before it is sunk.
 
+We also removed the bitmap when the user selects a ship for drag and dropp in the \texttt{PreperationState} and colors the tiles where the ship used to be gray, this is to indicate to the user that this is the ship currently being moved.
+
+A goal was to ensure that the player always knows the consequences for his actions(i.e. while in the game preporation screen and pressing the back button the user will be prompt with a alert dialog telling him that he is about to cancel the game.).
+%TODO: Skrive at ikke har tekt vanvittig mye på det, men har lagt opp til å implementere det, etc. Smøre godt på.
 
 
 \section{Experience} % Todo: ny tittel
-Our main piece of experience from the implementation phase of this project was that we tried to implement too many patterns. While we still feel that every pattern decided upon in some way or another did fit our project, and.... 
+Our main piece of experience from the implementation phase of this project was that we tried to implement too many patterns. While we still feel that every pattern decided upon in some way or another did fit our project, and therefor it was a challenge to decide which to keep and which to leave out during implementation. It was vital for us to leave some out due to complexety and time constraints. 
 
-, we feel that implementing fewer patterns better would have benefited the project.
+But after the game was completed, we feel that implementing fewer patterns better would have benefited the project. Mostly cause of all the small issues that where discovered as consequences for implementing some of the patterns, we had alot of issues regarding the state pattern. Not with the pattern it self, but how it affects the Android application lifecycle and mainly \texttt{onResume()} in this instance. 
 
-We are however content with our implementation of the model view controller pattern.
-
-
-
-
-
-
+We are however content with our implementation of the model view controller pattern and singleton pattern. These are well executed and a intricate part of the game and for it to function correctly.
 
