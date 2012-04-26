@@ -120,7 +120,7 @@ This chapter will detail the test reports for both the functional requirements f
 	\subsection{Conclusion}
 	%-----------------------------------------
 	The difficulty levels as per FR1 are not implemented propery. While the action to change the difficulty level does impact ones ocean space, this setting is not asymmetrical as the requirement requires. This results in the setting not impacting actual difficulty level. A proper implementation would set this setting asymmetrically.
-	It is not clear what ocean space should be affected by the setting, and as it is worded now could equally mean "I want an easy game" and "I want my ocean space to be easy for my opponent". This has to be amended. This issue is discussed in further detail in section \ref{sec:difficulty_levels}.
+	It is not clear what ocean space should be affected by the setting, and as it is worded now could equally mean "I want an easy game" and "I want my ocean space to be easy for my opponent". This has to be amended.
 
 	The placement of the ships as per FR4 is implemented, but the user interface for rotating ships is poor.
 
@@ -139,12 +139,12 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	M1			& Change difficulty \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Glittum \\
+	Date		& \date{26 April 2012} \\
 	Stimulus	& Add difficulty opportunity \\
 	Expected response & 10 hours to implement and test \\
-	Observed response & \\
-	Evaluation	& \\
+	Observed response & The player is prompted for a difficulty settings when the game starts, and this affects the ocean size. The AI gets the same ocean size, so the difficulty is the same. \\
+	Evaluation	& \emph{Fail} \\
 	\hline
 \end{tabular}
 
@@ -156,12 +156,12 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	M2			& Set player color \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Bremnes \\
+	Date		& \date{26 April 2012} \\
 	Stimulus	& Add opportunity to change your player colour \\
 	Expected response & 10 hours to implement and test\\
-	Observed response & \\
-	Evaluation	& \\
+	Observed response & The player can enter a colour on the settings screen, but is used only to colour the player name and not ships. \\
+	Evaluation	& \emph{Failed}, the game does not use this information for anything worthwhile. \\
 	\hline
 \end{tabular}
 
@@ -173,12 +173,12 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	M3			& Set player name \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Glittum \\
+	Date		& \date{26 April 2012} \\
 	Stimulus	& Add opportunity to set your player name \\
 	Expected response & 5 hours to implement and test\\
-	Observed response & \\
-	Evaluation	&  \\
+	Observed response & The player can enter a name on the settings screen, and is used in game play. \\
+	Evaluation	& \emph{Success} \\
 	\hline
 \end{tabular}
 
@@ -190,12 +190,12 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	U1			& Placing the ships \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Bremnes \\
+	Date		& \date{26 April 2012} \\
 	Stimulus	& Change position of the ships \\
 	Expected response & The system shall prevent the user from trying to place a ship in an illegal position.\\
-	Observed response & \\
-	Evaluation	&  \\
+	Observed response & It is not possible to start a game when the ships are places illegally. \\
+	Evaluation	& \emph{Success}, but the game should give the player a notification when this is a problem. \\
 	\hline
 \end{tabular}
 
@@ -207,13 +207,13 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	U2			& Save player name and colour \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Glittum \\
+	Date		& \date{26 april 2012} \\
 	Stimulus	& Store player name and color \\
 	Expected response & The player name will appear at the game play screen, \\
              & and the ships will be painted in the predefined player color  \\
-	Observed response & \\
-	Evaluation	&  \\
+	Observed response & The name and colour can be set, and is saved between sessions. \\
+	Evaluation	& \emph{Success} \\
 	\hline
 \end{tabular}
 
@@ -225,11 +225,12 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	U3			& Dialog boxes confirming the users actions \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Bremnes \\
+	Date		& \date{26 april 2012} \\
 	Stimulus	& User regret their decision \\
-	Expected response & Dialog box with confirmation button(s) (i.e. "OK")\\
-	Evaluation	&  \\
+	Expected response & Dialog box with confirmation button(s) (e.g. "Are you sure you want to return to the main menu?") \\
+	Observed response	& Everywhere the player can exit a game in in progress or the application itself, the user is prompted with a confirmation dialog to prevent severe consequences of accidental clicks. \\
+	Evaluation & \emph{Success}
 	\hline
 \end{tabular}
 
@@ -241,11 +242,11 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	U4			& No action should be more than three clicks away \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Glittum \\
+	Date		& \date{26 April 2012} \\
 	Stimulus	& User wants to use the system efficiently \\
-	Expected response &  \\
-	Evaluation	&  \\
+	Expected response & No action is more than three clicks away. \\
+	Evaluation	& \emph{Success} \\
 	\hline
 \end{tabular}
 
@@ -257,13 +258,13 @@ This chapter will detail the test reports for both the functional requirements f
 	\bf{Type}	& \bf{Info} \\
 	\hline
 	U5			& The game should show game hints whereever appropriate \\
-	Executor	&  \\
-	Date		& \date{\today} \\
+	Executor	& Bremnes \\
+	Date		& \date{26 April 2012} \\
 	Stimulus	& User is uncertain on how the game is played, \\
              & or what their next move should be \\
 	Expected response & User can play the game without problem regarding to game control in \emph{1 hour}\\
-	Observed response & \\
-	Evaluation	&  \\
+	Observed response & The main menu screen has a hint button. this hint button does not contain any actual hints. \\
+	Evaluation	& \emph{Fail} \\
 	\hline
 \end{tabular}
 
