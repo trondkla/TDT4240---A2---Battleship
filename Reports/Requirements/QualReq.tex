@@ -1,4 +1,12 @@
 %!TEX root = main.tex
+%• Quality Requirements: Write at least one scenario for the most relevant quality
+%attributes (e.g. modifiability, testability, availability etc.). Use (textual/table)
+%scenarios of the type used in chapter 4 of the book. Remember to make them
+%measurable/testable by a concrete limit, or by, in some circumstances, a simple
+%true/false evaluation. Set hard time limits, even if you are not fully aware of what is
+%realistic. Avoid phrases like “reasonable time”. And create something nice, table
+%like to write them in, remember... readability. (I repeat, do not write them in the
+%horribly spacious figures of the inside cover of the book).
 \chapter{Quality Requirements}
 Below we will detail the two main quality attributes for the application: \emph{modifiability} that was mandatory for the application; and \emph{usability} that we chose for ourselves. 
 
@@ -25,10 +33,10 @@ Modifiability in an architectural sense is concerned about the cost of changeÂ \
             Artifact & A change on target system \\
             Environment & Design time \\
             Response & Opportunity to change ocean space  \\
-            Response measure & 10 hours to modify  \\
+            Response measure & 6 hours to modify  \\
             \hline
         \end{tabular}
-        
+\newpage        
         \item[\textbf{M2}] Set player color. \\
         \textit{\small{The user should be able to change the color of their player color, i.e. the colors of their ships and other UI elements.}}
         
@@ -42,10 +50,10 @@ Modifiability in an architectural sense is concerned about the cost of changeÂ \
             Artifact & A change on target system \\
             Environment & Design time \\
             Response & Opportunity to change ship colors  \\
-            Response measure & 10 hours to modify \\
+            Response measure & 4 hours to modify \\
             \hline
         \end{tabular}
-    
+
         \item[\textbf{M3}] Set player name. \\
         \textit{\small{The user should be able to set their player name before they start the game.}}
         
@@ -59,7 +67,7 @@ Modifiability in an architectural sense is concerned about the cost of changeÂ \
             Artifact & A change on target system \\
             Environment & Design time \\
             Response & Opportunity to set player name  \\
-            Response measure & 5 hours to modify \\
+            Response measure & 2 hours to modify \\
             \hline
         \end{tabular}
     \end{itemize}
@@ -86,26 +94,12 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & Game play \\
             Response & Move ships  \\
-            Response measure & After positioning the ships, the user is able to change these positions, one at a time. \\
+            Response measure 	& After positioning the ships, \\ 
+            									& the user is able to change these positions, one at a time. \\
             \hline
         \end{tabular}
 
-        \item[\textbf{U1}] Communicating legal actions \\
-        \textit{\small{The user should be able to see each of their ships being placed on the ocean.}}
-        
-        \begin{tabular}{| l | l |}
-            \hline
-            \rowcolor[gray]{0.8}
-            \textbf{Portion of scenario} & \textbf{Values} \\
-            \hline
-            Source & End User \\
-            Stimulus & Change position of the ships \\
-            Artifact & System \\
-            Environment & Game play \\
-            Response & Move ships  \\
-            Response measure & The system shall prevent the user from trying to place a ship in an illegal position. \\
-            \hline
-        \end{tabular}
+%        \item[\textbf{U1}] Communicating legal actions \\
 
         \item[\textbf{U2}] Player name and color saved. \\
         \textit{\small{The player name and color will be saved at start for later use in the game.}}
@@ -120,10 +114,13 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & At configure time \\
             Response & The player name will appear at the game play screen, \\
-             & and the ships will be painted in the predefined player color  \\
+             & and the ships will be painted in the predefined player color.  \\
+             & The name and color will also be saved for later gameplays. \\
             Response measure & Name and color updates when the player starts the game \\
             \hline
         \end{tabular}
+
+\newpage
 
         \item[\textbf{U3}] Dialog boxes confirming the users actions. \\
         \textit{\small{The user should be promted to confirm their actions for severe decisions.}}
@@ -138,14 +135,14 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & Run-time \\
             Response & Dialog box with confirmation button(s) (i.e. "OK") \\
-            Response measure & Goes to either the next step in the process, or the previous step \\
+            Response measure 	& Goes to either the next step in the process,\\
+            									& or the previous step \\
             \hline
         \end{tabular}
         
-        \newpage
         
-        \item[\textbf{U4}] No action should be more than three clicks away. \\
-        \textit{\small{To increase efficiency.}}
+        \item[\textbf{U4}] No action\footnote{An action is change of game state.} should be more than three clicks away. \\
+        \textit{\small{To increase efficiency and reduce the complexity for the user.}}
         
         \begin{tabular}{| l | l |}
             \hline
@@ -175,7 +172,8 @@ According to Bass, Clements and Kazman, \emph{usability} is concerned about maki
             Artifact & System \\
             Environment & Run-time \\
             Response & A message box with tips \\
-            Response measure & User can play the game without problem regarding to game control in \emph{1 hour}\\
+            Response measure  & User can play the game without problem \\
+            									& regarding to game control in \emph{1 hour}\\
             \hline
         \end{tabular}
     \end{itemize}
