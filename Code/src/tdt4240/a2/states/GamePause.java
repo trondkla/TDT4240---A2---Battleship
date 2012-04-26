@@ -29,7 +29,7 @@ public class GamePause extends State {
             public void onClick(View view) {
                 AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
                 alertDialog.setTitle("Oops..");
-                alertDialog.setMessage("Are you sure you want to exit the game?");
+                alertDialog.setMessage("Are you sure you want to return to main menu?");
                 alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
