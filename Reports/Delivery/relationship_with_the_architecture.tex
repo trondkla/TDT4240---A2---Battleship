@@ -13,10 +13,10 @@ This chapter lists the inconsistencies between our architecture as described in 
 \subsection{Model-View-Controller}
 \label{sec:mvc}
 
-We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with.
-Our implementation is functional, but not complete. The possibility to use \texttt{PropertyChangeSupportListeners} have not utilized, even tho support for this has been included in the implementation of Abstract factory pattern (\ref{sec:absfac}).
+We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with (see section \ref{sec:naming_conventions} for more details).
+Our implementation is functional, but not complete, with a lack of proper \texttt{PropertyChangeSupportListener} utilisation being the worst offender. Support for this has however been included in the implementation of abstract factory pattern (\ref{sec:absfac}), and could be implemented in a future version.
 
-But other than that the implementation consists of a controller which contains one model and one view, where the view draws the model based on the variables contained in the model-object. Every change done to the model have to come through the controller-object.
+Our implementation of the pattern consists of every game object being represented by a controller, which then contains the objects model and view. The view draws the model based on the variables contained in the model-object. Every change done to the model has to come through the controller-object.
 
 
 \subsection{Observer pattern}
@@ -43,42 +43,54 @@ Whether or not this could have been discovered earlier is hard to say. There wer
 
 \subsection{Abstract factory}
 \label{sec:absfac}
-The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the \texttt{AbstractController} class contains the methods required by the Model-View-Controller pattern and is this example.
+The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required is implemented in the Abstract class. 
+For instance the \texttt{AbstractController} class contains the methods required by the Model-View-Controller pattern and is this example. % Wut?
 
 All we need to do is to create a class which inherits from the Abstract class, that class would now contain both the implemented methods and variables.
 
 \subsection{Singleton}
 Our use of the singleton pattern has been limited, as intended.
 
-Singleton was initailly implemented to variables required by the game, but was unreachable localy by the game-states.
-For instance the canvas with is not set for the first initial two draws for some weird reason, so these variables where stored in the \texttt{StaticVariables} class which was implemented as a singleton. This would ensure that these variables where not changed durring runtime and we where able to culculate the correct size of the grid-tiles and then draw it correctly.
+Singleton is implemented to store and distribute variables required by the game, but for some reason is unreachable locally by game states. 
+
+These values are set and stored as the application starts, and is readable from ....
+
+An example of this happening is in the instance where the canvas width is not properly set for the first initial two draws cycles due to a bug we have been unable to find.
+Our workaround was to store there variables in a \texttt{StaticVariables} class, which was implemented as a singleton. The use of the singleton pattern ensures that these variables is not changed during runtime, and we can reliably use these values to correctly calculate the correct size of grid tiles and be able to draw them correctly.
 
 
 \section{Quality requirements}
 
-\section{Modifiability}
-To furfill this requirement we need to implement someway for the user to change how selected components are displayed.
-
-To ensure that this requirement was met, we implemented so that the user could change both the players name and the color for each player. Inittialy it was planed that the ships color was to be in the same colors as the players color, but when it was discovered the complexety of the task required to implement this feature, it was scrapped and redesigned so that only the players name was written in the selected color.
-
-In addition to this the user has the possibility to select the size of his \texttt{OceanSpace}, this will increas or decrease the difficulty of hitting your enemy. An unintentional side-effect of this is that the enemy also find it easier to hit your ships.
+\subsection{Modifiability}
+Our main method for fulfilling the quality requirement of modifiability is done during design time, and is our selection of the industry standard patterns discussed above.
 
 
-\section{Usability}
-While developing LaHAW we continuously thought about how to design the game so that it would be as simple and easy to use as possible. We made the it impossible for human players to bomb the same tile more than once and sound has been added to indicate to the user if the hit was on a boat or in water, playing a explotion sound for boat and water-splash for hitting water.
+Additionally, we have implemented the possibility for the user to change how selected components are displayed during run time.
+We have implemented a feature where the user can change both their player name and their team colour. It was initially planned to use this information to colour the player ships in their team colour, but due to time constraints this had to be omitted. However, the player names are coloured in their team colour.
 
-Also when a boat is sunk, it will apear completly for your enemy and therefor indicate that it has been sunk. We felt like this was the most natural way we could indicate that the ship has been sunk completely without telling the user where the ship is before it is sunk.
+% The player has the possibility to select the size of his \texttt{OceanSpace}, by selecting a difficulty level when starting a game. This will increase or decrease the difficulty of hitting ones enemy.
 
-We also removed the bitmap when the user selects a ship for drag and dropp in the \texttt{PreperationState} and colors the tiles where the ship used to be gray, this is to indicate to the user that this is the ship currently being moved.
 
-A goal was to ensure that the player always knows the consequences for his actions(i.e. while in the game preporation screen and pressing the back button the user will be prompt with a alert dialog telling him that he is about to cancel the game.).
+\subsection{Usability}
+The second quality requirements that was chosen for the imeplentation of LaHAW was usability. While developing LaHAW we continuously thought about how to design the game so that it would be as simple and easy to use as possible.
+
+Every tile that has been bombed, being water or a ship, is marked with a symbol indicating the status of the tile. The symbol is different depending on what was bombed. It is also impossible for a (human\footnote{The AI can bomb the same tile more than once.}) players to bomb the same tile more than once.
+
+Sound is used to give the player feedback on the bombings by by playing a explosion sound clip whenever a ship is successfully hit and a water splash sound for hitting water.
+
+When every one of the tiles that constitutes a ship is hit, the ship is marked as sunk, and is completely revealed to the opponent.
+
+When a ship is moved by dragging it while preparing a game in the \texttt{PreperationState}, the boat sprite is changed to let the player
+The old position is coloured grey, and the new position is coloured green.
+
+To avoid unintended actions, a confirmation dialogue box is displayed whenever a severe action is performed (e.g. quitting a battle mid-game). This is especially important on touch screen devices, where accidental touches on the screen happen often.
 %TODO: Skrive at ikke har tekt vanvittig mye på det, men har lagt opp til å implementere det, etc. Smøre godt på.
 
 
 \section{Experience} % Todo: ny tittel
-Our main piece of experience from the implementation phase of this project was that we tried to implement too many patterns. While we still feel that every pattern decided upon in some way or another did fit our project, and therefor it was a challenge to decide which to keep and which to leave out during implementation. It was vital for us to leave some out due to complexety and time constraints. 
+Our main piece of experience drawn from the implementation phase of this project was that we tried to implement too many patterns. We still feel that every of the patterns decided upon does fit our project, and therefore it was a challenge to decide which to keep and which to leave out during implementation. It was vital for us to limit the use of some due to our time constraints. %...men gjorde vi det?
 
-But after the game was completed, we feel that implementing fewer patterns better would have benefited the project. Mostly cause of all the small issues that where discovered as consequences for implementing some of the patterns, we had alot of issues regarding the state pattern. Not with the pattern it self, but how it affects the Android application lifecycle and mainly \texttt{onResume()} in this instance. 
+After the game was completed, we feel that implementing fewer patterns would have benefited the project. This is mostly because of issues we had implementing some of the patterns, especially the state pattern.% Not with the pattern it self, but how it affects the Android application lifecycle and mainly \texttt{onResume()} in this instance.
 
-We are however content with our implementation of the model view controller pattern and singleton pattern. These are well executed and a intricate part of the game and for it to function correctly.
+We are however content with our implementation of the model-view controller-pattern and the singleton pattern. We feel that these are well executed and an intricate part of making the game function correctly.
 
