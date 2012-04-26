@@ -18,13 +18,13 @@
     <Button
             android:id="@+id/resume_game_button"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:text="Resume"
          />
     <Button
             android:id="@+id/exit_game_button"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:text="Exit"
             />
         </LinearLayout>

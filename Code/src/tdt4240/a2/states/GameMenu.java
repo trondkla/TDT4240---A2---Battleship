@@ -117,7 +117,23 @@ public class GameMenu extends State {
 
     @Override
     public void onBackPressed() {
-        //To change body of implemented methods use File | Settings | File Templates.
-        activity.finish();
+        AlertDialog alertDialog = new AlertDialog.Builder(activity).create();
+        alertDialog.setTitle("Oops..");
+        alertDialog.setMessage("Are you sure you want to quit?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                activity.finish();
+                dialogInterface.cancel();
+            }
+        });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
     }
 }

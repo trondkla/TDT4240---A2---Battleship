@@ -1,6 +1,8 @@
 package tdt4240.a2.states;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.*;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -173,7 +175,23 @@ public class GamePreparation extends State {
 
     @Override
     public void onBackPressed() {
-        //To change body of implemented methods use File | Settings | File Templates.
-        pop();
+        AlertDialog alertDialog = new AlertDialog.Builder(variables.getActivity()).create();
+        alertDialog.setTitle("Oops..");
+        alertDialog.setMessage("Are you sure you want to cancel the game?");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                pop();
+                dialogInterface.cancel();
+            }
+        });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.cancel();
+            }
+        });
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
     }
 }
