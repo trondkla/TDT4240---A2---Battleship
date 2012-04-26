@@ -10,11 +10,12 @@ This chapter lists the inconsistencies between our architecture as described in 
 \section{Patterns}
 
 \subsection{Model-View-Controller}
-
-
+\label{sec:mvc}
 
 We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with.
+Our implementation is functional, but not complete. The possibility to use 'PropertyChangeSupportListeners' have not utilized, even tho support for this has been included in the implementation of Abstract factory pattern (\ref{sec:absfac}).
 
+But other than that the implementation consists of a controller which contains one model and one view, where the view draws the model based on the variables contained in the model-object. Every change done to the model have to come through the controller-object.
 
 
 \subsection{Observer pattern}
@@ -40,19 +41,15 @@ Whether or not this could have been discovered earlier is hard to say. There wer
 
 
 \subsection{Abstract factory}
-The abstract factory pattern's purpose in LaHAW is to …
-
-
-Our implementation of the pattern is functional, though somewhat buggy.
+\label{sec:absfac}
+The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the 'AbstractController' contains the methods required by the Model-View-Controller pattern.
 
 
 \subsection{Singleton}
 Our use of the singleton pattern has been limited, as intended.
 
-...fylle inn mer tekst her med erfaringer...
-
-
-
+Singleton was initailly implemented to variables required by the game, but was unreachable localy by the game-states.
+For instance the canvas with is not set for the first initial two draws for some weird reason, so these variables where stored in the 'StaticVariables' class which was implemented as a singleton. This would ensure that these variables where not changed durring runtime and we where able to culculate the correct size of the grid-tiles and then draw it correctly.
 
 
 \section{Quality requirements}
