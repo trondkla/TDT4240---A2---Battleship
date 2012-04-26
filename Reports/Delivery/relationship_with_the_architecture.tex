@@ -42,7 +42,9 @@ Whether or not this could have been discovered earlier is hard to say. There wer
 
 \subsection{Abstract factory}
 \label{sec:absfac}
-The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the 'AbstractController' contains the methods required by the Model-View-Controller pattern.
+The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the 'AbstractController' class contains the methods required by the Model-View-Controller pattern and is this example.
+
+
 
 
 \subsection{Singleton}
@@ -55,6 +57,11 @@ For instance the canvas with is not set for the first initial two draws for some
 \section{Quality requirements}
 
 \section{Modifiability}
+To furfill this requirement we need to implement someway for the user to change how selected components are displayed.
+
+To ensure that this requirement was met, we implemented so that the user could change both the players name and the color for each player. Inittialy it was planed that the ships color was to be in the same colors as the players color, but when it was discovered how much work required to implement this feature, it was scrapped and redesigned so that only the players name was written in the selected color.
+
+In addition to this the user has the possibility to select the size of his 'OceanSpace', this will increas or decrease the difficulty of hitting your enemy. An unintentional side-effect of this is that the enemy also find it easier to hit your ships.
 
 
 \section{Usability}
