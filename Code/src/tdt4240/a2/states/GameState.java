@@ -188,7 +188,7 @@ public class GameState extends State{
                     }
 
                 });
-                // adding wait time
+                // adding wait time then swap
                 new Thread(new Runnable() {
                     public void run() {
                         boolean running = true;
