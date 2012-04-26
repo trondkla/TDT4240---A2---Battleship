@@ -15,6 +15,7 @@ bin
 
 # generated files
 bin/
+out/
 gen/
 .idea/
 
