@@ -5,11 +5,14 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.media.MediaPlayer;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import tdt4240.a2.R;
 import tdt4240.a2.controller.OceanSpaceController;
 import tdt4240.a2.controller.WarshipController;
+import tdt4240.a2.model.OceanTile;
 import tdt4240.a2.model.Player;
 import tdt4240.a2.model.PlayerState;
 import tdt4240.a2.model.WarshipModel;
@@ -26,6 +29,7 @@ public class GameState extends State{
     private Player playerTwo;
     private StaticVariables variables = StaticVariables.getInstance();
     private GameLoop gameLoop;
+    private boolean playerOneHasShot; // so that the users can't shoot while reviewing his/her shot
 
     public GameState(Context context, WarshipController[] warshipControllers){
         super(context);
@@ -60,10 +64,12 @@ public class GameState extends State{
                     try {
                         TimeUnit.SECONDS.sleep(1);
                         if (playerOne.getPlayerState() == PlayerState.OBSERVE) {
+
                             playerTwoOceanSpaceController.bombOceanTile(randy.nextInt(variables.getOceanSpaceSize().getSize() - 1),
                                     randy.nextInt(variables.getOceanSpaceSize().getSize() - 1));
-                            TimeUnit.SECONDS.sleep(2);
+                            TimeUnit.SECONDS.sleep(1);
                             playerOne.swapPlayerState();
+                            playerOneHasShot = false;
                         }
                     } catch (InterruptedException e) {
                         running = false;
@@ -157,12 +163,49 @@ public class GameState extends State{
             push(new GamePause(variables.getActivity().getApplicationContext()));
             return true;
         }
-        if(playerOne.getPlayerState() == PlayerState.FIRE){
+        if(playerOne.getPlayerState() == PlayerState.FIRE && !playerOneHasShot){
             // Check if the hit is valid
             boolean hitValidSpot = playerOneOceanSpaceController.handleTouchEvent(motionEvent);
             // if not the player state stays the same
             if(hitValidSpot){
-                playerOne.swapPlayerState();
+                playerOneHasShot = true;
+                OceanTile tile = playerOneOceanSpaceController.getOceanTile((int) (motionEvent.getX() / variables
+                        .getPixelPerTile
+                        ()),
+                        (int) ((motionEvent.getY() - variables.getGridOffset()) / variables.getPixelPerTile()));
+                MediaPlayer mediaPlayer;
+                if(tile == OceanTile.OCCUPIED){
+                    mediaPlayer = MediaPlayer.create(variables.getActivity(), R.raw.bomb);
+                } else {
+                    mediaPlayer = MediaPlayer.create(variables.getActivity(), R.raw.water);
+                }
+                // play sound
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+
+                });
+                // adding wait time
+                new Thread(new Runnable() {
+                    public void run() {
+                        boolean running = true;
+                        while (running) {
+                            try {
+                                // sleeping the thread for 1 second
+                                TimeUnit.SECONDS.sleep(1);
+                                // swap player
+                                playerOne.swapPlayerState();
+                                // kills of the thread
+                                running = false;
+                            } catch (InterruptedException e) {
+                                running = false;
+                            }
+                        }
+                    }
+                }).start();
             }
             return true;
         } else
