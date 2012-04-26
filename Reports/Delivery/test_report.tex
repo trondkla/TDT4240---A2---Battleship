@@ -3,6 +3,9 @@
 
 %The report should contain test reports for both functional requirements and quality requirements (quality scenarios).
 
+This chapter will detail the test reports for both the functional requirements found in % Todo: legg inn referanse
+, and our quality requirements found in % Todo: legg inn referanse.
+
 
 %-----------------------------------------
 \section{Functional requirements}
@@ -16,7 +19,7 @@
 	Tester		& Perry \\
 	Executor	& Bremnes \\
 	Date		& \date{\today} \\
-	Evaluation	& Possible to change ocean space size, but the AI and the player have the same ocean space size. Therefore, the game becomes equally difficult for the AI and the player.\\
+	Evaluation	& Possible to change ocean space size, but the AI and the player have the same ocean space size. The game is equally difficult for the AI and the player. \\
 	\hline
 \end{tabular}
 
@@ -61,7 +64,7 @@
 	Tester		& Perry \\
 	Executor	& Bremnes \\
 	Date		& \date{\today} \\
-	Evaluation	& By drag'n'drop, it is possible for the player to position their ships. \\
+	Evaluation	& By draggin and droppin a ship, it is possible for the player to position them. By simulanously tapping the screen while dragging, the ship can be rotated. \\
 	\hline
 \end{tabular}
 
@@ -112,6 +115,18 @@
 
 \vspace{0.5em}
 
+
+	%-----------------------------------------
+	\subsection{Conclusion}
+	%-----------------------------------------
+	The difficulty levels as per FR1 are not implemented propery. While the action to change the difficulty level does impact ones ocean space, this setting is not asymmetrical as the requirement requires. This results in the setting not impacting actual difficulty level. A proper implementation would set this setting asymmetrically.
+	It is not clear what ocean space should be affected by the setting, and as it is worded now could equally mean "I want an easy game" and "I want my ocean space to be easy for my opponent". This has to be amended. This issue is discussed in further detail in section \ref{cha:problems_issues_and_points_learned}.
+
+	The placement of the ships as per FR4 is implemented, but the user interface for rotating ships is poor.
+
+	The implementation of the articifial intelligence is lacking intelligence, and it is statistically impossible to lose a game against the computer. While a functional AI was not a part of our functional requirements, this could potentially have a negative effect on the game's replayability. The AI also has a tendency to copy the player's ship placements, which can make the game even easier to win.
+
+	The prototype functions adequately in accordance to our functional requirements. While there are some issues, a player can play and finish a complete game og LaHAW.
 
 
 
@@ -251,3 +266,14 @@
 	Evaluation	&  \\
 	\hline
 \end{tabular}
+
+
+	%-----------------------------------------
+	\subsection{Conclusion}
+	%-----------------------------------------
+
+	The hint systen as per U3 requires the game to have redundant dialog boxes, is forcing some of the actions to have additional steps. This is in direct opposition to requirement U4 demanding no action being more than threee clicks away. Sparse use of this has however accomplished both requirements in a satifactory manner.
+
+	The hint system is implemented as per U5, but does not include any actual hints. This makes the evaluation of the effect of such a system hard. The game thus fails to accomplish this requirement.
+
+	While LaHAW implements the quality requirements defined with a somewhat varying degree of success, we conclude with that LaHAW passes the tests in a satisfactory manner.
