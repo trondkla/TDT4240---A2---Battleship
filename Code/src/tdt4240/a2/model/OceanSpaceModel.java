@@ -49,7 +49,7 @@ public class OceanSpaceModel extends AbstractModel{
     public Rect getRect(){
         StaticVariables variables = StaticVariables.getInstance();
         variables.setPixelPerTile(variables.getCanvasPixelWidth()/oceanSpaceSize.getSize());
-        return new Rect(0,0,variables.getCanvasPixelWidth(),variables.getCanvasPixelHeight()); //TODO
+        return new Rect(0,0,variables.getCanvasPixelWidth(),variables.getCanvasPixelHeight());
     }
 
     public Rect[] getBombedTiles(){
