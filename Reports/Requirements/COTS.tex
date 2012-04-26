@@ -1,4 +1,7 @@
 %!TEX root = main.tex
+%• COTS Components and Technical Constraints: Detail the constraints given by the
+%COTS (Khepera, XNA, or Android,iPhone), relevant for your project. (If you find
+%other constraints, they can of course be added as well
 \chapter{COTS, Components and Technical Constraints}
 \emph{Commercial of the Shelf} (COTS) software is defined as software or components that can be readily purchased\cite{pensum}. LaHAW is to be imoplemented as a native Android application, without any assisting frameworks.
 
@@ -25,11 +28,8 @@ Similarly to the "click-and-drag" gesture on desktop operating systems, a touch 
 
 %\footnote{In \emph{LaHAW} the user is able to directly touch and manipulate the ships when positioning them on the sea grid, as well as direcltly point to a sea cell to initiate an attack move.}.
 
-Any touchable element in the application has to be big enough for the device to properly recognise precicely what element has been touched. Having too small elements grouped closely together might result in the user not being able 
-
-Different handsets also have different resolution on their touch screen, making it importa
-Especially when th
-We will not account for this in our implementation to limit the scope of the project. 
+Any touchable element in the application has to be big enough for the device to properly recognise precicely what element has been touched. Having too small elements grouped closely together might result in the user not being able to select the decired element.
+Different handsets also have different resolution on their touch screen, making it important to design it to work on both small and larger interfaces. We will not focus on this in our implementation to limit the scope of the project. 
 
 
 \subsection{Version and device segmentation}
