@@ -1,15 +1,16 @@
 %!TEX root = main.tex
+%� Functional Requirements: Detail the requirements that you have to fulfill in order
+%to complete the task.
 \chapter{Functional Requirements}
 % What is functional requirement?
-Sumtin
-
+The Functional Requirements tells what function the system shall have.  
 % What is priority?
 Each of the requirements are prioritised according to how important they are for the project as a whole with a three step scale.
 
 \begin{itemize}
-    \item{H}
-    \item{M}
-    \item{L}
+    \item{H (high)}
+    \item{M (medium)}
+    \item{L (low)}
 \end{itemize}
 
 For a small project such as this, we feel that the three step scale gives us enough data for decisons without sacrificing too much fidelity. While the gap between M and H is fairly large, we have no need for the ability to differentiate between a 76 and 77 (on a 1-100 scale).
@@ -23,24 +24,37 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
 % ♥
 
 \section*{FR1 – Change difficulty/size of ocean space}
-The user should be able to choose between different difficulty levels. When a level is chosen, the game creates the grid with a given size.
+The user should be able to choose between different difficulty levels. When a level is chosen, the game creates the grid with a given size.\\
+{\bf Importance priorty: M} - Not very essential to the game. Makes the game more fun to play.\\
+{\bf Difficulty: M} - Can be timeconsuming to implement.\\
 
-\section{FR2 – Set/change player name}
-The player should be able to change their name.
+\section*{FR2 – Set/change player name}
+The player should be able to change their name.\\
+{\bf Importance priorty: L} - Not essential to the game.\\
+{\bf Difficulty: L} - Takes short time to implement.\\
 
-\section{FR3 – Game over}
-The game ends if a player gets all of their ships destroyed. The winner is the player with any ships left.
+\section*{FR3 – Game over}
+The game ends if a player gets all of their ships destroyed. The winner is the player with any ships left.\\
+{\bf Importance priorty: H} - Very essential to the game.\\
+{\bf Difficulty: M} - Can be timeconsuming to implement.\\
 
-\section{FR4 – Place ones ships at the start of the game}
-The player should be able to place his/her ships at the start of the game and only then. During gameplay the ships must be stationary. He/she can choose to use any of the ships given at start, as seen in the table in chapter \ref{shiptable}.
+\section*{FR4 – Place ones ships at the start of the game}
+The player should be able to place his/her ships at the start of the game and only then. During gameplay the ships must be stationary. He/she can choose to use any of the ships given at start, as seen in the table in chapter \ref{shiptable}.\\
+{\bf Importance priorty: H} - Very essential to the game.\\
+{\bf Difficulty: H} - Timeconsuming to implement.\\
 
-\section{FR5 – Play audio}
-Play audio when a ship is hit and when the player misses.
-
+\section*{FR5 – Play audio}
+Play audio when a ship is hit and when the player misses.\\
 % Bakgrunnsmusikk, som bestemt av ShareLateX – http://www.youtube.com/watch?v=bkysjcs5vFU
+{\bf Importance priorty: M} - Not essential to the game. But improves the game. \\
+{\bf Difficulty: M} - Can be timeconsuming to implement.\\
 
-\section{FR6 – Hit enemy ships}
-A players must be able to fire a shot on his/her turn onto one of the tiles that have not fired upon.
+\section*{FR6 – Hit enemy ships}
+A players must be able to fire a shot on his/her turn onto one of the tiles that have not fired upon.\\
+{\bf Importance priorty: H} - Very essential to the game.\\
+{\bf Difficulty: L} - Not timeconsuming to implement.\\
 
-\section{FR7 – Register hits on friendly ships}
-A player should be able to observe if the enemy player hits one of his/her ship and thus knowing the "score".
+\section*{FR7 – Register hits on friendly ships}
+A player should be able to observe if the enemy player hits one of his/her ship and thus knowing the "score".\\
+{\bf Importance priorty: M} - Not very essential to the game since the game is possible to make without these feature. But the game is a lot better with this feature than without.\\
+{\bf Difficulty: L} - Not timeconsuming to implement.\\
