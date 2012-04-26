@@ -42,10 +42,7 @@ The player was per the requirement documentation to be able to set a player name
 % Sløyfe denne? Det nevnes noe tidligere.
 
 \subsection{Naming conventions}
-At the very beginning of the implementation of LaHAW, the group decided upon a naming convention that later proved to make the code incredib
+At the very beginning of the implementation of LaHAW, the group decided upon a naming convention that later proved to make the code incredibly hard to read and write.
 
-
-The initial idea was to keep the naming of the differe
-
-
-MVC dicates that every object in the application code should have its own model, its own view and its own controller. We decided to implement this through clever nam
+An example of how the code was written and modified is the Warship class. MVC dicates that every object in the application code should have its own model, its own view and its own controller. Our initial naming scheme consisted of using packages to distinguish between the different objects{\footnote{\texttt{model/Warship.java}, \texttt{view/Warship.java} and \texttt{controller/Warship.java}}}. While clever, this had the effect of making the code incredibly hard to read and write. % Kanskje skrive mer direkte om konsekvensene.
+We had to decide upon a different scheme, where the class name distinguished between the objects \footnote{\texttt{model/WarshipModel.java}, \texttt{view/WarshipView.java} and \texttt{controller/WarshipController.java}}.
