@@ -1,21 +1,27 @@
 %!TEX root = main.tex
 \chapter{Introduction}
 
-This document describes the implementation of the Large and Heavily Armored Warships for Android game (LaHAW). The document details the differences between the planned architecture and the actual implementation. The document will first describe the finished system and its components and architecture. Then follows an analysis of the differences if any, and the reasoning behind the choices we made. We will also document what we've learned from the project, and our experiences.
+This document describes the implementation of \emph{Large and Heavily Armored Warships for Android} (henceforth referred to as \emph{LaHAW}). 
 
+
+
+
+%----------------------------
 \section{Background}
-LaHAW has been developed as a part of Group A2's project in the course TDT4240 - Software Architecture at NTNU. The goal of this project is to develop a software architecture and an implementation of a game using the Android framework, with focus on a specific quality attribute. Among the quality attributes we could choose from was availability, testability or modifiability. %TODO: liste opp alle her
-For the realisation of LaHAW, the attributes chosen were \emph{modifiability} and \emph{usability}.
-A second requirement for this project was to implement specific architectural and design patterns. LaHAW implements the \emph{abstract factory} and \emph{MVC} architectural patterns, and the \emph{observer}, \emph{singleton} and \emph{state} design patterns. Some are more deeply vowen into the fabric of the game than others. This is discussed at length in section \ref{sec:patterns}.
+%----------------------------
+
+LaHAW has been developed as a part of Group A2's project in the course \emph{TDT4240 – Software Architecture at NTNU}. The goal of this project is to develop a software architecture and an implementation of a game for Android powered devices with focus on specific quality attributes. For the realisation of LaHAW, the attributes chosen were \emph{modifiability} and \emph{usability}.
+
+A second requirement for this project was to implement specific architectural and design patterns. LaHAW implements the \emph{abstract factory} and \emph{MVC} architectural patterns, and the \emph{observer}, \emph{singleton} and \emph{state} design patterns.
 
 
+
+%----------------------------
 \section{Report structure}
-%TODO
+%----------------------------
 
-Chapter \ref{cha:design_details} describes in detail the implemented architecture behind the final prototype of LaHAW.
-The user manual in chapter \ref{cha:users_manual} details how the game is meant to be played, all the way from starting the application to winning a game against the AI.
-% Si noe om publikum til denne manualen? Slik den er nå er den skrevet noe akademisk, hvor en manual som skal leses av en spiller antageligvis vil være noe mer folkelig.
-
-During the finalisation stage of the prototype, an acceptance test was performed. The findings of these tests are listed in chapter \ref{cha:test_report}.
+Chapter \ref{cha:design_details} details the implemented architecture of the final prototype of LaHAW.
+The user manual in chapter \ref{cha:users_manual} describes what is required to build the application, how to play the game, and a guided tour detailing a typical game all the way from starting the application to winning a game against the AI.
+After the game prototype was deemed ready for it, an acceptance test was performed. The findings of these tests are listed in chapter \ref{cha:test_report}, detailing how the application stack up against our functional and quality requirements.
 In chapter \ref{cha:relationship_with_the_architecture}, we will detail the inconsistencies between the architecture and the actual implementation of LaHAW.
-At the end of this document, in chapter \ref{cha:problems_issues_and_points_learned}, the different problems and issues that emerged during the realisation of LaHAW are discussed, including what we have learned from this project as a whole.
+At the end of this document, in chapter \ref{cha:problems_issues_and_points_learned}, the different problems and issues that emerged during the realisation of LaHAW are discussed, as well as a section describing what we have learned from this project as a whole.
