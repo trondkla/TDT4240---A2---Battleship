@@ -13,7 +13,7 @@ This chapter lists the inconsistencies between our architecture as described in 
 \subsection{Model-View-Controller}
 \label{sec:mvc}
 
-Our implementation of the model-view-controller pattern is functional allthough not complete, with the omission of proper \texttt{PropertyChangeSupportListener} utilisation perhaps being the largest cause of discrepancy between the specification and our implementation.
+Our implementation of the model-view-controller pattern is functional although not complete, with the omission of proper \texttt{PropertyChangeSupportListener} utilisation perhaps being the largest cause of discrepancy between the specification and our implementation.
 Support for such listeners has however been included in the implementation of abstract factory pattern (\ref{sec:absfac}), and could be implemented in a future version.
 
 The pattern is implemented by having every game object being represented by a controller, which then contains the objects model and view. The view draws the model based on the variables contained in the model-object. Every change done to the model has to come through the controller-object.
@@ -78,25 +78,24 @@ We have implemented a feature where the user can change both their player name a
 
 
 \subsection{Usability}
-The second quality requirements that was chosen for the imeplentation of LaHAW was usability. While developing LaHAW we continuously thought about how to design the game so that it would be as simple and easy to use as possible.
+The second quality requirements that was chosen for the implementation of LaHAW was usability. While developing LaHAW we continuously thought about how to design the game so that it would be as simple and easy to use as possible.
 
-Every tile that has been bombed, being water or a ship, is marked with a symbol indicating the status of the tile. The symbol is different depending on what was bombed. It is also impossible for a (human\footnote{The AI can bomb the same tile more than once.}) players to bomb the same tile more than once.
+Every tile that has been bombed, being water or a ship, is marked with a symbol indicating the status of the tile. The symbol is different depending on what was bombed. It is also impossible for (human\footnote{The AI can bomb the same tile more than once.}) players to bomb the same tile more than once.
 
-Sound is used to give the player feedback on the bombings by by playing a explosion sound clip whenever a ship is successfully hit and a water splash sound for hitting water.
+Sound is used to give the player feedback on the bombing by playing a explosion sound clip whenever a ship is successfully hit and a water splash sound for hitting water.
 
 When every tile that constitutes a ship is hit, the ship is marked as sunk and is completely revealed to the opponent.
 
-When a ship is moved by dragging it while preparing a game in the \texttt{PreperationState}, the boat sprite is changed to let the player
-The old position is coloured grey, and the new position is coloured green.
+The user interface indicates that a ship is selected for movement while preparing by colouring the old position grey.
 
 To avoid unintended actions, a confirmation dialogue box is displayed whenever a severe action is performed (e.g. quitting a battle mid-game). This is especially important on touch screen devices, where accidental touches on the screen happen often.
 %TODO: Skrive at ikke har tekt vanvittig mye på det, men har lagt opp til å implementere det, etc. Smøre godt på.
 
 
 \section{Experience} % Todo: ny tittel
-Our main piece of experience drawn from the implementation phase of this project was that we tried to implement too many patterns. We still feel that every of the patterns decided upon does fit our project, and therefore it was a challenge to decide which to keep and which to leave out during implementation. It was vital for us to limit the use of some due to our time constraints. %...men gjorde vi det?
+Our main piece of experience drawn from the implementation phase of this project was that we tried to implement too many patterns. We still feel that every of the patterns decided upon does fit our project, and therefore it was a challenge to decide which to keep and which to leave out during implementation. It was vital for us to limit the use of some patterns due to our time constraints.
 
-After the game was completed, we feel that implementing fewer patterns would have benefited the project. This is mostly because of issues we had implementing some of the patterns, especially the state pattern.% Not with the pattern it self, but how it affects the Android application lifecycle and mainly \texttt{onResume()} in this instance.
+After the game was completed, we feel that implementing fewer patterns would have benefited the project. This is mostly because of issues we had implementing some of the patterns, especially the state pattern.
 
 We are however content with our implementation of the model-view controller-pattern and the singleton pattern. We feel that these are well executed and an intricate part of making the game function correctly.
 
