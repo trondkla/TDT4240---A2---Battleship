@@ -4,8 +4,7 @@
 
 %The report should contain test reports for both functional requirements and quality requirements (quality scenarios).
 
-This chapter will detail the test reports for both the functional requirements found in % Todo: legg inn referanse
-, and our quality requirements found in % Todo: legg inn referanse.
+This chapter will detail the test reports for both the functional requirements and our quality requirements found in the accompanying functional requirement document.
 
 
 %-----------------------------------------
@@ -65,7 +64,7 @@ This chapter will detail the test reports for both the functional requirements f
 	Tester		& Perry \\
 	Executor	& Bremnes \\
 	Date		& \date{\today} \\
-	Evaluation	& By draggin and droppin a ship, it is possible for the player to position them. By simulanously tapping the screen while dragging, the ship can be rotated. \\
+	Evaluation	& By dragging and dropping a ship, it is possible for the player to position them. By simultaneously tapping the screen while dragging, the ship can be rotated. \\
 	\hline
 \end{tabular}
 
@@ -121,12 +120,12 @@ This chapter will detail the test reports for both the functional requirements f
 	\subsection{Conclusion}
 	%-----------------------------------------
 	\label{sec:asym}
-	The difficulty levels as per FR1 are not implemented propery. While the action to change the difficulty level does impact ones ocean space, this setting is not asymmetrical as the requirement requires. This results in the setting not impacting actual difficulty level. A proper implementation would set this setting asymmetrically.
+	The difficulty levels as per FR1 are not implemented properly. While the action to change the difficulty level does impact ones ocean space, this setting is not asymmetrical as the requirement requires. This results in the setting not impacting actual difficulty level. A proper implementation would set this setting asymmetrically.
 	It is not clear what ocean space should be affected by the setting, and as it is worded now could equally mean "I want an easy game" and "I want my ocean space to be easy for my opponent". This has to be amended.
 
 	The placement of the ships as per FR4 is implemented, but the user interface for rotating ships is poor.
 
-	The implementation of the articifial intelligence is lacking intelligence, and it is statistically impossible to lose a game against the computer. While a functional AI was not a part of our functional requirements, this could potentially have a negative effect on the game's replayability. The AI also has a tendency to copy the player's ship placements, which can make the game even easier to win.
+	The implementation of the artificial intelligence is lacking intelligence, and it is statistically impossible to lose a game against the computer. While a functional AI was not a part of our functional requirements, this could potentially have a negative effect on the game's replayability. The AI also has a tendency to copy the player's ship placements, which can make the game even easier to win.
 
 	The prototype functions adequately in accordance to our functional requirements. While there are some issues, a player can play and finish a complete game og LaHAW.
 
@@ -211,7 +210,7 @@ This chapter will detail the test reports for both the functional requirements f
 	U2			& Save player name and colour \\
 	Executor	& Glittum \\
 	Date		& \date{26 april 2012} \\
-	Stimulus	& Store player name and color \\
+	Stimulus	& Store player name and colour \\
 	Expected response & The player name will appear at the game play screen, \\
              & and the ships will be painted in the predefined player color  \\
 	Observed response & The name and colour can be set, and is saved between sessions. \\
@@ -230,8 +229,8 @@ This chapter will detail the test reports for both the functional requirements f
 	Executor	& Bremnes \\
 	Date		& \date{26 april 2012} \\
 	Stimulus	& User regret their decision \\
-	Expected response & Dialog box with confirmation button(s) (e.g. "Are you sure you want to return to the main menu?") \\
-	Observed response	& Everywhere the player can exit a game in in progress or the application itself, the user is prompted with a confirmation dialog to prevent severe consequences of accidental clicks. \\
+	Expected response & Dialogue box with confirmation button(s) (e.g. "Are you sure you want to return to the main menu?") \\
+	Observed response	& Everywhere the player can exit a game in in progress or the application itself, the user is prompted with a confirmation dialogue to prevent severe consequences of accidental clicks. \\
 	Evaluation & \emph{Success} \\
 	\hline
 \end{tabular}
@@ -259,7 +258,7 @@ This chapter will detail the test reports for both the functional requirements f
 	\hline
 	\bf{Type}	& \bf{Info} \\
 	\hline
-	U5			& The game should show game hints whereever appropriate \\
+	U5			& The game should show game hints wherever appropriate \\
 	Executor	& Bremnes \\
 	Date		& \date{26 April 2012} \\
 	Stimulus	& User is uncertain on how the game is played, \\
@@ -275,7 +274,7 @@ This chapter will detail the test reports for both the functional requirements f
 	\subsection{Conclusion}
 	%-----------------------------------------
 
-	The hint systen as per U3 requires the game to have redundant dialog boxes, is forcing some of the actions to have additional steps. This is in direct opposition to requirement U4 demanding no action being more than threee clicks away. Sparse use of this has however accomplished both requirements in a satifactory manner.
+	The hint system as per U3 requires the game to have redundant dialogue boxes, is forcing some of the actions to have additional steps. This is in direct opposition to requirement U4 demanding no action being more than three clicks away. Sparse use of this has however accomplished both requirements in a satisfactory manner.
 
 	The hint system is implemented as per U5, but does not include any actual hints. This makes the evaluation of the effect of such a system hard. The game thus fails to accomplish this requirement.
 
