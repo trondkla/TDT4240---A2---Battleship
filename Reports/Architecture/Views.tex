@@ -29,18 +29,19 @@ In addition to these views there is the \emph{physical} and the \emph{scenario} 
 % 7. Other information
 
 \begin{figure}[ht]
+	\centering
     \includegraphics[width=\textwidth]{LogicalView.png}
     \caption{UML Class diagram illustrating the Logical View}
     \label{fig:LogicalView}
 \end{figure}
 
-Figure \ref{fig:LogicalView} shows a simplified overview of the different classes, usages and object inheritances. Notation is based on the Logical View notation by Kructhen\cite{kruchten}. This decomposition helps identify elements that are shared across the system.
+Figure \ref{fig:LogicalView} shows a simplified overview of the different classes, usages and object inheritances. The notation is based on the Logical View notation by Kruchten\cite{kruchten}. This decomposition helps identify elements that are shared across the system.
 
 \texttt{GameOverState}, \texttt{PrepState}, \texttt{GameState} and \texttt{IntroState} all extend a common \texttt{PlayState} class, and describes the different states the game can exist in at a given time.
 
 The main \texttt{Game} class functions as the game's main controller, and controls the state stack. The \texttt{Ship} object instantiates the different ship types with a given set of attributes, which in turn is controlled by the main \texttt{Game} class.
 
-Other states and objects are discussed earlier in this report, but are not represented in this diagram. The main reason for this descision is to keep the diagram simple and easy to read, and that the ignored features are either redundant or too specific.
+Other states and objects are discussed earlier in this report, but are not represented in this diagram. The main reason for this decision is to keep the diagram simple and easy to read, and that the ignored features are either redundant or too specific.
 
 
 
@@ -48,12 +49,13 @@ Other states and objects are discussed earlier in this report, but are not repre
 
 
 \begin{figure}[ht]
+	\centering
     \includegraphics[scale=0.65]{DevelopmentView.png}
     \caption{Development View Architecture Layer Diagram}
     \label{fig:DevelopmentView}
 \end{figure}
 
-Figure \ref{fig:DevelopmentView} illustrates the different layers that the developers needs to take into account when developing the application. We used a three layered approach, the MVC structure. This separate the logic (controller) from the models and the views, making it easier to develop by setting standard locations for different type of code. If implemented properly, this will make it possible to completely rework or replace one or more of the layers to port or maintain the code, without interfering with what is done in other layers.
+Figure \ref{fig:DevelopmentView} illustrates the different layers that the developers needs to take into account when developing the application. We used a three layered approach which separate the underlying operating system and COTS from our own logic layer and the assets used by our code. If implemented properly, this will make it possible to completely rework or replace one or more of the layers to port or maintain the code, without interfering with what is done in other layers.
 
 This will aid the maintainability, as separating the different parts of the code base into layers will make it possible to change and maintain and not break code in different layers.
 
@@ -71,13 +73,13 @@ This will help the application by making it possible for the developers to imple
     \label{fig:ActivityDiagram}
 \end{figure}
 
-Figure \ref{fig:ActivityDiagram} shows …
+Figure \ref{fig:ActivityDiagram} shows an activity diagram describing the flow between the different actions and states.
 
 When a player wants to start a game, the player will be be presented with the game's main menu. From here, the player will be able to choose \emph{Start game}, where, after placing its boats, the game will enter the main \emph{Game State}.
 
-As soon as both of the players are ready, the game starts. Now the players will take turns in shooting at their opponents ships. This is done by having the first player select one of the opponent's tiles to bomb it. If the tile does not contain a warship, the game registers the miss and calculates data accordingly, and exectures a turn switch activity, and the first player has to wait for the opponent to have a go at guessing his warships' placement.
+As soon as both of the players are ready, the game starts. Now the players will take turns in shooting at their opponents ships. This is done by having the first player select one of the opponent's tiles to bomb it. If the tile does not contain a warship, the game registers the miss and calculates data accordingly, and executes a turn switch activity, and the first player has to wait for the opponent to have a go at guessing his warships' placement.
 
 If the tile did contain a warship, the game registers this as a hit and process data accordingly. If the last tile of the last warship was hit the game ends and declares the bombing player as the winner and exits.
 
-Note that the diagram above is a simplified version, and does not show the user customisation part\footnote{E.g. selection of player colour and setting a player name.} of the application. This would have been available from the \emph{Main Menu} activity.
+Note that the diagram is a simplified version, and does not show the user customisation part\footnote{E.g. selection of player colour and setting a player name.} of the application. This would have been available from the \emph{Main Menu} activity.
 
