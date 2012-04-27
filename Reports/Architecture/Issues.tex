@@ -8,8 +8,11 @@
 
 	MVC in also loosely defined, opening the possibility for interpretation by the developers. Different developers with different opinions on "how MVC should be" can create issues.
 
+	MVC in not recommended on smaller projects without modular requirements, since the increase in code complexity makes the projects go slower by adding more work hours.
+
 \section{Abstract Factory Pattern}
-	More text %TODO
+	Much like MVC and Observer patterns, the Abstract factory pattern adds more complexity and therefor can slow down the device by adding extra function call layers. The initial code is also much larger than just making a simple object, wasting time if not to be reused. However when reused the wasted time will be decreased.
+	The degree of abstraction is often higher than needed, making interfaces more than sufficient in most cases.
 
 \section{State Pattern}
 	State patterns are solid states where interaction between states is minimal. When you change a state you change the whole context, so it's not possible to display something from the game state in the pause state. This is a 
