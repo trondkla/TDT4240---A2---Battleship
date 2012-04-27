@@ -3,9 +3,9 @@
 %COTS (Khepera, XNA, or Android,iPhone), relevant for your project. (If you find
 %other constraints, they can of course be added as well
 \chapter{COTS, Components and Technical Constraints}
-\emph{Commercial of the Shelf} (COTS) software is defined as software or components that can be readily purchased\cite{pensum}. LaHAW is to be imoplemented as a native Android application, without any assisting frameworks.
+\emph{Commercial of the Shelf} (COTS) software is defined as software or components that can be readily purchased\cite{pensum}. LaHAW is to be implemented as a native Android application, without any assisting frameworks.
 
-There was a discussion on wether or not to include game development specific frameworks such as the NTNU provided \emph{sheep} or \emph{AndEngine}\footnote{http://www.andengine.org/}, but due to the lack of proper documentation, and the fact that the appllication is planned to be a rather simple implementation of the game, the only real COTS that this project has implemented is the \emph{Android operating system}. This has in turn a few components that we feel has their own set of services and constrains, and we have thus expanded upon them below.
+There was a discussion on whether or not to include game development specific frameworks such as the NTNU provided \emph{sheep} or \emph{AndEngine}\footnote{http://www.andengine.org/}, but due to the lack of proper documentation, and the fact that the application is planned to be a rather simple implementation of the game, the only real COTS that this project has implemented is the \emph{Android operating system}. This has in turn a few components that we feel has their own set of services and constrains, and we have thus expanded upon them below.
 
 
 \section{Android}
@@ -14,7 +14,7 @@ The game runs native on the Android platform, and only this platform. Android is
 
 
 
-The Android SDK is bundled with an emulator wich enables us to develop and test the game without actually having an Android powered device. This also enables us to test the game on a variety of different screen sizes and resolutions, as well as different versions of the Android operating system\footnote{To limit the scope of this project, \emph{LaHAW} will only be tested on a limited number of screen sizes, and only with Android version 2.3.}.
+The Android SDK is bundled with an emulator which enables us to develop and test the game without actually having an Android powered device. This also enables us to test the game on a variety of different screen sizes and resolutions, as well as different versions of the Android operating system\footnote{To limit the scope of this project, \emph{LaHAW} will only be tested on a limited number of screen sizes, and only with Android version 2.3.}.
 
 
 
@@ -26,20 +26,18 @@ The game will be tailored for Android devices with a touch screen as the main so
 Among the most important services such a user interface gives us is the ability to interact with the game world in a more direct fashion, and the use of gestures.
 Similarly to the "click-and-drag" gesture on desktop operating systems, a touch interface will enable a user to slide an element from one position to another, as opposed to interacting with the game environment through a separate controller (such as a mouse or a game pad).
 
-%\footnote{In \emph{LaHAW} the user is able to directly touch and manipulate the ships when positioning them on the sea grid, as well as direcltly point to a sea cell to initiate an attack move.}.
+%\footnote{In \emph{LaHAW} the user is able to directly touch and manipulate the ships when positioning them on the sea grid, as well as directly point to a sea cell to initiate an attack move.}.
 
-Any touchable element in the application has to be big enough for the device to properly recognise precicely what element has been touched. Having too small elements grouped closely together might result in the user not being able to select the decired element.
-Different handsets also have different resolution on their touch screen, making it important to design it to work on both small and larger interfaces. We will not focus on this in our implementation to limit the scope of the project. 
+Any touchable element in the application has to be big enough for the device to properly recognise precisely what element has been touched. Having too small elements grouped closely together might result in the user not being able to select the desired element.
+Different handsets also have different resolution on their touch screen, making it important to design it to work on both small and larger interfaces. We will not focus on this issue in our implementation as to limit the scope of the project. 
 
 
 \subsection{Version and device segmentation}
 Devices using the Android platform runs several different versions, but most of them run version 2.3 and up\cite{androidversions}. LaHAW will run on devices with Android version 2.3 and up.
 
-This segmentation can however lead to incompability issues. These issues can have a negative impact on the application's reach, a situation where not everyone in the target audience are able to play the game. It can also lead to a less than sub-optimal experience with the application, if there are some device or version that handles the application just a little different, but with devastating effects. This can lead to a negative opinion of our application, which could lead to lost sales.
+This segmentation can however lead to compatibility issues. These issues can have a negative impact on the application's reach, a situation where not everyone in the target audience are able to play the game. It can also lead to a less than sub-optimal experience with the application, if there are some device or version that handles the application just a little different, but with devastating effects. This can lead to a negative opinion of our application, which could lead to lost sales.
 
 
 
 \subsection{Programming language}
-As the Android SDK\cite{androidsdk} uses Java, the game will be coded in this language.
-
-The students of the group are all familiar with the Java programming language. This should accelerate the development considerably, even though the group's experience with Android development is limited.
+As the Android SDK\cite{androidsdk} uses Java, the game will be coded in Java. The students of the group are all familiar with the Java programming language. This should accelerate the development considerably, even though the group's experience with Android development is limited.
