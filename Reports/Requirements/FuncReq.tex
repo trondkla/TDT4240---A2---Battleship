@@ -22,39 +22,97 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
 
 % What is love?
 % ♥
+\begin{itemize}
+    \vspace{0.5cm}
+	\item[\textbf{FR1}] Change difficulty/size of ocean space. \\
+        \textit{\small{The user should be able to choose between different difficulty levels. When a level is chosen, the game creates the grid with a given size.}}
 
-\section*{FR1 – Change difficulty/size of ocean space}
-The user should be able to choose between different difficulty levels. When a level is chosen, the game creates the grid with a given size.\\
-{\bf Importance priorty: M} - Not very essential to the game. Makes the game more fun to play.\\
-{\bf Difficulty: M} - Can be timeconsuming to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{M} - Not very essential, but makes the game more fun to play. \\
+            Difficulty & \textbf{M} - Can be timeconsuming to implement. \\
+            \hline
+        \end{tabular}
+    \vspace{0.5cm}
+    \item[\textbf{FR2}] Set/change player name. \\
+        \textit{\small{The player should be able to change their name.}}
 
-\section*{FR2 – Set/change player name}
-The player should be able to change their name.\\
-{\bf Importance priorty: L} - Not essential to the game.\\
-{\bf Difficulty: L} - Takes short time to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{L} - Not essential. \\
+            Difficulty & \textbf{L} - Takes short time to implement. \\
+            \hline
+        \end{tabular}
+    \vspace{0.5cm}
+    \item[\textbf{FR3}] Game over. \\
+        \textit{\small{The game ends if a player gets all of their ships destroyed. The winner is the player with any ships left.}}
 
-\section*{FR3 – Game over}
-The game ends if a player gets all of their ships destroyed. The winner is the player with any ships left.\\
-{\bf Importance priorty: H} - Very essential to the game.\\
-{\bf Difficulty: M} - Can be timeconsuming to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{M} - Can be timeconsuming. \\
+            \hline
+        \end{tabular}
+    \vspace{0.5cm}
+    \item[\textbf{FR4}] Place ones ships at the start of the game. \\
+        \textit{\small{The player should be able to place his/her ships at the start of the game and only then. During gameplay the ships must be stationary. He/she can choose to use any of the ships given at start, as seen in the table in chapter \ref{shiptable}.}}
 
-\section*{FR4 – Place ones ships at the start of the game}
-The player should be able to place his/her ships at the start of the game and only then. During gameplay the ships must be stationary. He/she can choose to use any of the ships given at start, as seen in the table in chapter \ref{shiptable}.\\
-{\bf Importance priorty: H} - Very essential to the game.\\
-{\bf Difficulty: H} - Timeconsuming to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{H} - Will be timeconsuming. \\
+            \hline
+        \end{tabular}
+    \vspace{0.5cm}
+    \item[\textbf{FR5}] Play audio. \\
+        \textit{\small{Play audio when a ship is hit and when the player misses.}}
 
-\section*{FR5 – Play audio}
-Play audio when a ship is hit and when the player misses.\\
-% Bakgrunnsmusikk, som bestemt av ShareLateX – http://www.youtube.com/watch?v=bkysjcs5vFU
-{\bf Importance priorty: M} - Not essential to the game. But improves the game. \\
-{\bf Difficulty: M} - Can be timeconsuming to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{M} - Not essential, but will improve the game. \\
+            Difficulty & \textbf{M} - Can be timeconsuming. \\
+            \hline
+        \end{tabular}
+    \vspace{0.5cm}
+    \item[\textbf{FR6}] Hit enemy ships. \\
+        \textit{\small{A player must be able to fire on his/her turn onto one of the tiles that have not yet been fired upon.}}
 
-\section*{FR6 – Hit enemy ships}
-A players must be able to fire a shot on his/her turn onto one of the tiles that have not fired upon.\\
-{\bf Importance priorty: H} - Very essential to the game.\\
-{\bf Difficulty: L} - Not timeconsuming to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{L} - Not timeconsuming. \\
+            \hline
+        \end{tabular}
+    \vspace{0.5cm}
+    \item[\textbf{FR7}] Register hits on friendly ships. \\
+        \textit{\small{A player should be able to observe if the enemy player hits one of his/her ship and thus knowing the "score".}}
 
-\section*{FR7 – Register hits on friendly ships}
-A player should be able to observe if the enemy player hits one of his/her ship and thus knowing the "score".\\
-{\bf Importance priorty: M} - Not very essential to the game since the game is possible to make without these feature. But the game is a lot better with this feature than without.\\
-{\bf Difficulty: L} - Not timeconsuming to implement.\\
+        \begin{tabular}{| l | p{7cm} |}
+            \hline
+            \rowcolor[gray]{0.8}
+            \textbf{Impact} & \textbf{Values} \\
+            \hline
+            Importance priorty & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{L} - Not timeconsuming. \\
+            \hline
+        \end{tabular}
+\end{itemize}
+
