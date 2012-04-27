@@ -1,18 +1,18 @@
 %!TEX root = main.tex
 \chapter{Issues}
 \section{Singelton Pattern}
-	Singeltons are a controversial topic since it introduces security issues. For a new Java program to find a earlier started instance, the class has to be public and static, meaning every other program may also access the instance. 
+	Singeltons are a controversial topic\cite{singelton-controversial} since it introduces security issues. For a new Java program to find a earlier started instance, the class has to be public and static, meaning every other program may also access the instance. 
 
 \section{MVC and Observer Pattern}
-	Both patterns adds more complexity and multiple layers of function calls, making the code more complex and increases the number of instructions the device has to perform. If used wrong the performance can decline. MVC has multiple layers, and when implemented with Observer patterns the number of layers increases even more, adding communication between controllers.
+	Both patterns adds more complexity and multiple layers of function calls\cite{pensum}, making the code more complex and increases the number of instructions the device has to perform. If used wrong the performance can decline. MVC has multiple layers, and when implemented with Observer patterns the number of layers increases even more, adding communication between controllers\cite{using_observer}.
 
 	MVC in also loosely defined, opening the possibility for interpretation by the developers. Different developers with different opinions on "how MVC should be" can create issues.
 
 	MVC in not recommended on smaller projects without modular requirements, since the increase in code complexity makes the projects go slower by adding more work hours.
 
 \section{Abstract Factory Pattern}
-	Much like MVC and Observer patterns, the Abstract factory pattern adds more complexity and therefor can slow down the device by adding extra function call layers. The initial code is also much larger than just making a simple object, wasting time if not to be reused. However when reused the wasted time will be decreased.
+	Much like MVC and Observer patterns, the Abstract factory pattern adds more complexity\cite{abstractfactory}\cite{abstractfactory_question} and therefor can slow down the device by adding extra function call layers. The initial code is also much larger than just making a simple object, wasting time if not to be reused. However when reused the wasted time will be decreased.
 	The degree of abstraction is often higher than needed, making interfaces more than sufficient in most cases.
 
 \section{State Pattern}
-	State patterns are solid states where interaction between states is minimal. When you change a state you change the whole context, making it not impossible to display data from the game state in the pause state.
+	State patterns are solid states where interaction between states is minimal\cite{online:msdn_singleton}. When you change a state you change the whole context, making it not impossible to display data from the game state in the pause state.
