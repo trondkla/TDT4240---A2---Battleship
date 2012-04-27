@@ -35,13 +35,13 @@ In addition to these views there is the \emph{physical} and the \emph{scenario} 
     \label{fig:LogicalView}
 \end{figure}
 
-Figure \ref{fig:LogicalView} shows a simplified overview of the different classes, usages and object inheritances. The notation is based on the Logical View notation by Kruchten\cite{kruchten}. This decomposition helps identify elements that are shared across the system.
+Figure \ref{fig:LogicalView} shows a simplified overview of the different classes and their uses. The notation is based on the Logical View notation by Kruchten\cite{kruchten}. This decomposition helps identify elements that are shared across the system.
 
-\texttt{GameOverState}, \texttt{PrepState}, \texttt{GameState} and \texttt{IntroState} all extend a common \texttt{PlayState} class, and describes the different states the game can exist in at a given time.
+\texttt{GameOverState}, \texttt{PrepState} and \texttt{PlayState} all extend a common \texttt{State} class (not shown here), and describes the different states the game can exist in at a given time.
 
-The main \texttt{Game} class functions as the game's main controller, and controls the state stack. The \texttt{Ship} object instantiates the different ship types with a given set of attributes, which in turn is controlled by the main \texttt{Game} class.
+% A state machine class (not shown here) functions as the game's main controller, and controls the state stack. The \texttt{Ship} object instantiates the different ship types with a given set of attributes, which in turn is controlled by the main \texttt{Game} class.
 
-Other states and objects are discussed earlier in this report, but are not represented in this diagram. The main reason for this decision is to keep the diagram simple and easy to read, and that the ignored features are either redundant or too specific.
+Other states and objects, such as warships and ocean space, are discussed earlier in this report, but are not represented in this diagram. The main reason for this decision is to keep the diagram simple and easy to read, and that the ignored features are either redundant or too specific.
 
 
 
