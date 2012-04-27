@@ -2,19 +2,21 @@
 \chapter{Rationale}
     
 
-The reasons behind using the \emph{MVC} architectural pattern for the implementation of the game, is to increase modifiability through the separation of the visual representation of the game, the game objects and the code logic that manipulates said objects. Additionally, use of the \emph{MVC} pattern will also aid in increasing the testability of the game, by separating the different types of test and testing smaller modules with smaller easier tests.
+The reasons behind using the \emph{Model-view-controller} architectural pattern for the implementation of the game, is to increase modifiability through the separation of the visual representation of the game, the game objects and the code logic that manipulates said objects. Additionally, use of the \emph{MVC} pattern will also aid in increasing the testability of the game, by separating the different types of test and testing smaller modules with smaller easier tests.
+
+The \emph{Abstract factory} architectural pattern is implemented to augment the model-view-controller pattern. This lets us reuse code by abstracting commonly used methods.
 
 
 By using the \emph{Singleton pattern}, we can be sure that wherever exactly \emph{one} instance of an object should exist in the game, nothing else is allowed.
 
 % Hvilken effekt har dette
 
-Abstract Factory
-Rather than creating several different methods for creating new ships, we can implement one factory object that takes care of production of the different types of ships. The ships are all similar objects that will be in frequent use, and it makes sense that each type of ship has its own factory.
-The game states are also implemented through the abstract factory pattern
+% Abstract Factory
+% Rather than creating several different methods for creating new ships, we can implement a factory object that takes care of production of the different types of ships. The ships are all similar objects that will be in frequent use, and it makes sense that each type of ship has its own factory. The game states are also implemented through the abstract factory pattern
+
 
 
 The \emph{State pattern} is implemented due to most of the game's objects existing in different states as the game proceeds. Rather than implementing these states as separate classes, we can modify the behaviour appropriately with inclusion of state modifiers. An example of this is that we need not implement two types of ocean tile objects (e.g. \texttt{OceanTileVacant} and \texttt{OceanTileOccupied}), but are able to have a single \texttt{OceanTile} object which can exist in different states, depending on how the game plays. This limits the amount of redundancy in the code, and aids in making the code base more readable and modifiable.
 
 
-The reasoning of implementing the \emph{Observer pattern} for the game is to be able to easily send one-to-many messages. The game will consist of several classes that need to broadcast their status updates to several parties. The Observer pattern will aid in this task. The implementation of the Observer pattern will also help in making the code base be more maintainable and modifiable. This is because further evolution of the game's classes and methods might need to access state data, and should this be able to access this data through adding themselves to existing code as listeners. Furthermore, the use of the \emph{State} design pattern and the \emph{MVC} architectural pattern, the use of the \emph{Observer} pattern comes rather natural.
+The reasoning of implementing the \emph{Observer pattern} for the game is to be able to easily send one-to-many messages. The game will consist of several classes that need to broadcast their status updates to several parties. The observer pattern will aid in this task. The implementation of the observer pattern will also help in making the code base be more maintainable and modifiable. This is because further evolution of the game's classes and methods might need to access state data, and should this be able to access this data through adding themselves to existing code as listeners.
