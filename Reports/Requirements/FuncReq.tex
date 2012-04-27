@@ -2,20 +2,32 @@
 %• Functional Requirements: Detail the requirements that you have to fulfill in order
 %to complete the task.
 \chapter{Functional Requirements}
+\label{cha:funcreq}
 % What is functional requirement?
-The Functional Requirements tells what function the system shall have.  
+The functional requirements below describes what the applications must implement to be considered a functional prototype.
 % What is priority?
 Each of the requirements are prioritised according to how important they are for the project as a whole with a three step scale.
 
+\vspace{0.5cm}
 \begin{itemize}
-    \item{H (high)}
-    \item{M (medium)}
-    \item{L (low)}
+    \item[\textbf{H}]{High describes something that is vital for the game to function properly.}
+    \item[\textbf{M}]{Medium describes something that, while not absolutely vital to the game, omission will severely limit gameplay.}
+    \item[\textbf{L}]{Low describes a requirement that will enhance the game if present, but do not constitute something that a player will miss if not present.}
 \end{itemize}
+\vspace{0.5cm}
 
-For a small project such as this, we feel that the three step scale gives us enough data for decisons without sacrificing too much fidelity. While the gap between M and H is fairly large, we have no need for the ability to differentiate between a 76 and 77 (on a 1-100 scale).
 
-In addition to these, the requirements will also be prioritised according to how hard the requirements are to fulfill. These priorities will use the same L-M-H scale as descibed above.
+For a small project such as this, we feel that the three step scale gives us enough data for decisions without sacrificing too much fidelity. While the gap between M and H is fairly large, we have no need for the ability to differentiate between a 76 and 77 on a 1-100 scale.
+
+In addition to prioritising the requirement based on importance, the requirements will also be prioritised according to how hard they are to implement. These priorities will use the same L-M-H scale as described below.
+
+\vspace{0.5cm}
+\begin{itemize}
+    \item[\textbf{H}]{High is something that will take more than 10 hours to implement.}
+    \item[\textbf{M}]{Medium is something that will take between 5 and 10 hours to implement.}
+    \item[\textbf{L}]{Low is something that will take less than 5 hours to implement.}
+\end{itemize}
+\vspace{0.5cm}
 
 What you then end up with is a way to perform a \emph{cost/benefit} analysis for each of the requirements. A requirement that is hard to implement properly, but is of little importance to the project as a whole could be dropped in benefit for a more important one (or a less difficult one), if time and/or costs involved are deemed to be to large.
 
@@ -32,8 +44,8 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{M} - Not very essential, but makes the game more fun to play. \\
-            Difficulty & \textbf{M} - Can be timeconsuming to implement. \\
+            Importance priority & \textbf{M} - Not very essential, but makes the game more fun to play. \\
+            Difficulty & \textbf{M} - Can be time consuming to implement. \\
             \hline
         \end{tabular}
     \vspace{0.5cm}
@@ -45,7 +57,7 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{L} - Not essential. \\
+            Importance priority & \textbf{L} - Not essential. \\
             Difficulty & \textbf{L} - Takes short time to implement. \\
             \hline
         \end{tabular}
@@ -58,8 +70,8 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{H} - Very essential. \\
-            Difficulty & \textbf{M} - Can be timeconsuming. \\
+            Importance priority & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{M} - Can be time consuming. \\
             \hline
         \end{tabular}
     \vspace{0.5cm}
@@ -71,8 +83,8 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{H} - Very essential. \\
-            Difficulty & \textbf{H} - Will be timeconsuming. \\
+            Importance priority & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{H} - Will be time consuming. \\
             \hline
         \end{tabular}
     \vspace{0.5cm}
@@ -84,8 +96,8 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{M} - Not essential, but will improve the game. \\
-            Difficulty & \textbf{M} - Can be timeconsuming. \\
+            Importance priority & \textbf{M} - Not essential, but will improve the game. \\
+            Difficulty & \textbf{M} - Can be time consuming. \\
             \hline
         \end{tabular}
     \vspace{0.5cm}
@@ -97,8 +109,8 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{H} - Very essential. \\
-            Difficulty & \textbf{L} - Not timeconsuming. \\
+            Importance priority & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{L} - Not time consuming. \\
             \hline
         \end{tabular}
     \vspace{0.5cm}
@@ -110,8 +122,8 @@ What you then end up with is a way to perform a \emph{cost/benefit} analysis for
             \rowcolor[gray]{0.8}
             \textbf{Impact} & \textbf{Values} \\
             \hline
-            Importance priorty & \textbf{H} - Very essential. \\
-            Difficulty & \textbf{L} - Not timeconsuming. \\
+            Importance priority & \textbf{H} - Very essential. \\
+            Difficulty & \textbf{L} - Not time consuming. \\
             \hline
         \end{tabular}
 \end{itemize}
