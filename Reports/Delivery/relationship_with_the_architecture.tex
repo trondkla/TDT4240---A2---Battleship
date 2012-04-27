@@ -13,31 +13,36 @@ This chapter lists the inconsistencies between our architecture as described in 
 \subsection{Model-View-Controller}
 \label{sec:mvc}
 
-We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with (see section \ref{sec:naming_conventions} for more details).
-Our implementation is functional, but not complete, with a lack of proper \texttt{PropertyChangeSupportListener} utilisation being the worst offender. Support for this has however been included in the implementation of abstract factory pattern (\ref{sec:absfac}), and could be implemented in a future version.
+Our implementation of the model-view-controller pattern is functional allthough not complete, with the omission of proper \texttt{PropertyChangeSupportListener} utilisation perhaps being the largest cause of discrepancy between the specification and our implementation.
+Support for such listeners has however been included in the implementation of abstract factory pattern (\ref{sec:absfac}), and could be implemented in a future version.
 
-Our implementation of the pattern consists of every game object being represented by a controller, which then contains the objects model and view. The view draws the model based on the variables contained in the model-object. Every change done to the model has to come through the controller-object.
+The pattern is implemented by having every game object being represented by a controller, which then contains the objects model and view. The view draws the model based on the variables contained in the model-object. Every change done to the model has to come through the controller-object.
+
+
 
 
 \subsection{Observer pattern}
+Implementation of the observer pattern was omitted due to it being redundant with use of the model-view-controller architectural pattern.
 
-An implementation that followed the convensions completely
+% An implementation that followed the convensions completely
 
-This would mean that the warships' controllers would have received a notification that their state has changed.
+% This would mean that the warships' controllers would have received a notification that their state has changed.
 
-Our implementation does not implement such information flow between the objects, but rather checks their status themselves for updates whenever they are being drawn to the screen.
-A proper way would have the warships register as listeners for state changes. When a state change occurs, the 
+% Our implementation does not implement such information flow between the objects, but rather checks their status themselves for updates whenever they are being drawn to the screen.
+% A proper way would have the warships register as listeners for state changes. When a state change occurs, the 
 
-\texttt{OceanSpaceController} distribute this state change to every observer
+% \texttt{OceanSpaceController} distribute this state change to every observer
 
-We did try to implement the pattern as planned in the beginning, but as the code base grew, this proved difficult to properly realise.
+% We did try to implement the pattern as planned in the beginning, but as the code base grew, this proved difficult to properly realise.
 
-The pattern works best in instances where an object has several observers. This was thus thought to applicable to our 
-, but in the end seemed to involve more overhead than it was worth. We discovered that in most cases, this message would have been broadcasted to only one observer (e.g. only one warship can occupy any ocean tile at any time).
+% The pattern works best in instances where an object has several observers. This was thus thought to applicable to our 
+% , but in the end seemed to involve more overhead than it was worth. We discovered that in most cases, this message would have been broadcasted to only one observer (e.g. only one warship can occupy any ocean tile at any time).
 
-Time constraints was also a factor in our unability to implement it. With more time, a proper way of implementing it could have been discovered and properly realised.
+% Time constraints was also a factor in our unability to implement it. With more time, a proper way of implementing it could have been discovered and properly realised.
 
-Whether or not this could have been discovered earlier is hard to say. There were some conserns that we had decided upon too many patterns, and that this could potentially introduce unwanted and unnecessary overhead. For such a simple game as LaHAW this could be more trouble than it was worth.
+% Whether or not this could have been discovered earlier is hard to say. There were some conserns that we had decided upon too many patterns, and that this could potentially introduce unwanted and unnecessary overhead. For such a simple game as LaHAW this could be more trouble than it was worth.
+
+
 
 
 
@@ -48,15 +53,16 @@ For instance the \texttt{AbstractController} class contains the methods required
 
 All we need to do is to create a class which inherits from the Abstract class, that class would now contain both the implemented methods and variables.
 
+
+
 \subsection{Singleton}
-Our use of the singleton pattern has been limited, as intended.
 
-Singleton is implemented to store and distribute variables required by the game, but for some reason is unreachable locally by game states. 
 
-These values are set and stored as the application starts, and is readable from ....
+Our use of the singleton pattern is limited to storing and distributing variables required by the game, but for some reason is unreachable locally by the game states. Such values are stored in the \texttt{StaticVariables} class, which is readable from anywhere in the application.
+An example of this happening is in the instance where the canvas width is not properly set for the first initial two draws cycles due to a bug we have been unable to find. Our workaround included setting these variables as soon as the application starts during run time, and thus making them readable for the drawing routines.
 
-An example of this happening is in the instance where the canvas width is not properly set for the first initial two draws cycles due to a bug we have been unable to find.
-Our workaround was to store there variables in a \texttt{StaticVariables} class, which was implemented as a singleton. The use of the singleton pattern ensures that these variables is not changed during runtime, and we can reliably use these values to correctly calculate the correct size of grid tiles and be able to draw them correctly.
+
+
 
 
 \section{Quality requirements}
