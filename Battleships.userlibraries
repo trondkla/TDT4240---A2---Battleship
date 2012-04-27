@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="scala-compiler-2.9.1">
+    <archive path="D:/Scala/scala-2.9.1.final/lib/scala-compiler.jar" />
+    <archive path="D:/Scala/scala-2.9.1.final/lib/scala-library.jar" />
+  </library>
+  <library name="scala-library-2.9.1">
+    <archive path="D:/Scala/scala-2.9.1.final/lib/scala-library.jar" />
+    <archive path="D:/Scala/scala-2.9.1.final/lib/scala-swing.jar" />
+    <archive path="D:/Scala/scala-2.9.1.final/lib/scala-dbc.jar" />
+  </library>
+</eclipse-userlibraries>
+
