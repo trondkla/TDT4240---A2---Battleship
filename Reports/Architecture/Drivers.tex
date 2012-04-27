@@ -8,22 +8,94 @@ The group has identified the following architectural drivers for the project: \e
 %Business qualities are non-software system qualities that influence other quality attributes, we have identified the following business qualities.
 
 	\section{Functional Requirements}
+		\subsection{Game requirements}
+		\begin{enumerate}
+			\item Ability to choose difficulty
+			\item A preparation state should be displayed where the player should be able to place their boats onto a ocean grid
+			\item When touching a ocean grid square on the players turn:
+				\begin{itemize}
+					\item an explosion should be displayed if the other players boat is present in that square
+					\item a water splash should be displayed if the other players boat is \emph{not} present in that square
+					\item a sound should be played
+				\end{itemize}
+			\item When all boats of a player is hit, the game should end with a game over screen
+		\end{enumerate}
+
+
+	\section{Non-Functional Requirements}
+		\subsection{Interface requirements}
+		\begin{enumerate}
+			\item Game shall be designed to be touchable
+			\item Use as little as possible screen space for buttons, but buttons must still be touchable
+			\item Have a main menu and a pause screen
+		\end{enumerate}
+
+		\subsection{Game requirements}
+		\begin{enumerate}
+			\item Game must have touchable boats
+			\item Boats must be draggable in the preparation state
+			\item Game must have sound
+			\item Game should be turn based
+		\end{enumerate}
+
+	\section{Quality Attributes}
+		\subsection{Modifiability}
+			Modifiability focuses on enhancing both maintainability and flexibility. Writing code with high maintainability increases the ease of doing fault correction and eases the programmers work. It also often prevent problems by not being to complex to grasp.
+			By using a structured architecture like MVC the code becomes more maintainable by settings standards for where curtain code are placed.
+			Flexibility is the ability to change parts of the game easily. Since this project uses MVC some flexibility comes free and some can be added easily.
+			By using inheritance in the models, you can make a Monster model, which has all the common functionality and data a monster should have, and an "Zombie" monster could inherit all from the parent model.
+			MVC modality also gives the flexibility to remove or change large parts of the project without affecting the rest of the system.
+
+			\subsection{Usability}
+			Usability in this project will focus on making user interactions easy and logical. By splitting the game into different stages (states) we reduce the information a user is required to interact with at any time, only focusing on what is important. Displaying help text where it is required, and setting requirements for decreasing the number of clicks per action and removing all unimportant information at any time, increases the usability. We have not focused on making the game accessible for disabled users.
 
 	\section{Quality Attributes Requirement}
+		\subsection{Modifiability}
+		\begin{itemize}
+			\item Use the architectural pattern MVC (Model-View-Controller)
+			\item Use libraries if exists
+			\item Use inheritance where possible
+			\item Write generic classes if a functionality is often used
+			\end{itemize}
+			
+		\subsection{Usability}
+		\begin{itemize}
+			\item Group buttons if they have thing in common
+			\item Minimize number of elements on screen, only show important elements
+			\item Only show relevant elements in a state
+			\item Reduce number of clicks per action / state
+			\item Only use pop-up menus if an error occurs or something special has happened
+		\end{itemize}
 
 	\section{Technical Constraints}
+		\begin{itemize}
+			\item The game should utilize the development tools in the Android SDK
+			\item Game should be written using the architectural patterns described in chapter \ref{chapter:patterns}
+			\item The application should run on Android 2.3 platforms, to support as many android devices as possible
+			\item Switching between portrait and landscape mode requires a lot of resources and extra work, so the game should be locked to portrait mode
+			\item If a database will be required, use SQLite that is built into Android
+			\item If we eventually want to make the application available at the Android Market, we will have to sign it with our own certificate
+		\end{itemize}
 
 	\section{Business Constraints}
+		\begin{itemize}
+			\item No budget - Can't buy game engines, models, etc.
+			\item Payment in form of grade, all "voluntary" work.
+			\item Short time to marked, see section \ref{sec:sttm}
+			\item Limited work hours - Project only accounts for 25\% of the weeks work hours
+			\item Not likely to be finished or at least sold / make money
+		\end{itemize}
 
 
 	\section{Developers' experience}
 	The project will be developed with the group members having little to no experience with Android game development. For the project to be successful, the game will be realized by early creating a functioning code base consisting of critical functionality, which then will be expanded upon iteratively.
 
 	\section{Short time to market}
+	\label{sec:sttm}
 	The product needs to be finished and deliverable by the end of the course duration, which means that the game needs to be quick and easy to develop. As mentioned above, the game will be developed iteratively, making a playable game available as early as possible, yet expandable if time allows for it.
 
 	\section{Market}
 	\emph{LaHAW} will be targeted towards youth and young adults, and is to be used on devices with fairly small screens ranging from 3 to 5 inches. Because of this, the game needs to be easy to understand and use, and we have therefore chosen usability as a primary focus for this project. Furthermore, for a game to be addictive and fun, it needs to be as intuitive as possible.
 
-%	\section{Portability}
-%	Future development could include conversion of the game to Apple iOS and Windows Phone 7 platforms for market expansion.
+	\section{Portability}
+	Future development could include conversion of the game to Apple iOS and Windows Phone 7 platforms for market expansion.

@@ -1,5 +1,5 @@
 %!TEX root = main.tex
-\chapter{Design details and Implementation details}
+
 
 %Here you describe a more detailed view of the various parts of the 
 %architecture describing how the robot controller or game was designed.
@@ -7,13 +7,22 @@
 %TODO: Pakkediagram, klassediagram, (sekvens om nødvendig)
 
 
-As mentioned earlier, the chosen development tools are Android SDK for this game, the natural choice when developing applications for the Android Platform. 
+\chapter{Design and implementation details}
+\label{cha:design_details}
 
-The ocean space is depicted as a grid of several tiles, and this grid (in combination with a start/pause button) makes up the main game screen. This grid is drawn directly on a canvas, provided by the Android SDK. The other screens use common interactive elements like buttons, radio buttons, text boxes and so on. These elements are structured using layouts like \texttt{LinearLayout} and \texttt{RelativeLayout} in xml files, also provided by the Android SDK. The GUI is rather simple in terms of design, since the main focus for this project is the underlying architecture.
+To realise LaHAW, we have decided to use the vanilla Android SDK toolkit. We have chosen not to utilise third party COTS components as we believe that the game is simple enough that any such framework might introduce unwanted constraints.
+
+Central to the game is the \emph{ocean space}, the space where the warships referred to in the title occupy. This ocean space constitutes the main game screen\footnote{Not to be confused with the \emph{main menu} screen from which a game is started.} and is depicted as a grid of tiles.
+This grid is programatically drawn directly onto a canvas provided by the Android SDK, which then draws this canvas for the players to see. The game interprets the player's inputs (touching a tile) and calculates behaviour based on the input (determining the tile that was touched and trigger the appropriate reaction).
+
+The other screens that constitutes the game use common interactive elements such as buttons, radio buttons and text boxes to interpret user input. These elements are structured using layouts such as \texttt{LinearLayout} and \texttt{RelativeLayout} in \texttt{XML} files\footnote{WTF is XML?}, also provided by the Android SDK. The user interface in these screens are deliberately simple in terms of design, as the main focus for this project is the underlying architecture.
 
 Audio is implemented using the built in \texttt{MediaPlayer} library in Android, and sound is played when the \texttt{OnTouch} method is triggered in \texttt{GameState}.
 
-With Model-View Controller in mind, the different classes are seperated into model, view and controller packages. Additionally, the game contains packages for listeners and states. 
+
+Below we will detail the main aspects of our implementation of our two main architectural patterns.
+
+The first of the two main architecture pattern implemented in LaHAW is \emph{Model-View-Controller}. Because of this, the different classes are separated into model, view and controller packages. Additionally, the game contains packages for listeners and states.
 
 \begin{figure}[ht]
     \includegraphics[width=\textwidth]{img/PackageDiagram.png}
@@ -21,7 +30,14 @@ With Model-View Controller in mind, the different classes are seperated into mod
     \label{fig:PackageDiagram}
 \end{figure}
 
-Each package contain either models, views or controllers for warships and oceanspace. Models inherit listener methods from an abstract class called \texttt{AbstractModel}, while Views and Controllers inherit draw methods and controller methods. The latter provide functionality to add and remove connected views and models to a given controller. See the appendix for more detailed diagrams for models \ref{fig:ClassModel}, views \ref{fig:ClassView} and controllers \ref{fig:ClassController}.
+Each package contain either the models, views or controllers for warships and the ocean space. The models inherit listener methods from an abstract class called \texttt{AbstractModel}, while the views and controllers inherit draw methods and controller methods respectively. The latter provide functionality to add and remove connected views and models to a given controller. See appendix \ref{fig:ClassModel}, \ref{fig:ClassView} and \ref{fig:ClassController} for more detailed diagrams of our models, views and controllers.
 
-Since the state pattern are one of the primary patterns and we didn't use any additional library or framework to support that pattern, we had to implement this by ourselves. The state package contain states for every scenario in the game; \texttt{GameMenu}, \texttt{GameOver}, \texttt{GamePause}, \texttt{GamePreperation} and \texttt{GameState}. \texttt{GamePreperation} is a state where the user does some pre-game actions, like positioning and rotating ships. Each state implement common methods from a main class called \texttt{State}. These methods give support for user interaction, in addition to \texttt{StateMachine} features. The \texttt{StateMachine} class functions as a controller for the different states, and stores them in a stack. One can both push and pop states to and from the stack, from within each state class. By using the state pattern, transitions between different scenarios become more effective and intuitive. For further information regarding these state classes, see \ref{fig:ClassState}, where detailed diagrams show the interaction between the classes, and which methods these classes contain.
+
+
+
+
+The state pattern is the second of the two primary architectural pattern implemented. As we did not use any third party libraries or frameworks to support that pattern, we had to implement this by ourselves. % Gjelder ikke dette _alle_ patterns?
+The state package contain states for every scenario in the game: \texttt{GameMenu}; \texttt{GameOver}; \texttt{GamePause}; \texttt{GamePreperation}; and \texttt{GameState}. \texttt{GamePreperation} is a state where the user does the pre-game preparation actions (i.e. positioning and rotating ships). Each state implements common methods from a main class called \texttt{State}. These methods provides support for user interaction, in addition to \texttt{StateMachine} features. % Hvorfor forklares kun én state? Eller var du ikke ferdig?
+
+The \texttt{StateMachine} class acts as as a controller for the different states. These states are stored in a \emph{stack}, where one can both push and pop states to and from, from within each state class. By using the state pattern, transitions between the different scenarios become more effective and intuitive. For further information regarding these state classes, see \ref{fig:ClassState}, where detailed diagrams show the interaction between the relevant classes and the methods these classes contain.
 

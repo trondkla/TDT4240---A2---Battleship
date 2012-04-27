@@ -18,7 +18,7 @@ Priorities of the requirements should be explained. E.g. What does "high" (or si
 ## Quality Requirements	  
 M1-M3 response time is way too long. Are you sure you need 10 hours to change ship colors? Even adding a settings page for it should not cost that time.
  
-M2 says set player color is a modifiability senario, but U2 says player can set color and player name. Is it an implemented feature or modifiability senario?
+M2 says set player color is a modifiability scenario, but U2 says player can set color and player name. Is it an implemented feature or modifiability senario?
  
 
 U1 is just a mandatory functional requirement, not "usability" requirement which means how easy is it to use your system.
@@ -52,38 +52,10 @@ Quality Requirements should be improved much. COTS chapter is too rough.
 
 # Architecture Document
 
-## Front Page
-Front Page should include group number, cots, group members, project name and quality attributes, please add the missing point(s).
-
-*DONE*
-
-## Introduction
-Ok.
-
-## Architectural Drivers
-Architectural Drivers include
-
-1. Functional Requirements
-2. Quality Attributes Requirement
-3. Technical Constraints
-4. Business Constraints
-
-Please add the missing point(s).
-
 ## Stakeholders and Concerns
 Development group should have "Grade" as a major concern.
 
 *80%*
-
-## Selection of Architectural Viewpoints
-Views should be an individual chapter, do not present them in this chapter.
-*DONE*
- 	
-Class diagram does not use correct notation.
-
-Views should be introduced with text besides the diagrams.
-
-Development View is too rough to guide the development.
 
 ## Architectural Tactics
 5.4 Testability, why Singleton can improve testability? This needs further discussion.
@@ -92,23 +64,9 @@ Quality Attributes without any architectural tactics do not have to be included.
 ## Architectural Patterns
 The rationale should be presented in an individual chapter.
 
-## Views
-Missing!
-
 ## Consistency Among Views
 Missing!
 
-## Rationale
-Missing!
-
-## Issues
-Missing!
-
-## References
-Ok.
-
-## Changes
-Missing!
 
 ## Summary
 Architectural drivers need improvements. Architectural views should be presented in an individual chapter, and text related to diagrams should be added. Patterns, Tactics and Rationales are ok, just make an individual chapter for Rationales. Missing chapters should be included.

@@ -8,77 +8,95 @@ This chapter lists the inconsistencies between our architecture as described in 
 
 
 \section{Patterns}
+\label{sec:patters}
 
 \subsection{Model-View-Controller}
 \label{sec:mvc}
 
-We did have some initial problems with naming conventions, but as soon as these where fixed, the code base has been a joy to work with.
-Our implementation is functional, but not complete. The possibility to use 'PropertyChangeSupportListeners' have not utilized, even tho support for this has been included in the implementation of Abstract factory pattern (\ref{sec:absfac}).
+Our implementation of the model-view-controller pattern is functional although not complete, with the omission of proper \texttt{PropertyChangeSupportListener} utilisation perhaps being the largest cause of discrepancy between the specification and our implementation.
+Support for such listeners has however been included in the implementation of abstract factory pattern (\ref{sec:absfac}), and could be implemented in a future version.
 
-But other than that the implementation consists of a controller which contains one model and one view, where the view draws the model based on the variables contained in the model-object. Every change done to the model have to come through the controller-object.
+The pattern is implemented by having every game object being represented by a controller, which then contains the objects model and view. The view draws the model based on the variables contained in the model-object. Every change done to the model has to come through the controller-object.
+
+
 
 
 \subsection{Observer pattern}
+Implementation of the observer pattern was omitted due to it being redundant with use of the model-view-controller architectural pattern.
 
-An implementation that followed the convensions completely
+% An implementation that followed the convensions completely
 
-This would mean that the warships' controllers would have received a notification that their state has changed.
+% This would mean that the warships' controllers would have received a notification that their state has changed.
 
-Our implementation does not implement such information flow between the objects, but rather checks their status themselves for updates whenever they are being drawn to the screen.
-A proper way would have the warships register as listeners for state changes. When a state change occurs, the 
+% Our implementation does not implement such information flow between the objects, but rather checks their status themselves for updates whenever they are being drawn to the screen.
+% A proper way would have the warships register as listeners for state changes. When a state change occurs, the 
 
-\texttt{OceanSpaceController} distribute this state change to every observer
+% \texttt{OceanSpaceController} distribute this state change to every observer
 
-We did try to implement the pattern as planned in the beginning, but as the code base grew, this proved difficult to properly realise.
+% We did try to implement the pattern as planned in the beginning, but as the code base grew, this proved difficult to properly realise.
 
-The pattern works best in instances where an object has several observers. This was thus thought to applicable to our 
-, but in the end seemed to involve more overhead than it was worth. We discovered that in most cases, this message would have been broadcasted to only one observer (e.g. only one warship can occupy any ocean tile at any time).
+% The pattern works best in instances where an object has several observers. This was thus thought to applicable to our 
+% , but in the end seemed to involve more overhead than it was worth. We discovered that in most cases, this message would have been broadcasted to only one observer (e.g. only one warship can occupy any ocean tile at any time).
 
-Time constraints was also a factor in our unability to implement it. With more time, a proper way of implementing it could have been discovered and properly realised.
+% Time constraints was also a factor in our unability to implement it. With more time, a proper way of implementing it could have been discovered and properly realised.
 
-Whether or not this could have been discovered earlier is hard to say. There were some conserns that we had decided upon too many patterns, and that this could potentially introduce unwanted and unnecessary overhead. For such a simple game as LaHAW this could be more trouble than it was worth.
+% Whether or not this could have been discovered earlier is hard to say. There were some conserns that we had decided upon too many patterns, and that this could potentially introduce unwanted and unnecessary overhead. For such a simple game as LaHAW this could be more trouble than it was worth.
+
+
 
 
 
 \subsection{Abstract factory}
 \label{sec:absfac}
-The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required er implemented in the Abstract class. For instance the 'AbstractController' class contains the methods required by the Model-View-Controller pattern and is this example.
+The abstract factory pattern's purpose in LaHAW is to support the Model-View-Controller (\ref{sec:mvc}). This is implemented so that the required methods and variables required is implemented in the Abstract class. 
 
-All we need to do is to create a class which inherits from the Abstract class and that class would inherit both the implemented methods and variables in 
+An example of this is the \texttt{AbstractController} class which contains methods needed by all controllers based on the requirements in the Model-View-Controller pattern. 
+All we need to do is to create a class which inherits from the Abstract class, that class would now contain both the implemented methods and variables.
+%For instance the \texttt{AbstractController} class contains the methods required by the Model-View-Controller pattern and is this example. % Wut?
+
+
 
 \subsection{Singleton}
-Our use of the singleton pattern has been limited, as intended.
 
-Singleton was initailly implemented to variables required by the game, but was unreachable localy by the game-states.
-For instance the canvas with is not set for the first initial two draws for some weird reason, so these variables where stored in the 'StaticVariables' class which was implemented as a singleton. This would ensure that these variables where not changed durring runtime and we where able to culculate the correct size of the grid-tiles and then draw it correctly.
+
+Our use of the singleton pattern is limited to storing and distributing variables required by the game, but for some reason is unreachable locally by the game states. Such values are stored in the \texttt{StaticVariables} class, which is readable from anywhere in the application.
+An example of this happening is in the instance where the canvas width is not properly set for the first initial two draws cycles due to a bug we have been unable to find. Our workaround included setting these variables as soon as the application starts during run time, and thus making them readable for the drawing routines.
+
+
+
 
 
 \section{Quality requirements}
 
-\section{Modifiability}
-To furfill this requirement we need to implement someway for the user to change how selected components are displayed.
-
-To ensure that this requirement was met, we implemented so that the user could change both the players name and the color for each player. Inittialy it was planed that the ships color was to be in the same colors as the players color, but when it was discovered how much work required to implement this feature, it was scrapped and redesigned so that only the players name was written in the selected color.
-
-In addition to this the user has the possibility to select the size of his 'OceanSpace', this will increas or decrease the difficulty of hitting your enemy. An unintentional side-effect of this is that the enemy also find it easier to hit your ships.
+\subsection{Modifiability}
+Our main method for fulfilling the quality requirement of modifiability is done during design time, and is our selection of the industry standard patterns discussed above.
 
 
-\section{Usability}
-TODO: Skrive at ikke har tekt vanvittig mye på det, men har lagt opp til å implementere det, etc. Smøre godt på.
+Additionally, we have implemented the possibility for the user to change how selected components are displayed during run time.
+We have implemented a feature where the user can change both their player name and their team colour. It was initially planned to use this information to colour the player ships in their team colour, but due to time constraints this had to be omitted. However, the player names are coloured in their team colour.
+
+% The player has the possibility to select the size of his \texttt{OceanSpace}, by selecting a difficulty level when starting a game. This will increase or decrease the difficulty of hitting ones enemy.
 
 
+\subsection{Usability}
+The second quality requirements that was chosen for the implementation of LaHAW was usability. While developing LaHAW we continuously thought about how to design the game so that it would be as simple and easy to use as possible.
+
+Every tile that has been bombed, being water or a ship, is marked with a symbol indicating the status of the tile. The symbol is different depending on what was bombed. It is also impossible for (human\footnote{The AI can bomb the same tile more than once.}) players to bomb the same tile more than once.
+
+Sound is used to give the player feedback on the bombing by playing a explosion sound clip whenever a ship is successfully hit and a water splash sound for hitting water.
+
+When every tile that constitutes a ship is hit, the ship is marked as sunk and is completely revealed to the opponent.
+
+The user interface indicates that a ship is selected for movement while preparing by colouring the old position grey.
+
+To avoid unintended actions, a confirmation dialogue box is displayed whenever a severe action is performed (e.g. quitting a battle mid-game). This is especially important on touch screen devices, where accidental touches on the screen happen often.
+%TODO: Skrive at ikke har tekt vanvittig mye på det, men har lagt opp til å implementere det, etc. Smøre godt på.
 
 
 \section{Experience} % Todo: ny tittel
-Our main piece of experience from the implementation phase of this project was that we tried to implement too many patterns. While we still feel that every pattern decided upon in some way or another did fit our project, and.... 
+Our main piece of experience drawn from the implementation phase of this project was that we tried to implement too many patterns. We still feel that every of the patterns decided upon does fit our project, and therefore it was a challenge to decide which to keep and which to leave out during implementation. It was vital for us to limit the use of some patterns due to our time constraints.
 
-, we feel that implementing fewer patterns better would have benefited the project.
+After the game was completed, we feel that implementing fewer patterns would have benefited the project. This is mostly because of issues we had implementing some of the patterns, especially the state pattern.
 
-We are however content with our implementation of the model view controller pattern.
-
-
-
-
-
-
+We are however content with our implementation of the model-view controller-pattern and the singleton pattern. We feel that these are well executed and an intricate part of making the game function correctly.
 
